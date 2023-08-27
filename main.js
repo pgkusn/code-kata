@@ -97,3 +97,12 @@ export const arrayPlusArray = (arr1, arr2) => {
   const arr = [...arr1, ...arr2]
   return arr.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
 }
+/**
+ * Find the first non-consecutive number
+ * @param {array} arr
+ * @returns {(number|null)}
+ * @see https://www.codewars.com/kata/58f8a3a27a5c28d92e000144
+ */
+export const firstNonConsecutive = arr => {
+  return arr.find((n, i) => i && n - 1 !== arr[i - 1]) ?? null
+}
