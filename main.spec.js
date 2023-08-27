@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { flip, warnTheSheep } from './main'
+import { flip, warnTheSheep, points } from './main'
 
 describe('Gravity Flip', () => {
   it('如第一個參數傳入 R 時，應回傳升冪排序的陣列', () => {
@@ -17,5 +17,19 @@ describe("A wolf in sheep's clothing", () => {
   it('如傳入陣列中的 wolf 在最後一個時，應回傳指定字串', () => {
     const ary = ['sheep', 'sheep', 'wolf']
     expect(warnTheSheep(ary)).toBe('Pls go away and stop eating my sheep')
+  })
+})
+describe('Total amount of points', () => {
+  it('應依據比數回傳正確的加總分數', () => {
+    const games1 = ['1:0', '2:0', '3:0', '4:0', '2:1', '3:1', '4:1', '3:2', '4:2', '4:3']
+    const games2 = ['1:1', '2:2', '3:3', '4:4', '2:2', '3:3', '4:4', '3:3', '4:4', '4:4']
+    const games3 = ['0:1', '0:2', '0:3', '0:4', '1:2', '1:3', '1:4', '2:3', '2:4', '3:4']
+    const games4 = ['1:0', '2:0', '3:0', '4:0', '2:1', '1:3', '1:4', '2:3', '2:4', '3:4']
+    const games5 = ['1:0', '2:0', '3:0', '4:4', '2:2', '3:3', '1:4', '2:3', '2:4', '3:4']
+    expect(points(games1)).toBe(30)
+    expect(points(games2)).toBe(10)
+    expect(points(games3)).toBe(0)
+    expect(points(games4)).toBe(15)
+    expect(points(games5)).toBe(12)
   })
 })

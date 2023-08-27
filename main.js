@@ -20,3 +20,17 @@ export const warnTheSheep = queue => {
     ? 'Pls go away and stop eating my sheep'
     : `Oi! Sheep number ${n}! You are about to be eaten by a wolf!`
 }
+/**
+ * Total amount of points
+ * @param {array} games
+ * @returns {number}
+ * @see https://www.codewars.com/kata/5bb904724c47249b10000131
+ */
+export const points = games => {
+  return games.reduce((previousValue, currentValue) => {
+    const [x, y] = currentValue.split(':')
+    if (x > y) return previousValue + 3
+    if (x < y) return previousValue
+    if (x === y) return previousValue + 1
+  }, 0)
+}
