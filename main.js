@@ -34,3 +34,17 @@ export const points = games => {
     if (x === y) return previousValue + 1
   }, 0)
 }
+/**
+ * Sum of differences in array
+ * @param {array} arr
+ * @returns {number}
+ * @see https://www.codewars.com/kata/5b73fe9fb3d9776fbf00009e
+ */
+export const sumOfDifferences = arr => {
+  if (arr.length < 2) return 0
+  const sortedArr = [...arr].sort((a, b) => b - a)
+  return sortedArr.reduce((previousValue, currentValue, currentIndex) => {
+    const next = sortedArr[currentIndex + 1]
+    return previousValue + (currentValue - next || 0)
+  }, 0)
+}

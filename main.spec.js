@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { flip, warnTheSheep, points } from './main'
+import { flip, warnTheSheep, points, sumOfDifferences } from './main'
 
 describe('Gravity Flip', () => {
   it('如第一個參數傳入 R 時，應回傳升冪排序的陣列', () => {
@@ -20,7 +20,7 @@ describe("A wolf in sheep's clothing", () => {
   })
 })
 describe('Total amount of points', () => {
-  it('應依據比數回傳正確的加總分數', () => {
+  it('應依據傳入的比數回傳正確的加總分數', () => {
     const games1 = ['1:0', '2:0', '3:0', '4:0', '2:1', '3:1', '4:1', '3:2', '4:2', '4:3']
     const games2 = ['1:1', '2:2', '3:3', '4:4', '2:2', '3:3', '4:4', '3:3', '4:4', '4:4']
     const games3 = ['0:1', '0:2', '0:3', '0:4', '1:2', '1:3', '1:4', '2:3', '2:4', '3:4']
@@ -31,5 +31,18 @@ describe('Total amount of points', () => {
     expect(points(games3)).toBe(0)
     expect(points(games4)).toBe(15)
     expect(points(games5)).toBe(12)
+  })
+})
+describe('Sum of differences in array', () => {
+  it('應依據傳入的陣列回傳正確的加總值', () => {
+    expect(sumOfDifferences([1, 2, 10])).toBe(9)
+    expect(sumOfDifferences([-3, -2, -1])).toBe(2)
+    expect(sumOfDifferences([-17, 17])).toBe(34)
+    expect(sumOfDifferences([6, -16, -6, 6, 3, -8, -13])).toBe(22)
+    expect(sumOfDifferences([0, 6, -6, -3, 0, -7, -5, 4, 2, 2, 6, 1, 1, 5, 3, -3, 4, -2])).toBe(13)
+  })
+  it('如為空陣列或長度為 1 時，應回傳 0', () => {
+    expect(sumOfDifferences([])).toBe(0)
+    expect(sumOfDifferences([-1])).toBe(0)
   })
 })
