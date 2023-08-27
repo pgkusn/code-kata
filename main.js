@@ -86,3 +86,14 @@ export const toCsvText = array => {
   // better
   // return array.join('\n')
 }
+/**
+ * Array plus array
+ * @param {array} arr1
+ * @param {array} arr2
+ * @returns {number}
+ * @see https://www.codewars.com/kata/5a2be17aee1aaefe2a000151
+ */
+export const arrayPlusArray = (arr1, arr2) => {
+  const arr = [...arr1, ...arr2]
+  return arr.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+}

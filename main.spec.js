@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest'
-import { flip, warnTheSheep, points, sumOfDifferences, multipleOfIndex, toCsvText } from './main'
+import {
+  flip,
+  warnTheSheep,
+  points,
+  sumOfDifferences,
+  multipleOfIndex,
+  toCsvText,
+  arrayPlusArray,
+} from './main'
 
 describe('Gravity Flip', () => {
   it('如第一個參數傳入 R 時，應回傳升冪排序的陣列', () => {
@@ -29,7 +37,7 @@ describe('Total amount of points', () => {
   })
 })
 describe('Sum of differences in array', () => {
-  it('應回傳正確的加總值', () => {
+  it('應回傳正確的計算結果', () => {
     expect(sumOfDifferences([1, 2, 10])).toBe(9)
     expect(sumOfDifferences([-3, -2, -1])).toBe(2)
     expect(sumOfDifferences([-17, 17])).toBe(34)
@@ -58,5 +66,13 @@ describe('CSV representation of array', () => {
     ]
     const output = '0,1,2,3,4\n' + '10,11,12,13,14\n' + '20,21,22,23,24\n' + '30,31,32,33,34'
     expect(toCsvText(input)).toEqual(output)
+  })
+})
+describe('Array plus array', () => {
+  it('應回傳兩個數字陣列的加總', () => {
+    expect(arrayPlusArray([1, 2, 3], [4, 5, 6])).toBe(21)
+    expect(arrayPlusArray([-1, -2, -3], [-4, -5, -6])).toBe(-21)
+    expect(arrayPlusArray([0, 0, 0], [4, 5, 6])).toBe(15)
+    expect(arrayPlusArray([100, 200, 300], [400, 500, 600])).toBe(2100)
   })
 })
