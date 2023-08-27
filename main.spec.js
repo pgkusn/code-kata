@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { flip, warnTheSheep, points, sumOfDifferences, multipleOfIndex } from './main'
+import { flip, warnTheSheep, points, sumOfDifferences, multipleOfIndex, toCsvText } from './main'
 
 describe('Gravity Flip', () => {
   it('如第一個參數傳入 R 時，應回傳升冪排序的陣列', () => {
@@ -46,5 +46,17 @@ describe('Multiple of index', () => {
     expect(multipleOfIndex([22, -6, 32, 82, 9, 25])).toEqual([-6, 32, 25])
     expect(multipleOfIndex([68, -1, 1, -7, 10, 10])).toEqual([-1, 10])
     expect(multipleOfIndex([0, 2, 3, 6, 9])).toEqual([0, 2, 6])
+  })
+})
+describe('CSV representation of array', () => {
+  it('應將原二維數字陣列轉換成 CSV 格式的字串', () => {
+    const input = [
+      [0, 1, 2, 3, 4],
+      [10, 11, 12, 13, 14],
+      [20, 21, 22, 23, 24],
+      [30, 31, 32, 33, 34],
+    ]
+    const output = '0,1,2,3,4\n' + '10,11,12,13,14\n' + '20,21,22,23,24\n' + '30,31,32,33,34'
+    expect(toCsvText(input)).toEqual(output)
   })
 })

@@ -6,7 +6,14 @@
  * @see https://www.codewars.com/kata/5f70c883e10f9e0001c89673
  */
 export const flip = (d, a) => {
-  return a.sort((a, b) => (d === 'R' ? a - b : b - a))
+  if (d === 'R') {
+    return a.sort((a, b) => a - b)
+  } else if (d === 'L') {
+    return a.sort((a, b) => b - a)
+  }
+
+  // better
+  // return a.sort((a, b) => (d === 'R' ? a - b : b - a))
 }
 /**
  * A wolf in sheep's clothing
@@ -15,10 +22,17 @@ export const flip = (d, a) => {
  * @see https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15
  */
 export const warnTheSheep = queue => {
-  const n = [...queue].reverse().indexOf('wolf')
+  const ary = [...queue].reverse()
+  const n = ary.findIndex(item => item === 'wolf')
   return n === 0
     ? 'Pls go away and stop eating my sheep'
     : `Oi! Sheep number ${n}! You are about to be eaten by a wolf!`
+
+  // better
+  // const n = [...queue].reverse().indexOf('wolf')
+  // return n === 0
+  //   ? 'Pls go away and stop eating my sheep'
+  //   : `Oi! Sheep number ${n}! You are about to be eaten by a wolf!`
 }
 /**
  * Total amount of points
@@ -55,5 +69,20 @@ export const sumOfDifferences = arr => {
  * @see https://www.codewars.com/kata/5a34b80155519e1a00000009
  */
 export const multipleOfIndex = array => {
-  return array.filter((item, index) => item === 0 || item % index === 0)
+  return array.filter((item, index) => (item === 0 ? true : item % index === 0))
+
+  // better
+  // return array.filter((item, index) => item === 0 || item % index === 0)
+}
+/**
+ * CSV representation of array
+ * @param {array} array
+ * @returns {string}
+ * @see https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036
+ */
+export const toCsvText = array => {
+  return array.map(item => item.join()).join('\n')
+
+  // better
+  // return array.join('\n')
 }
