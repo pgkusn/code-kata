@@ -106,3 +106,17 @@ export const arrayPlusArray = (arr1, arr2) => {
 export const firstNonConsecutive = arr => {
   return arr.find((n, i) => i && n - 1 !== arr[i - 1]) ?? null
 }
+/**
+ * Find Multiples of a Number
+ * @param {number} integer
+ * @param {number} limit
+ * @returns {array}
+ * @see https://www.codewars.com/kata/58ca658cc0d6401f2700045f
+ */
+export const findMultiples = (integer, limit) => {
+  const result = []
+  for (let n = integer; n <= limit; n += integer) {
+    result.push(n)
+  }
+  return result
+}

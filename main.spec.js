@@ -8,6 +8,7 @@ import {
   toCsvText,
   arrayPlusArray,
   firstNonConsecutive,
+  findMultiples,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -89,5 +90,12 @@ describe('Find the first non-consecutive number', () => {
   })
   it('如果陣列中只有一個元素，應返回 null', () => {
     expect(firstNonConsecutive([1])).toBe(null)
+  })
+})
+describe('Find Multiples of a Number', () => {
+  it('應回傳正確的倍數數字陣列', () => {
+    expect(findMultiples(5, 25)).toEqual([5, 10, 15, 20, 25])
+    expect(findMultiples(1, 2)).toEqual([1, 2])
+    expect(findMultiples(5, 7)).toEqual([5])
   })
 })
