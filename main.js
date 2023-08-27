@@ -5,7 +5,7 @@
  * @returns {array}
  * @see https://www.codewars.com/kata/5f70c883e10f9e0001c89673
  */
-export const flip = (d, a) => {
+export function flip(d, a) {
   if (d === 'R') {
     return a.sort((a, b) => a - b)
   } else if (d === 'L') {
@@ -21,7 +21,7 @@ export const flip = (d, a) => {
  * @returns {string}
  * @see https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15
  */
-export const warnTheSheep = queue => {
+export function warnTheSheep(queue) {
   const ary = [...queue].reverse()
   const n = ary.findIndex(item => item === 'wolf')
   return n === 0
@@ -40,7 +40,7 @@ export const warnTheSheep = queue => {
  * @returns {number}
  * @see https://www.codewars.com/kata/5bb904724c47249b10000131
  */
-export const points = games => {
+export function points(games) {
   return games.reduce((previousValue, currentValue) => {
     const [x, y] = currentValue.split(':')
     if (x > y) return previousValue + 3
@@ -54,7 +54,7 @@ export const points = games => {
  * @returns {number}
  * @see https://www.codewars.com/kata/5b73fe9fb3d9776fbf00009e
  */
-export const sumOfDifferences = arr => {
+export function sumOfDifferences(arr) {
   if (arr.length < 2) return 0
   const sortedArr = [...arr].sort((a, b) => b - a)
   return sortedArr.reduce((previousValue, currentValue, currentIndex) => {
@@ -68,7 +68,7 @@ export const sumOfDifferences = arr => {
  * @returns {array}
  * @see https://www.codewars.com/kata/5a34b80155519e1a00000009
  */
-export const multipleOfIndex = array => {
+export function multipleOfIndex(array) {
   return array.filter((item, index) => (item === 0 ? true : item % index === 0))
 
   // better
@@ -80,7 +80,7 @@ export const multipleOfIndex = array => {
  * @returns {string}
  * @see https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036
  */
-export const toCsvText = array => {
+export function toCsvText(array) {
   return array.map(item => item.join()).join('\n')
 
   // better
@@ -93,7 +93,7 @@ export const toCsvText = array => {
  * @returns {number}
  * @see https://www.codewars.com/kata/5a2be17aee1aaefe2a000151
  */
-export const arrayPlusArray = (arr1, arr2) => {
+export function arrayPlusArray(arr1, arr2) {
   const arr = [...arr1, ...arr2]
   return arr.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
 }
@@ -103,7 +103,7 @@ export const arrayPlusArray = (arr1, arr2) => {
  * @returns {(number|null)}
  * @see https://www.codewars.com/kata/58f8a3a27a5c28d92e000144
  */
-export const firstNonConsecutive = arr => {
+export function firstNonConsecutive(arr) {
   return arr.find((n, i) => i && n - 1 !== arr[i - 1]) ?? null
 }
 /**
@@ -113,10 +113,22 @@ export const firstNonConsecutive = arr => {
  * @returns {array}
  * @see https://www.codewars.com/kata/58ca658cc0d6401f2700045f
  */
-export const findMultiples = (integer, limit) => {
+export function findMultiples(integer, limit) {
   const result = []
   for (let n = integer; n <= limit; n += integer) {
     result.push(n)
   }
   return result
+}
+/**
+ * Invert values
+ * @param {array} array
+ * @returns {array}
+ * @see https://www.codewars.com/kata/5899dc03bc95b1bf1b0000ad
+ */
+export function invert(array) {
+  return array.map(n => n * -1 || 0)
+
+  // better
+  // return array.map(n => -n || 0)
 }
