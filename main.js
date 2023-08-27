@@ -48,3 +48,12 @@ export const sumOfDifferences = arr => {
     return previousValue + (currentValue - next || 0)
   }, 0)
 }
+/**
+ * Multiple of index
+ * @param {array} array
+ * @returns {array}
+ * @see https://www.codewars.com/kata/5a34b80155519e1a00000009
+ */
+export const multipleOfIndex = array => {
+  return array.filter((item, index) => item === 0 || item % index === 0)
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { flip, warnTheSheep, points, sumOfDifferences } from './main'
+import { flip, warnTheSheep, points, sumOfDifferences, multipleOfIndex } from './main'
 
 describe('Gravity Flip', () => {
   it('如第一個參數傳入 R 時，應回傳升冪排序的陣列', () => {
@@ -20,21 +20,16 @@ describe("A wolf in sheep's clothing", () => {
   })
 })
 describe('Total amount of points', () => {
-  it('應依據傳入的比數回傳正確的加總分數', () => {
-    const games1 = ['1:0', '2:0', '3:0', '4:0', '2:1', '3:1', '4:1', '3:2', '4:2', '4:3']
-    const games2 = ['1:1', '2:2', '3:3', '4:4', '2:2', '3:3', '4:4', '3:3', '4:4', '4:4']
-    const games3 = ['0:1', '0:2', '0:3', '0:4', '1:2', '1:3', '1:4', '2:3', '2:4', '3:4']
-    const games4 = ['1:0', '2:0', '3:0', '4:0', '2:1', '1:3', '1:4', '2:3', '2:4', '3:4']
-    const games5 = ['1:0', '2:0', '3:0', '4:4', '2:2', '3:3', '1:4', '2:3', '2:4', '3:4']
-    expect(points(games1)).toBe(30)
-    expect(points(games2)).toBe(10)
-    expect(points(games3)).toBe(0)
-    expect(points(games4)).toBe(15)
-    expect(points(games5)).toBe(12)
+  it('應回傳正確的加總分數', () => {
+    expect(points(['1:0', '2:0', '3:0', '4:0', '2:1', '3:1', '4:1', '3:2', '4:2', '4:3'])).toBe(30)
+    expect(points(['1:1', '2:2', '3:3', '4:4', '2:2', '3:3', '4:4', '3:3', '4:4', '4:4'])).toBe(10)
+    expect(points(['0:1', '0:2', '0:3', '0:4', '1:2', '1:3', '1:4', '2:3', '2:4', '3:4'])).toBe(0)
+    expect(points(['1:0', '2:0', '3:0', '4:0', '2:1', '1:3', '1:4', '2:3', '2:4', '3:4'])).toBe(15)
+    expect(points(['1:0', '2:0', '3:0', '4:4', '2:2', '3:3', '1:4', '2:3', '2:4', '3:4'])).toBe(12)
   })
 })
 describe('Sum of differences in array', () => {
-  it('應依據傳入的陣列回傳正確的加總值', () => {
+  it('應回傳正確的加總值', () => {
     expect(sumOfDifferences([1, 2, 10])).toBe(9)
     expect(sumOfDifferences([-3, -2, -1])).toBe(2)
     expect(sumOfDifferences([-17, 17])).toBe(34)
@@ -44,5 +39,12 @@ describe('Sum of differences in array', () => {
   it('如為空陣列或長度為 1 時，應回傳 0', () => {
     expect(sumOfDifferences([])).toBe(0)
     expect(sumOfDifferences([-1])).toBe(0)
+  })
+})
+describe('Multiple of index', () => {
+  it('應回傳篩選過後的數字陣列', () => {
+    expect(multipleOfIndex([22, -6, 32, 82, 9, 25])).toEqual([-6, 32, 25])
+    expect(multipleOfIndex([68, -1, 1, -7, 10, 10])).toEqual([-1, 10])
+    expect(multipleOfIndex([0, 2, 3, 6, 9])).toEqual([0, 2, 6])
   })
 })
