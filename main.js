@@ -132,3 +132,13 @@ export function invert(array) {
   // better
   // return array.map(n => -n || 0)
 }
+/**
+ * Merge two sorted arrays into one
+ * @param {array} arr1
+ * @param {array} arr2
+ * @returns {array}
+ */
+export function mergeArrays(arr1, arr2) {
+  const setObj = new Set([...arr1, ...arr2])
+  return Array.from(setObj).sort((a, b) => a - b)
+}
