@@ -161,3 +161,21 @@ export function duckDuckGoose(players, goose) {
 export function maps(x) {
   return x.map(n => n * 2)
 }
+/**
+ * Beginner - Reduce but Grow
+ * @param {array} x
+ * @returns {number}
+ * @see https://www.codewars.com/kata/57f780909f7e8e3183000078
+ */
+export function grow(x) {
+  return x.reduce((previousValue, currentValue, currentIndex) => {
+    if (currentIndex === 0) return previousValue
+    return previousValue * currentValue
+  }, x[0])
+
+  // better
+  // return x.reduce((a, b) => a * b, 1)
+
+  // best
+  // return x.reduce((a, b) => a * b)
+}
