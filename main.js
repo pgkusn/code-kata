@@ -152,3 +152,12 @@ export function mergeArrays(arr1, arr2) {
 export function duckDuckGoose(players, goose) {
   return players[(goose - 1) % players.length].name
 }
+/**
+ * Beginner - Lost Without a Map
+ * @param {array} x
+ * @returns {array}
+ * @see https://www.codewars.com/kata/57f781872e3d8ca2a000007e
+ */
+export function maps(x) {
+  return x.map(n => n * 2)
+}
