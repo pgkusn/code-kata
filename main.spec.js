@@ -11,6 +11,7 @@ import {
   findMultiples,
   invert,
   mergeArrays,
+  duckDuckGoose,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -121,5 +122,20 @@ describe('Merge two sorted arrays into one', () => {
     expect(mergeArrays([1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12])).toEqual([
       1, 2, 3, 4, 5, 7, 9, 10, 11, 12,
     ])
+  })
+})
+describe('Duck Duck Goose', () => {
+  it('應回傳指定陣列索引中的物件 name 屬性', () => {
+    class Player {
+      constructor(name) {
+        this.name = name
+      }
+    }
+    let ex_names = ['a', 'b', 'c', 'd', 'c', 'e', 'f', 'g', 'h', 'z']
+    let players = ex_names.map(n => new Player(n))
+    expect(duckDuckGoose(players, 1)).toBe('a')
+    expect(duckDuckGoose(players, 3)).toBe('c')
+    expect(duckDuckGoose(players, 10)).toBe('z')
+    expect(duckDuckGoose(players, 30)).toBe('z')
   })
 })

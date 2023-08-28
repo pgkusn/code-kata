@@ -137,8 +137,18 @@ export function invert(array) {
  * @param {array} arr1
  * @param {array} arr2
  * @returns {array}
+ * @see https://www.codewars.com/kata/5899642f6e1b25935d000161
  */
 export function mergeArrays(arr1, arr2) {
   const setObj = new Set([...arr1, ...arr2])
   return Array.from(setObj).sort((a, b) => a - b)
+}
+/**
+ * Duck Duck Goose
+ * @param {array} players
+ * @param {number} goose
+ * @see https://www.codewars.com/kata/582e0e592029ea10530009ce
+ */
+export function duckDuckGoose(players, goose) {
+  return players[(goose - 1) % players.length].name
 }
