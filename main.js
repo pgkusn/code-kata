@@ -179,3 +179,12 @@ export function grow(x) {
   // best
   // return x.reduce((a, b) => a * b)
 }
+/**
+ * To square(root) or not to square(root)
+ * @param {array} array
+ * @returns {array}
+ * @see https://www.codewars.com/kata/57f6ad55cca6e045d2000627
+ */
+export function squareOrSquareRoot(array) {
+  return array.map(n => (Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) : n ** 2))
+}
