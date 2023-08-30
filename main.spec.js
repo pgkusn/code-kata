@@ -16,6 +16,7 @@ import {
   grow,
   squareOrSquareRoot,
   howMuchILoveYou,
+  well,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -167,5 +168,14 @@ describe('I love you, a little , a lot, passionately ... not at all', () => {
     expect(howMuchILoveYou(7)).toBe('I love you')
     expect(howMuchILoveYou(3)).toBe('a lot')
     expect(howMuchILoveYou(6)).toBe('not at all')
+  })
+})
+describe('Well of Ideas - Easy Version', () => {
+  it('應依照規則回傳正確的結果', () => {
+    expect(well(['bad', 'bad', 'bad'])).toBe('Fail!')
+    expect(well(['good', 'bad', 'bad', 'bad', 'bad'])).toBe('Publish!')
+    expect(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good'])).toBe(
+      'I smell a series!'
+    )
   })
 })

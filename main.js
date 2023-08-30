@@ -198,3 +198,19 @@ export function howMuchILoveYou(nbPetals) {
   const phrases = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all']
   return phrases[(nbPetals - 1) % phrases.length]
 }
+/**
+ * Well of Ideas - Easy Version
+ * @param {string[]} x
+ * @returns {string}
+ * @see https://www.codewars.com/kata/57f222ce69e09c3630000212
+ */
+export function well(x) {
+  const filtered = x.filter(item => item === 'good')
+  if (filtered.length > 2) {
+    return 'I smell a series!'
+  } else if (filtered.length > 0) {
+    return 'Publish!'
+  } else {
+    return 'Fail!'
+  }
+}
