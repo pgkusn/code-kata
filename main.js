@@ -1,8 +1,8 @@
 /**
  * Gravity Flip
  * @param {string} d
- * @param {array} a
- * @returns {array}
+ * @param {number[]} a
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/5f70c883e10f9e0001c89673
  */
 export function flip(d, a) {
@@ -17,7 +17,7 @@ export function flip(d, a) {
 }
 /**
  * A wolf in sheep's clothing
- * @param {array} queue
+ * @param {string[]} queue
  * @returns {string}
  * @see https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15
  */
@@ -36,7 +36,7 @@ export function warnTheSheep(queue) {
 }
 /**
  * Total amount of points
- * @param {array} games
+ * @param {string[]} games
  * @returns {number}
  * @see https://www.codewars.com/kata/5bb904724c47249b10000131
  */
@@ -50,7 +50,7 @@ export function points(games) {
 }
 /**
  * Sum of differences in array
- * @param {array} arr
+ * @param {number[]} arr
  * @returns {number}
  * @see https://www.codewars.com/kata/5b73fe9fb3d9776fbf00009e
  */
@@ -64,8 +64,8 @@ export function sumOfDifferences(arr) {
 }
 /**
  * Multiple of index
- * @param {array} array
- * @returns {array}
+ * @param {number[]} array
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/5a34b80155519e1a00000009
  */
 export function multipleOfIndex(array) {
@@ -76,7 +76,7 @@ export function multipleOfIndex(array) {
 }
 /**
  * CSV representation of array
- * @param {array} array
+ * @param {number[][]} array
  * @returns {string}
  * @see https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036
  */
@@ -88,8 +88,8 @@ export function toCsvText(array) {
 }
 /**
  * Array plus array
- * @param {array} arr1
- * @param {array} arr2
+ * @param {number[]} arr1
+ * @param {number[]} arr2
  * @returns {number}
  * @see https://www.codewars.com/kata/5a2be17aee1aaefe2a000151
  */
@@ -99,7 +99,7 @@ export function arrayPlusArray(arr1, arr2) {
 }
 /**
  * Find the first non-consecutive number
- * @param {array} arr
+ * @param {number[]} arr
  * @returns {(number|null)}
  * @see https://www.codewars.com/kata/58f8a3a27a5c28d92e000144
  */
@@ -110,7 +110,7 @@ export function firstNonConsecutive(arr) {
  * Find Multiples of a Number
  * @param {number} integer
  * @param {number} limit
- * @returns {array}
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/58ca658cc0d6401f2700045f
  */
 export function findMultiples(integer, limit) {
@@ -122,8 +122,8 @@ export function findMultiples(integer, limit) {
 }
 /**
  * Invert values
- * @param {array} array
- * @returns {array}
+ * @param {number[]} array
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/5899dc03bc95b1bf1b0000ad
  */
 export function invert(array) {
@@ -134,9 +134,9 @@ export function invert(array) {
 }
 /**
  * Merge two sorted arrays into one
- * @param {array} arr1
- * @param {array} arr2
- * @returns {array}
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/5899642f6e1b25935d000161
  */
 export function mergeArrays(arr1, arr2) {
@@ -145,8 +145,8 @@ export function mergeArrays(arr1, arr2) {
 }
 /**
  * Duck Duck Goose
- * @param {array} players
- * @param {number} goose
+ * @param {object[]} players
+ * @param {string} goose
  * @see https://www.codewars.com/kata/582e0e592029ea10530009ce
  */
 export function duckDuckGoose(players, goose) {
@@ -154,8 +154,8 @@ export function duckDuckGoose(players, goose) {
 }
 /**
  * Beginner - Lost Without a Map
- * @param {array} x
- * @returns {array}
+ * @param {number[]} x
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/57f781872e3d8ca2a000007e
  */
 export function maps(x) {
@@ -163,7 +163,7 @@ export function maps(x) {
 }
 /**
  * Beginner - Reduce but Grow
- * @param {array} x
+ * @param {number[]} x
  * @returns {number}
  * @see https://www.codewars.com/kata/57f780909f7e8e3183000078
  */
@@ -181,8 +181,8 @@ export function grow(x) {
 }
 /**
  * To square(root) or not to square(root)
- * @param {array} array
- * @returns {array}
+ * @param {number[]} array
+ * @returns {number[]}
  * @see https://www.codewars.com/kata/57f6ad55cca6e045d2000627
  */
 export function squareOrSquareRoot(array) {
