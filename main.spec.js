@@ -15,6 +15,7 @@ import {
   maps,
   grow,
   squareOrSquareRoot,
+  howMuchILoveYou,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -159,5 +160,12 @@ describe('To square(root) or not to square(root)', () => {
   it('應回傳平方或平方根的數字陣列', () => {
     expect(squareOrSquareRoot([4, 3, 9, 7, 2, 1])).toEqual([2, 9, 3, 49, 4, 1])
     expect(squareOrSquareRoot([100, 101, 5, 5, 1, 1])).toEqual([10, 10201, 25, 25, 1, 1])
+  })
+})
+describe('I love you, a little , a lot, passionately ... not at all', () => {
+  it('應回傳指定的陣列元素', () => {
+    expect(howMuchILoveYou(7)).toBe('I love you')
+    expect(howMuchILoveYou(3)).toBe('a lot')
+    expect(howMuchILoveYou(6)).toBe('not at all')
   })
 })

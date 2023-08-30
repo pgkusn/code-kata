@@ -188,3 +188,13 @@ export function grow(x) {
 export function squareOrSquareRoot(array) {
   return array.map(n => (Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) : n ** 2))
 }
+/**
+ * I love you, a little , a lot, passionately ... not at all
+ * @param {number} nbPetals
+ * @returns {string}
+ * @see https://www.codewars.com/kata/57f24e6a18e9fad8eb000296
+ */
+export function howMuchILoveYou(nbPetals) {
+  const phrases = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all']
+  return phrases[(nbPetals - 1) % phrases.length]
+}
