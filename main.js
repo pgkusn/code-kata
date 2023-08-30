@@ -214,3 +214,13 @@ export function well(x) {
     return 'Fail!'
   }
 }
+/**
+ * Filter out the geese
+ * @param {string[]} birds
+ * @returns {string[]}
+ * @see https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7
+ */
+export function gooseFilter(birds) {
+  var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher']
+  return birds.filter(item => !geese.includes(item))
+}

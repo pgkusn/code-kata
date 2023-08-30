@@ -17,6 +17,7 @@ import {
   squareOrSquareRoot,
   howMuchILoveYou,
   well,
+  gooseFilter,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -171,11 +172,44 @@ describe('I love you, a little , a lot, passionately ... not at all', () => {
   })
 })
 describe('Well of Ideas - Easy Version', () => {
-  it('應依照規則回傳正確的結果', () => {
+  it('如果有一個或兩個好點子，則返回 "Publish!"', () => {
     expect(well(['bad', 'bad', 'bad'])).toBe('Fail!')
+  })
+  it('如果有超過兩個好點子，則返回 "I smell a series!"', () => {
     expect(well(['good', 'bad', 'bad', 'bad', 'bad'])).toBe('Publish!')
+  })
+  it('如果沒有好點子，則返回 "Fail!"', () => {
     expect(well(['good', 'bad', 'bad', 'bad', 'bad', 'good', 'bad', 'bad', 'good'])).toBe(
       'I smell a series!'
+    )
+  })
+})
+describe('Filter out the geese', () => {
+  it('Mixed list', () => {
+    expect(
+      gooseFilter([
+        'Mallard',
+        'Hook Bill',
+        'African',
+        'Crested',
+        'Pilgrim',
+        'Toulouse',
+        'Blue Swedish',
+      ])
+    ).toEqual(['Mallard', 'Hook Bill', 'Crested', 'Blue Swedish'])
+  })
+  it('No geese', () => {
+    expect(gooseFilter(['Mallard', 'Barbary', 'Hook Bill', 'Blue Swedish', 'Crested'])).toEqual([
+      'Mallard',
+      'Barbary',
+      'Hook Bill',
+      'Blue Swedish',
+      'Crested',
+    ])
+  })
+  it('All geese', () => {
+    expect(gooseFilter(['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher'])).toEqual(
+      []
     )
   })
 })
