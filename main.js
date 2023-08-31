@@ -239,3 +239,19 @@ export function sumMix(x) {
   // or
   // return x.map(a => +a).reduce((a, b) => a + b)
 }
+/**
+ * Fake Binary
+ * @param {string} x
+ * @returns {string}
+ * @see https://www.codewars.com/kata/57eae65a4321032ce000002d
+ */
+export function fakeBin(x) {
+  return x
+    .split('')
+    .map(n => (+n < 5 ? '0' : '1'))
+    .join('')
+
+  // or
+  // @ts-ignore
+  return x.replace(/\d/g, d => (d < 5 ? 0 : 1))
+}
