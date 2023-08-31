@@ -18,6 +18,8 @@ import {
   howMuchILoveYou,
   well,
   gooseFilter,
+  sumMix,
+  fakeBin,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -211,5 +213,12 @@ describe('Filter out the geese', () => {
     expect(gooseFilter(['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher'])).toEqual(
       []
     )
+  })
+})
+describe('Sum Mixed Array', () => {
+  it('應回傳正確的總和', () => {
+    expect(sumMix([9, 3, '7', '3'])).toBe(22)
+    expect(sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7])).toBe(42)
+    expect(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2, '0'])).toBe(41)
   })
 })

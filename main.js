@@ -146,7 +146,7 @@ export function mergeArrays(arr1, arr2) {
 /**
  * Duck Duck Goose
  * @param {object[]} players
- * @param {string} goose
+ * @param {number} goose
  * @see https://www.codewars.com/kata/582e0e592029ea10530009ce
  */
 export function duckDuckGoose(players, goose) {
@@ -223,4 +223,19 @@ export function well(x) {
 export function gooseFilter(birds) {
   var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher']
   return birds.filter(item => !geese.includes(item))
+}
+/**
+ * Sum Mixed Array
+ * @param {(string | number)[]} x
+ * @returns {number}
+ * @see https://www.codewars.com/kata/57eaeb9578748ff92a000009
+ */
+export function sumMix(x) {
+  return x.reduce((previousValue, currentValue) => {
+    // @ts-ignore
+    return previousValue + Number(currentValue)
+  }, 0)
+
+  // or
+  // return x.map(a => +a).reduce((a, b) => a + b)
 }
