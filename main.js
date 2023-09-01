@@ -264,3 +264,16 @@ export function fakeBin(x) {
 export function stringToArray(string) {
   return string.split(' ')
 }
+/**
+ * Is there a vowel in there?
+ * @param {number[]} a
+ * @returns {(number|string)[]}
+ * @see https://www.codewars.com/kata/57cff961eca260b71900008f
+ */
+export function isVow(a) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'] // or 'aeiou'
+  return a.map(n => {
+    const s = String.fromCharCode(n)
+    return vowels.includes(s) ? s : n
+  })
+}
