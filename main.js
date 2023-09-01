@@ -287,3 +287,13 @@ export function twoSort(s) {
   const sortedArray = [...s].sort()
   return sortedArray[0].split('').join('***')
 }
+/**
+ * Calculate average
+ * @param {number[]} array
+ * @returns {number}
+ * @see https://www.codewars.com/kata/57a2013acf1fa5bfc4000921
+ */
+export function findAverage(array) {
+  const total = array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  return total / array.length || 0
+}
