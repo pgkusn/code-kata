@@ -255,3 +255,12 @@ export function fakeBin(x) {
   // @ts-ignore
   return x.replace(/\d/g, d => (d < 5 ? 0 : 1))
 }
+/**
+ * Convert a string to an array
+ * @param {string} string
+ * @returns {string[]}
+ * @see https://www.codewars.com/kata/57e76bc428d6fbc2d500036d
+ */
+export function stringToArray(string) {
+  return string.split(' ')
+}
