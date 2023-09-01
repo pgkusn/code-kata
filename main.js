@@ -297,3 +297,17 @@ export function findAverage(array) {
   const total = array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
   return total / array.length || 0
 }
+/**
+ * Count of positives / sum of negatives
+ * @param {number[]} input
+ * @returns {number[]}
+ * @see https://www.codewars.com/kata/576bb71bbbcf0951d5000044
+ */
+export function countPositivesSumNegatives(input) {
+  if (!input || !input.length) return []
+  const positivesCount = input.filter(n => n > 0).length
+  const negativeTotal = input
+    .filter(n => n < 0)
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  return [positivesCount, negativeTotal]
+}
