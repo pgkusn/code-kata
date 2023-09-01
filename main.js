@@ -277,3 +277,13 @@ export function isVow(a) {
     return vowels.includes(s) ? s : n
   })
 }
+/**
+ * Sort and Star
+ * @param {string[]} s
+ * @returns {string}
+ * @see https://www.codewars.com/kata/57cfdf34902f6ba3d300001e
+ */
+export function twoSort(s) {
+  const sortedArray = [...s].sort()
+  return sortedArray[0].split('').join('***')
+}
