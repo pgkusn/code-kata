@@ -311,3 +311,11 @@ export function countPositivesSumNegatives(input) {
     .reduce((previousValue, currentValue) => previousValue + currentValue, 0)
   return [positivesCount, negativeTotal]
 }
+/**
+ * Removing Elements
+ * @param {array} arr - 要處理的陣列
+ * @returns {array} - 移除後的陣列
+ */
+export function removeEveryOther(arr) {
+  return arr.filter((value, index) => index % 2 === 0)
+}
