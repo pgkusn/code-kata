@@ -412,3 +412,11 @@ export function arrayMadness(a, b) {
   // const sumB = b.reduce((previous, current) => previous + current ** 3, 0)
   // return sumA > sumB
 }
+/**
+ * How many stairs will Suzuki climb in 20 years?
+ * @param {number[][]} s - 包含整年爬樓梯記錄的陣列，每個元素都是一週的爬樓梯數字陣列。
+ * @returns {number} - 20 年內可能爬的階梯數。
+ */
+export function stairsIn20(s) {
+  return s.flat().reduce((previous, current) => previous + current) * 20
+}
