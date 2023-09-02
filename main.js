@@ -353,3 +353,12 @@ export function differenceInAges(ages) {
   const max = Math.max(...ages)
   return [min, max, max - min]
 }
+/**
+ * Sum of positive
+ * @param {number[]} arr - 輸入的數字陣列
+ * @returns {number} - 所有正數的總和
+ */
+export function positiveSum(arr) {
+  const positiveNumbers = arr.filter(n => n > 0)
+  return positiveNumbers.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+}

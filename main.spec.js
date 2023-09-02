@@ -30,6 +30,7 @@ import {
   uefaEuro2016,
   first,
   differenceInAges,
+  positiveSum,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -362,5 +363,14 @@ describe('Find the Difference in Age between Oldest and Youngest Family Members'
     expect(differenceInAges([82, 15, 6, 38, 35])).toEqual([6, 82, 76])
     expect(differenceInAges([57, 99, 14, 32])).toEqual([14, 99, 85])
     expect(differenceInAges([5, 10, 15, 20, 25])).toEqual([5, 25, 20])
+  })
+})
+describe('Sum of positive', () => {
+  it('應該返回所有正數的總和', () => {
+    expect(positiveSum([1, -4, 7, 12])).toBe(20)
+    expect(positiveSum([-1, -4, -7])).toBe(0) // 沒有正數，應該返回 0
+    expect(positiveSum([])).toBe(0) // 空陣列，應該返回 0
+    expect(positiveSum([0, 0, 0])).toBe(0) // 沒有正數，應該返回 0
+    expect(positiveSum([1, 2, 3, 4, 5])).toBe(15) // 所有元素都是正數
   })
 })
