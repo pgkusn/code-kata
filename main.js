@@ -314,3 +314,23 @@ export function arr2bin(arr) {
   }, 0)
   return total.toString(2)
 }
+/**
+ * UEFA EURO 2016
+ * @param {string[]} teams - 兩支球隊的名稱
+ * @param {number[]} scores - 兩支球隊的得分
+ * @returns {string} - 比賽結果字串
+ */
+export function uefaEuro2016(teams, scores) {
+  const title = `At match ${teams[0]} - ${teams[1]}, `
+  const max = Math.max(...scores)
+  const min = Math.min(...scores)
+  const winner = teams[scores.findIndex(n => n === max)]
+  const result = max === min ? 'teams played draw.' : `${winner} won!`
+  return title + result
+
+  // or
+  // const title = `At match ${teams[0]} - ${teams[1]}, `
+  // const winner = scores[0] === scores[1] ? null : scores[0] > scores[1] ? teams[0] : teams[1]
+  // const result = winner ? `${winner} won!` : 'teams played draw.'
+  // return title + result
+}
