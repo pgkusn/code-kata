@@ -383,3 +383,16 @@ export function logicalCalc(array, op) {
   // }
   // return array.reduce(ops[op])
 }
+/**
+ * Remove First and Last Character Part Two
+ * @param {string} string - 包含以逗號分隔的字符序列的字串
+ * @returns {string | null} - 新的字串，或如果輸入為空或只有一個序列則返回空值
+ */
+export function array(string) {
+  const arrayList = string.split(',')
+  if (arrayList.length < 3) return null
+  return arrayList.slice(1, arrayList.length - 1).join(' ')
+
+  // better
+  // return arr.split(",").slice(1,-1).join(" ") || null;
+}
