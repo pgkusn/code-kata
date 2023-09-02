@@ -294,3 +294,23 @@ export function countPositivesSumNegatives(input) {
 export function removeEveryOther(arr) {
   return arr.filter((value, index) => index % 2 === 0)
 }
+/**
+ * Arguments to Binary addition
+ * @param {array} arr - 包含數字和其他元素的陣列
+ * @returns {string} - 總和的二進制表示
+ */
+export function arr2bin(arr) {
+  // if (arr.includes(NaN)) return 'NaN'
+  // const total = arr.reduce((previousValue, currentValue) => {
+  //   // @ts-ignore
+  //   return previousValue + (Number.isInteger(currentValue) ? currentValue : 0)
+  // }, 0)
+  // return total.toString(2)
+
+  // better
+  const total = arr.reduce((previousValue, currentValue) => {
+    // @ts-ignore
+    return previousValue + (typeof currentValue === 'number' ? currentValue : 0)
+  }, 0)
+  return total.toString(2)
+}
