@@ -343,3 +343,13 @@ export function uefaEuro2016(teams, scores) {
 export function first(arr, n = 1) {
   return arr.slice(0, n)
 }
+/**
+ * Find the Difference in Age between Oldest and Youngest Family Members
+ * @param {number[]} ages - 包含家庭成員年齡的陣列
+ * @returns {number[]} - 包含最年輕年齡、最年長年齡和年齡差的陣列
+ */
+export function differenceInAges(ages) {
+  const min = Math.min(...ages)
+  const max = Math.max(...ages)
+  return [min, max, max - min]
+}
