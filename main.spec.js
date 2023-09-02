@@ -26,6 +26,7 @@ import {
   findAverage,
   countPositivesSumNegatives,
   removeEveryOther,
+  arr2bin,
 } from './main'
 
 describe('Gravity Flip', () => {

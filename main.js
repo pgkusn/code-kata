@@ -3,7 +3,6 @@
  * @param {string} d
  * @param {number[]} a
  * @returns {number[]}
- * @see https://www.codewars.com/kata/5f70c883e10f9e0001c89673
  */
 export function flip(d, a) {
   if (d === 'R') {
@@ -19,7 +18,6 @@ export function flip(d, a) {
  * A wolf in sheep's clothing
  * @param {string[]} queue
  * @returns {string}
- * @see https://www.codewars.com/kata/5c8bfa44b9d1192e1ebd3d15
  */
 export function warnTheSheep(queue) {
   const ary = [...queue].reverse()
@@ -38,7 +36,6 @@ export function warnTheSheep(queue) {
  * Total amount of points
  * @param {string[]} games
  * @returns {number}
- * @see https://www.codewars.com/kata/5bb904724c47249b10000131
  */
 export function points(games) {
   return games.reduce((previousValue, currentValue) => {
@@ -52,7 +49,6 @@ export function points(games) {
  * Sum of differences in array
  * @param {number[]} arr
  * @returns {number}
- * @see https://www.codewars.com/kata/5b73fe9fb3d9776fbf00009e
  */
 export function sumOfDifferences(arr) {
   if (arr.length < 2) return 0
@@ -66,7 +62,6 @@ export function sumOfDifferences(arr) {
  * Multiple of index
  * @param {number[]} array
  * @returns {number[]}
- * @see https://www.codewars.com/kata/5a34b80155519e1a00000009
  */
 export function multipleOfIndex(array) {
   return array.filter((item, index) => (item === 0 ? true : item % index === 0))
@@ -78,7 +73,6 @@ export function multipleOfIndex(array) {
  * CSV representation of array
  * @param {number[][]} array
  * @returns {string}
- * @see https://www.codewars.com/kata/5a34af40e1ce0eb1f5000036
  */
 export function toCsvText(array) {
   return array.map(item => item.join()).join('\n')
@@ -91,7 +85,6 @@ export function toCsvText(array) {
  * @param {number[]} arr1
  * @param {number[]} arr2
  * @returns {number}
- * @see https://www.codewars.com/kata/5a2be17aee1aaefe2a000151
  */
 export function arrayPlusArray(arr1, arr2) {
   const arr = [...arr1, ...arr2]
@@ -101,7 +94,6 @@ export function arrayPlusArray(arr1, arr2) {
  * Find the first non-consecutive number
  * @param {number[]} arr
  * @returns {(number|null)}
- * @see https://www.codewars.com/kata/58f8a3a27a5c28d92e000144
  */
 export function firstNonConsecutive(arr) {
   return arr.find((n, i) => i && n - 1 !== arr[i - 1]) ?? null
@@ -111,7 +103,6 @@ export function firstNonConsecutive(arr) {
  * @param {number} integer
  * @param {number} limit
  * @returns {number[]}
- * @see https://www.codewars.com/kata/58ca658cc0d6401f2700045f
  */
 export function findMultiples(integer, limit) {
   const result = []
@@ -124,7 +115,6 @@ export function findMultiples(integer, limit) {
  * Invert values
  * @param {number[]} array
  * @returns {number[]}
- * @see https://www.codewars.com/kata/5899dc03bc95b1bf1b0000ad
  */
 export function invert(array) {
   return array.map(n => n * -1 || 0)
@@ -137,7 +127,6 @@ export function invert(array) {
  * @param {number[]} arr1
  * @param {number[]} arr2
  * @returns {number[]}
- * @see https://www.codewars.com/kata/5899642f6e1b25935d000161
  */
 export function mergeArrays(arr1, arr2) {
   const setObj = new Set([...arr1, ...arr2])
@@ -147,7 +136,6 @@ export function mergeArrays(arr1, arr2) {
  * Duck Duck Goose
  * @param {object[]} players
  * @param {number} goose
- * @see https://www.codewars.com/kata/582e0e592029ea10530009ce
  */
 export function duckDuckGoose(players, goose) {
   return players[(goose - 1) % players.length].name
@@ -156,7 +144,6 @@ export function duckDuckGoose(players, goose) {
  * Beginner - Lost Without a Map
  * @param {number[]} x
  * @returns {number[]}
- * @see https://www.codewars.com/kata/57f781872e3d8ca2a000007e
  */
 export function maps(x) {
   return x.map(n => n * 2)
@@ -165,7 +152,6 @@ export function maps(x) {
  * Beginner - Reduce but Grow
  * @param {number[]} x
  * @returns {number}
- * @see https://www.codewars.com/kata/57f780909f7e8e3183000078
  */
 export function grow(x) {
   return x.reduce((previousValue, currentValue, currentIndex) => {
@@ -183,7 +169,6 @@ export function grow(x) {
  * To square(root) or not to square(root)
  * @param {number[]} array
  * @returns {number[]}
- * @see https://www.codewars.com/kata/57f6ad55cca6e045d2000627
  */
 export function squareOrSquareRoot(array) {
   return array.map(n => (Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) : n ** 2))
@@ -192,7 +177,6 @@ export function squareOrSquareRoot(array) {
  * I love you, a little , a lot, passionately ... not at all
  * @param {number} nbPetals
  * @returns {string}
- * @see https://www.codewars.com/kata/57f24e6a18e9fad8eb000296
  */
 export function howMuchILoveYou(nbPetals) {
   const phrases = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all']
@@ -202,7 +186,6 @@ export function howMuchILoveYou(nbPetals) {
  * Well of Ideas - Easy Version
  * @param {string[]} x
  * @returns {string}
- * @see https://www.codewars.com/kata/57f222ce69e09c3630000212
  */
 export function well(x) {
   const filtered = x.filter(item => item === 'good')
@@ -218,7 +201,6 @@ export function well(x) {
  * Filter out the geese
  * @param {string[]} birds
  * @returns {string[]}
- * @see https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7
  */
 export function gooseFilter(birds) {
   var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher']
@@ -228,7 +210,6 @@ export function gooseFilter(birds) {
  * Sum Mixed Array
  * @param {(string | number)[]} x
  * @returns {number}
- * @see https://www.codewars.com/kata/57eaeb9578748ff92a000009
  */
 export function sumMix(x) {
   return x.reduce((previousValue, currentValue) => {
@@ -243,7 +224,6 @@ export function sumMix(x) {
  * Fake Binary
  * @param {string} x
  * @returns {string}
- * @see https://www.codewars.com/kata/57eae65a4321032ce000002d
  */
 export function fakeBin(x) {
   return x
@@ -259,7 +239,6 @@ export function fakeBin(x) {
  * Convert a string to an array
  * @param {string} string
  * @returns {string[]}
- * @see https://www.codewars.com/kata/57e76bc428d6fbc2d500036d
  */
 export function stringToArray(string) {
   return string.split(' ')
@@ -268,7 +247,6 @@ export function stringToArray(string) {
  * Is there a vowel in there?
  * @param {number[]} a
  * @returns {(number|string)[]}
- * @see https://www.codewars.com/kata/57cff961eca260b71900008f
  */
 export function isVow(a) {
   const vowels = ['a', 'e', 'i', 'o', 'u'] // or 'aeiou'
@@ -281,7 +259,6 @@ export function isVow(a) {
  * Sort and Star
  * @param {string[]} s
  * @returns {string}
- * @see https://www.codewars.com/kata/57cfdf34902f6ba3d300001e
  */
 export function twoSort(s) {
   const sortedArray = [...s].sort()
@@ -291,7 +268,6 @@ export function twoSort(s) {
  * Calculate average
  * @param {number[]} array
  * @returns {number}
- * @see https://www.codewars.com/kata/57a2013acf1fa5bfc4000921
  */
 export function findAverage(array) {
   const total = array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
@@ -301,7 +277,6 @@ export function findAverage(array) {
  * Count of positives / sum of negatives
  * @param {number[]} input
  * @returns {number[]}
- * @see https://www.codewars.com/kata/576bb71bbbcf0951d5000044
  */
 export function countPositivesSumNegatives(input) {
   if (!input || !input.length) return []
