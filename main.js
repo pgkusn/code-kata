@@ -334,3 +334,12 @@ export function uefaEuro2016(teams, scores) {
   // const result = winner ? `${winner} won!` : 'teams played draw.'
   // return title + result
 }
+/**
+ * pick a set of first elements
+ * @param {array} arr - 要處理的序列
+ * @param {number} n - 要返回的元素數量（預設值為 1）
+ * @returns {array} - 第一個元素或前 n 個元素的序列
+ */
+export function first(arr, n = 1) {
+  return arr.slice(0, n)
+}
