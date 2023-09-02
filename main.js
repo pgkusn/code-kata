@@ -420,3 +420,18 @@ export function arrayMadness(a, b) {
 export function stairsIn20(s) {
   return s.flat().reduce((previous, current) => previous + current) * 20
 }
+/**
+ * Count the Monkeys!
+ * @param {number} n - 指定的數字
+ * @returns {number[]} - 包含從 1 到 n 的所有數字的陣列
+ */
+export function monkeyCount(n) {
+  const countList = []
+  for (let i = 1; i <= n; i++) {
+    countList.push(i)
+  }
+  return countList
+
+  // better
+  // return [...Array(n)].map((item, index) => index + 1)
+}
