@@ -435,3 +435,11 @@ export function monkeyCount(n) {
   // better
   // return [...Array(n)].map((item, index) => index + 1)
 }
+/**
+ * Add Length
+ * @param {string} str - 輸入字串，其中單詞由空格分隔
+ * @returns {string[]} - 包含每個單詞的長度添加到該單詞的末尾的陣列
+ */
+export function addLength(str) {
+  return str.split(' ').map(s => `${s} ${s.length}`)
+}
