@@ -31,6 +31,7 @@ import {
   first,
   differenceInAges,
   positiveSum,
+  logicalCalc,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -372,5 +373,14 @@ describe('Sum of positive', () => {
     expect(positiveSum([])).toBe(0) // 空陣列，應該返回 0
     expect(positiveSum([0, 0, 0])).toBe(0) // 沒有正數，應該返回 0
     expect(positiveSum([1, 2, 3, 4, 5])).toBe(15) // 所有元素都是正數
+  })
+})
+describe('Logical calculator', () => {
+  it('應根據指定的邏輯運算符來計算結果', () => {
+    expect(logicalCalc([true, true, false], 'AND')).toBe(false)
+    expect(logicalCalc([true, true, false], 'OR')).toBe(true)
+    expect(logicalCalc([true, true, false], 'XOR')).toBe(false)
+    expect(logicalCalc([false, false, false], 'AND')).toBe(false)
+    expect(logicalCalc([true, true, true], 'OR')).toBe(true)
   })
 })

@@ -362,3 +362,24 @@ export function positiveSum(arr) {
   const positiveNumbers = arr.filter(n => n > 0)
   return positiveNumbers.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
 }
+/**
+ * Logical calculator
+ * @param {boolean[]} array - 包含布林值的陣列
+ * @param {string} op - 邏輯運算符，可選值為 "AND", "OR", "XOR"
+ * @returns {boolean} - 計算結果的布林值
+ */
+export function logicalCalc(array, op) {
+  return array.reduce((previous, current) => {
+    if (op === 'AND') return previous && current
+    if (op === 'OR') return previous || current
+    if (op === 'XOR') return previous !== current
+  })
+
+  // better
+  // const ops = {
+  //   AND: (a, b) => a && b,
+  //   OR: (a, b) => a || b,
+  //   XOR: (a, b) => a !== b,
+  // }
+  // return array.reduce(ops[op])
+}
