@@ -231,9 +231,9 @@ export function fakeBin(x) {
     .map(n => (+n < 5 ? '0' : '1'))
     .join('')
 
-  // or
+  // better
   // @ts-ignore
-  return x.replace(/\d/g, d => (d < 5 ? 0 : 1))
+  // return x.replace(/\d/g, d => (d < 5 ? 0 : 1))
 }
 /**
  * Convert a string to an array
@@ -395,4 +395,20 @@ export function array(string) {
 
   // better
   // return arr.split(",").slice(1,-1).join(" ") || null;
+}
+/**
+ * Array Madness
+ * @param {number[]} a - 整數陣列 a
+ * @param {number[]} b - 整數陣列 b
+ * @returns {boolean} - 如果 a 中每個元素的平方和大於 b 中每個元素的立方和，則返回 true；否則返回 false。
+ */
+export function arrayMadness(a, b) {
+  const sumA = a.map(n => n ** 2).reduce((previous, current) => previous + current)
+  const sumB = b.map(n => n ** 3).reduce((previous, current) => previous + current)
+  return sumA > sumB
+
+  // better
+  // const sumA = a.reduce((previous, current) => previous + current ** 2, 0)
+  // const sumB = b.reduce((previous, current) => previous + current ** 3, 0)
+  // return sumA > sumB
 }
