@@ -39,6 +39,7 @@ import {
   addLength,
   eachCons,
   squareSum,
+  findNeedle,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -514,5 +515,15 @@ describe('Square(n) Sum', () => {
     expect(squareSum([3, 4, 5])).toBe(50)
     expect(squareSum([0, 0, 0])).toBe(0) // 所有數字都是 0
     expect(squareSum([2, 2, 2, 2])).toBe(16) // 多個相同的數字
+  })
+})
+describe('A Needle in the Haystack', () => {
+  it('應找到針並返回正確的消息', () => {
+    expect(findNeedle(['hay', 'junk', 'hay', 'hay', 'moreJunk', 'needle', 'randomJunk'])).toBe(
+      'found the needle at position 5'
+    )
+    expect(findNeedle(['one', 'two', 'three', 'needle'])).toBe('found the needle at position 3')
+    expect(findNeedle(['no', 'needle', 'here'])).toBe('found the needle at position 1')
+    expect(findNeedle(['not', 'in', 'this', 'array'])).toBe('needle not found')
   })
 })

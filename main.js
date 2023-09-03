@@ -488,3 +488,12 @@ export function eachCons(array, n) {
 export function squareSum(numbers) {
   return numbers.reduce((previous, current) => previous + current ** 2, 0)
 }
+/**
+ * A Needle in the Haystack
+ * @param {string[]} haystack - 包含 "needle" 的陣列
+ * @returns {string} - 包含 "found the needle at position X" 或 "needle not found" 的消息
+ */
+export function findNeedle(haystack) {
+  const index = haystack.findIndex(s => s === 'needle')
+  return index === -1 ? 'needle not found' : `found the needle at position ${index}`
+}
