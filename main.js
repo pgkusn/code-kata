@@ -553,3 +553,13 @@ export function countBy(x, n) {
   // }
   // return result
 }
+/**
+ * Enumerable Magic #1 - True for All?
+ * @param {any[]} arr - 序列（陣列或其他結構）
+ * @param {function} fun - 應用於每個元素的函數
+ * @returns {boolean} - 如果所有元素都滿足條件，返回 true；否則返回 false
+ */
+export function all(arr, fun) {
+  // @ts-ignore
+  return arr.every(fun)
+}

@@ -44,6 +44,7 @@ import {
   divisibleBy,
   digitize,
   countBy,
+  all,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -563,5 +564,11 @@ describe('Count by X', () => {
     expect(countBy(2, 5)).toEqual([2, 4, 6, 8, 10])
     expect(countBy(3, 7)).toEqual([3, 6, 9, 12, 15, 18, 21])
     expect(countBy(4, 3)).toEqual([4, 8, 12])
+  })
+})
+describe('Enumerable Magic #1 - True for All?', () => {
+  it('應根據函數返回值判斷是否全部符合條件', () => {
+    expect(all([1, 2, 3, 4, 5], v => v < 9)).toBe(true)
+    expect(all([1, 2, 3, 4, 5], v => v > 9)).toBe(false)
   })
 })
