@@ -506,3 +506,12 @@ export function getAverage(marks) {
   const average = marks.reduce((a, b) => a + b) / marks.length
   return Math.floor(average)
 }
+/**
+ * Find numbers which are divisible by given number
+ * @param {number[]} numbers - 数字数组
+ * @param {number} divisor - 除数
+ * @returns {number[]} - 所有可以被除数整除的数字数组
+ */
+export function divisibleBy(numbers, divisor) {
+  return numbers.filter(n => n % divisor === 0)
+}
