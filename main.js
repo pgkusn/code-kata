@@ -443,3 +443,40 @@ export function monkeyCount(n) {
 export function addLength(str) {
   return str.split(' ').map(s => `${s} ${s.length}`)
 }
+/**
+ * Cascading Subsets
+ * @param {number[]} array - 輸入列表
+ * @param {number} n - 子集大小
+ * @returns {number[][]} - 包含大小為 n 的子集的二維陣列
+ */
+export function eachCons(array, n) {
+  if (n < 1 || n > array.length) return []
+  const result = []
+  for (let i = 0; i < array.length; i++) {
+    const target = array.slice(i, n++)
+    result.push(target)
+    if (n > array.length) break
+  }
+  return result
+
+  // better
+  // if (n < 1 || n > array.length) return []
+  // const result = []
+  // for (let i = 0; i <= array.length - n; i++) {
+  //   const target = array.slice(i, i + n)
+  //   result.push(target)
+  // }
+  // return result
+
+  // better
+  // if (n < 1 || n > array.length) return []
+  // let res = []
+  // for (let i = 0; i < array.length; i++) {
+  //   res.push(array.slice(i, i + n))
+  // }
+  // return res.filter(e => e.length === n)
+
+  // best
+  // if (n < 1 || n > array.length) return []
+  // return array.map((x, y) => array.slice(y, y + n)).filter(x => x.length == n)
+}
