@@ -43,6 +43,7 @@ import {
   getAverage,
   divisibleBy,
   digitize,
+  countBy,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -554,5 +555,13 @@ describe('Convert number to reversed array of digits', () => {
     expect(digitize(0)).toEqual([0])
     expect(digitize(12345)).toEqual([5, 4, 3, 2, 1])
     expect(digitize(9876543210)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+  })
+})
+describe('Count by X', () => {
+  it('應返回前 n 個 x 的倍數的陣列', () => {
+    expect(countBy(1, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    expect(countBy(2, 5)).toEqual([2, 4, 6, 8, 10])
+    expect(countBy(3, 7)).toEqual([3, 6, 9, 12, 15, 18, 21])
+    expect(countBy(4, 3)).toEqual([4, 8, 12])
   })
 })

@@ -537,3 +537,19 @@ export function digitize(n) {
   // best
   // return Array.from(String(n), Number).reverse();
 }
+/**
+ * Count by X
+ * @param {number} x - 基數
+ * @param {number} n - 計數次數
+ * @returns {number[]} - 陣列包含前 n 個 x 的倍數
+ */
+export function countBy(x, n) {
+  return [...Array(n)].map((value, index) => x * (index + 1))
+
+  // or
+  // const result = []
+  // for (let i = 1; i <= n; i++) {
+  //   result.push(x * i)
+  // }
+  // return result
+}
