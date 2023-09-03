@@ -563,3 +563,27 @@ export function all(arr, fun) {
   // @ts-ignore
   return arr.every(fun)
 }
+/**
+ * Birthday II - Presents
+ * @param {string} x - 禮物類型（'goodpresent', 'crap', 'empty', 'bang', 'badpresent', 'dog'）
+ * @param {number} y - 傳遞次數
+ * @returns {string|number} - 結果字串或數字
+ */
+export function present(x, y) {
+  if (x === 'goodpresent') {
+    return Array.from(x, s => String.fromCharCode(s.charCodeAt(0) + y)).join('')
+  }
+  if (x === 'crap' || x === 'empty') {
+    // @ts-ignore
+    return [...x].sort().join('')
+  }
+  if (x === 'bang') {
+    return Array.from(x, s => s.charCodeAt(0) - y).reduce((a, b) => a + b)
+  }
+  if (x === 'badpresent') {
+    return 'Take this back!'
+  }
+  if (x === 'dog') {
+    return `pass out from excitement ${y} times`
+  }
+}

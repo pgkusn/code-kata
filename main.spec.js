@@ -45,6 +45,7 @@ import {
   digitize,
   countBy,
   all,
+  present,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -570,5 +571,14 @@ describe('Enumerable Magic #1 - True for All?', () => {
   it('應根據函數返回值判斷是否全部符合條件', () => {
     expect(all([1, 2, 3, 4, 5], v => v < 9)).toBe(true)
     expect(all([1, 2, 3, 4, 5], v => v > 9)).toBe(false)
+  })
+})
+describe('Birthday II - Presents', () => {
+  it('應根據描述返回正確的結果', () => {
+    expect(present('goodpresent', 9)).toBe('pxxmy{n|nw}')
+    expect(present('crap', 10)).toBe('acpr')
+    expect(present('bang', 5)).toBe(388)
+    expect(present('badpresent', 3)).toBe('Take this back!')
+    expect(present('dog', 4)).toBe('pass out from excitement 4 times')
   })
 })
