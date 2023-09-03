@@ -40,6 +40,7 @@ import {
   eachCons,
   squareSum,
   findNeedle,
+  getAverage,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -525,5 +526,15 @@ describe('A Needle in the Haystack', () => {
     expect(findNeedle(['one', 'two', 'three', 'needle'])).toBe('found the needle at position 3')
     expect(findNeedle(['no', 'needle', 'here'])).toBe('found the needle at position 1')
     expect(findNeedle(['not', 'in', 'this', 'array'])).toBe('needle not found')
+  })
+})
+describe('Get the mean of an array', () => {
+  it('應計算並返回平均成績', () => {
+    expect(getAverage([2, 2, 2, 2])).toBe(2)
+    expect(getAverage([1, 2, 3, 4, 5])).toBe(3)
+    expect(getAverage([1, 1, 1, 1, 1, 1, 1, 2])).toBe(1)
+  })
+  it('當平均成績有小數點時，應無條件捨去', () => {
+    expect(getAverage([85, 90, 92, 88, 78])).toBe(86)
   })
 })

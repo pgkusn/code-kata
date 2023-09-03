@@ -497,3 +497,12 @@ export function findNeedle(haystack) {
   const index = haystack.findIndex(s => s === 'needle')
   return index === -1 ? 'needle not found' : `found the needle at position ${index}`
 }
+/**
+ * Get the mean of an array
+ * @param {number[]} marks - 成績陣列
+ * @returns {number} - 平均成績（無條件捨去）
+ */
+export function getAverage(marks) {
+  const average = marks.reduce((a, b) => a + b) / marks.length
+  return Math.floor(average)
+}
