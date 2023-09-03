@@ -480,3 +480,11 @@ export function eachCons(array, n) {
   // if (n < 1 || n > array.length) return []
   // return array.map((x, y) => array.slice(y, y + n)).filter(x => x.length == n)
 }
+/**
+ * Square(n) Sum
+ * @param {number[]} numbers - 數字陣列
+ * @returns {number} - 平方和
+ */
+export function squareSum(numbers) {
+  return numbers.reduce((previous, current) => previous + current ** 2, 0)
+}
