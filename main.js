@@ -508,10 +508,32 @@ export function getAverage(marks) {
 }
 /**
  * Find numbers which are divisible by given number
- * @param {number[]} numbers - 数字数组
- * @param {number} divisor - 除数
- * @returns {number[]} - 所有可以被除数整除的数字数组
+ * @param {number[]} numbers - 數字陣列
+ * @param {number} divisor - 除數
+ * @returns {number[]} - 所有可以被除數整除的數字陣列
  */
 export function divisibleBy(numbers, divisor) {
   return numbers.filter(n => n % divisor === 0)
+}
+/**
+ * Convert number to reversed array of digits
+ * @param {number} n - 非負數
+ * @returns {number[]} - 數字按相反順序排列的陣列
+ */
+export function digitize(n) {
+  return n
+    .toString()
+    .split('')
+    .map(s => +s)
+    .reverse()
+
+  // better
+  // return n
+  //   .toString()
+  //   .split('')
+  //   .map(Number)
+  //   .reverse()
+
+  // best
+  // return Array.from(String(n), Number).reverse();
 }

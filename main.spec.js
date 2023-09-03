@@ -42,6 +42,7 @@ import {
   findNeedle,
   getAverage,
   divisibleBy,
+  digitize,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -545,5 +546,13 @@ describe('Find numbers which are divisible by given number', () => {
     expect(divisibleBy([10, 20, 30, 40, 50], 5)).toEqual([10, 20, 30, 40, 50]) // 所有數字都可以被 5 整除
     expect(divisibleBy([7, 9, 13, 17, 21], 3)).toEqual([9, 21]) // 只有部分數字可以被 3 整除
     expect(divisibleBy([1, 2, 3, 4, 5, 6], 7)).toEqual([]) // 沒有數字可以被 7 整除
+  })
+})
+describe('Convert number to reversed array of digits', () => {
+  it('應返回數字按相反順序排列在陣列中', () => {
+    expect(digitize(35231)).toEqual([1, 3, 2, 5, 3])
+    expect(digitize(0)).toEqual([0])
+    expect(digitize(12345)).toEqual([5, 4, 3, 2, 1])
+    expect(digitize(9876543210)).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
   })
 })
