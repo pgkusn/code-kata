@@ -587,3 +587,14 @@ export function present(x, y) {
     return `pass out from excitement ${y} times`
   }
 }
+/**
+ * Holiday VII - Local Talk
+ * @param {string} s - 輸入句子
+ * @returns {string} - 轉換後的句子
+ */
+export function pak(s) {
+  return s.trim().split(' ').join(' pak ')
+
+  // better
+  // return s.trim().replace(/ /g, ' pak ')
+}

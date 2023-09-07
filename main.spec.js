@@ -46,6 +46,7 @@ import {
   countBy,
   all,
   present,
+  pak,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -580,5 +581,12 @@ describe('Birthday II - Presents', () => {
     expect(present('bang', 5)).toBe(388)
     expect(present('badpresent', 3)).toBe('Take this back!')
     expect(present('dog', 4)).toBe('pass out from excitement 4 times')
+  })
+})
+describe('Holiday VII - Local Talk', () => {
+  it('應將單詞之間插入 "pak"', () => {
+    expect(pak('Hello world')).toBe('Hello pak world')
+    expect(pak('How are you?')).toBe('How pak are pak you?')
+    expect(pak(' ')).toBe('')
   })
 })
