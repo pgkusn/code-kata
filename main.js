@@ -588,6 +588,17 @@ export function present(x, y) {
   }
 }
 /**
+ * Holiday VII - Local Talk
+ * @param {string} s - 輸入句子
+ * @returns {string} - 轉換後的句子
+ */
+export function pak(s) {
+  return s.trim().split(' ').join(' pak ')
+
+  // better
+  // return s.trim().replace(/ /g, ' pak ')
+}
+/**
  * Christmas baubles on the tree
  * @param {number} baubles - 綵球數量
  * @param {number} branches - 樹枝數量
