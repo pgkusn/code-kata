@@ -1,5 +1,6 @@
 /**
  * Gravity Flip
+ * 重力翻轉
  * @param {string} d
  * @param {number[]} a
  * @returns {number[]}
@@ -16,6 +17,7 @@ export function flip(d, a) {
 }
 /**
  * A wolf in sheep's clothing
+ * 狼穿著羊皮
  * @param {string[]} queue
  * @returns {string}
  */
@@ -34,6 +36,7 @@ export function warnTheSheep(queue) {
 }
 /**
  * Total amount of points
+ * 總分計算
  * @param {string[]} games
  * @returns {number}
  */
@@ -47,6 +50,7 @@ export function points(games) {
 }
 /**
  * Sum of differences in array
+ * 陣列差值總和
  * @param {number[]} arr
  * @returns {number}
  */
@@ -60,6 +64,7 @@ export function sumOfDifferences(arr) {
 }
 /**
  * Multiple of index
+ * 索引倍數
  * @param {number[]} array
  * @returns {number[]}
  */
@@ -71,6 +76,7 @@ export function multipleOfIndex(array) {
 }
 /**
  * CSV representation of array
+ * 陣列的 CSV 表示法
  * @param {number[][]} array
  * @returns {string}
  */
@@ -82,6 +88,7 @@ export function toCsvText(array) {
 }
 /**
  * Array plus array
+ * 陣列相加
  * @param {number[]} arr1
  * @param {number[]} arr2
  * @returns {number}
@@ -92,6 +99,7 @@ export function arrayPlusArray(arr1, arr2) {
 }
 /**
  * Find the first non-consecutive number
+ * 找到第一個非連續數字
  * @param {number[]} arr
  * @returns {(number|null)}
  */
@@ -100,6 +108,7 @@ export function firstNonConsecutive(arr) {
 }
 /**
  * Find Multiples of a Number
+ * 找到數字的倍數
  * @param {number} integer
  * @param {number} limit
  * @returns {number[]}
@@ -113,6 +122,7 @@ export function findMultiples(integer, limit) {
 }
 /**
  * Invert values
+ * 反轉數字元號
  * @param {number[]} array
  * @returns {number[]}
  */
@@ -124,6 +134,7 @@ export function invert(array) {
 }
 /**
  * Merge two sorted arrays into one
+ * 將兩個排序好的陣列合併成一個
  * @param {number[]} arr1
  * @param {number[]} arr2
  * @returns {number[]}
@@ -134,6 +145,7 @@ export function mergeArrays(arr1, arr2) {
 }
 /**
  * Duck Duck Goose
+ * 鴨子、鴨子、鵝
  * @param {object[]} players
  * @param {number} goose
  */
@@ -142,6 +154,7 @@ export function duckDuckGoose(players, goose) {
 }
 /**
  * Beginner - Lost Without a Map
+ * 基礎 - 一張地圖也不會丟
  * @param {number[]} x
  * @returns {number[]}
  */
@@ -150,6 +163,7 @@ export function maps(x) {
 }
 /**
  * Beginner - Reduce but Grow
+ * 基礎 - 縮減但成長
  * @param {number[]} x
  * @returns {number}
  */
@@ -167,6 +181,7 @@ export function grow(x) {
 }
 /**
  * To square(root) or not to square(root)
+ * 要平方根還是不要平方根
  * @param {number[]} array
  * @returns {number[]}
  */
@@ -175,6 +190,7 @@ export function squareOrSquareRoot(array) {
 }
 /**
  * I love you, a little , a lot, passionately ... not at all
+ * 我愛你，一點點，很多，熱情...一點也不
  * @param {number} nbPetals
  * @returns {string}
  */
@@ -184,6 +200,7 @@ export function howMuchILoveYou(nbPetals) {
 }
 /**
  * Well of Ideas - Easy Version
+ * 點子之井 - 簡易版
  * @param {string[]} x
  * @returns {string}
  */
@@ -199,6 +216,7 @@ export function well(x) {
 }
 /**
  * Filter out the geese
+ * 過濾出大雁
  * @param {string[]} birds
  * @returns {string[]}
  */
@@ -208,6 +226,7 @@ export function gooseFilter(birds) {
 }
 /**
  * Sum Mixed Array
+ * 求和混合陣列
  * @param {(string | number)[]} x
  * @returns {number}
  */
@@ -222,6 +241,7 @@ export function sumMix(x) {
 }
 /**
  * Fake Binary
+ * 假二進制
  * @param {string} x
  * @returns {string}
  */
@@ -237,6 +257,7 @@ export function fakeBin(x) {
 }
 /**
  * Convert a string to an array
+ * 將字串轉為陣列
  * @param {string} string
  * @returns {string[]}
  */
@@ -245,6 +266,7 @@ export function stringToArray(string) {
 }
 /**
  * Is there a vowel in there?
+ * 是否有元音字母？
  * @param {number[]} a
  * @returns {(number|string)[]}
  */
@@ -257,6 +279,7 @@ export function isVow(a) {
 }
 /**
  * Sort and Star
+ * 排序並用星號隔開
  * @param {string[]} s
  * @returns {string}
  */
@@ -266,6 +289,7 @@ export function twoSort(s) {
 }
 /**
  * Calculate average
+ * 計算平均值
  * @param {number[]} array
  * @returns {number}
  */
@@ -275,6 +299,7 @@ export function findAverage(array) {
 }
 /**
  * Count of positives / sum of negatives
+ * 正數個數 / 負數總和
  * @param {number[]} input
  * @returns {number[]}
  */
@@ -288,6 +313,7 @@ export function countPositivesSumNegatives(input) {
 }
 /**
  * Removing Elements
+ * 移除元素
  * @param {array} arr - 要處理的陣列
  * @returns {array} - 移除後的陣列
  */
@@ -296,6 +322,7 @@ export function removeEveryOther(arr) {
 }
 /**
  * Arguments to Binary addition
+ * 二進制加法
  * @param {array} arr - 包含數字和其他元素的陣列
  * @returns {string} - 總和的二進制表示
  */
@@ -316,6 +343,7 @@ export function arr2bin(arr) {
 }
 /**
  * UEFA EURO 2016
+ * 歐洲國家盃 2016
  * @param {string[]} teams - 兩支球隊的名稱
  * @param {number[]} scores - 兩支球隊的得分
  * @returns {string} - 比賽結果字串
@@ -336,6 +364,7 @@ export function uefaEuro2016(teams, scores) {
 }
 /**
  * pick a set of first elements
+ * 選擇前 n 個元素
  * @param {array} arr - 要處理的序列
  * @param {number} n - 要返回的元素數量（預設值為 1）
  * @returns {array} - 第一個元素或前 n 個元素的序列
@@ -345,6 +374,7 @@ export function first(arr, n = 1) {
 }
 /**
  * Find the Difference in Age between Oldest and Youngest Family Members
+ * 找到家庭成員最大和最小年齡的差異
  * @param {number[]} ages - 包含家庭成員年齡的陣列
  * @returns {number[]} - 包含最年輕年齡、最年長年齡和年齡差的陣列
  */
@@ -355,6 +385,7 @@ export function differenceInAges(ages) {
 }
 /**
  * Sum of positive
+ * 計算陣列中所有正數的總和。
  * @param {number[]} arr - 輸入的數字陣列
  * @returns {number} - 所有正數的總和
  */
@@ -364,6 +395,7 @@ export function positiveSum(arr) {
 }
 /**
  * Logical calculator
+ * 根據指定的邏輯運算符計算陣列中的布林值。
  * @param {boolean[]} array - 包含布林值的陣列
  * @param {string} op - 邏輯運算符，可選值為 "AND", "OR", "XOR"
  * @returns {boolean} - 計算結果的布林值
@@ -385,6 +417,7 @@ export function logicalCalc(array, op) {
 }
 /**
  * Remove First and Last Character Part Two
+ * 刪除輸入字串中的第一個和最後一個字元序列，並用空格分隔其餘序列。
  * @param {string} string - 包含以逗號分隔的字符序列的字串
  * @returns {string | null} - 新的字串，或如果輸入為空或只有一個序列則返回空值
  */
@@ -398,6 +431,7 @@ export function array(string) {
 }
 /**
  * Array Madness
+ * 判斷陣列 a 中每個元素的平方和是否大於陣列 b 中每個元素的立方和。
  * @param {number[]} a - 整數陣列 a
  * @param {number[]} b - 整數陣列 b
  * @returns {boolean} - 如果 a 中每個元素的平方和大於 b 中每個元素的立方和，則返回 true；否則返回 false。
@@ -414,6 +448,7 @@ export function arrayMadness(a, b) {
 }
 /**
  * How many stairs will Suzuki climb in 20 years?
+ * 計算 20 年內可能爬的階梯數。
  * @param {number[][]} s - 包含整年爬樓梯記錄的陣列，每個元素都是一週的爬樓梯數字陣列。
  * @returns {number} - 20 年內可能爬的階梯數。
  */
@@ -422,6 +457,7 @@ export function stairsIn20(s) {
 }
 /**
  * Count the Monkeys!
+ * 生成包含從 1 到指定數字的所有數字的陣列，但不包括 0。
  * @param {number} n - 指定的數字
  * @returns {number[]} - 包含從 1 到 n 的所有數字的陣列
  */
@@ -437,6 +473,7 @@ export function monkeyCount(n) {
 }
 /**
  * Add Length
+ * 給定一個字串，將每個單詞的長度新增到該單詞的末尾，並返回一個陣列。
  * @param {string} str - 輸入字串，其中單詞由空格分隔
  * @returns {string[]} - 包含每個單詞的長度添加到該單詞的末尾的陣列
  */
@@ -445,6 +482,7 @@ export function addLength(str) {
 }
 /**
  * Cascading Subsets
+ * 返回大小為 n 的列表的級聯子集。
  * @param {number[]} array - 輸入列表
  * @param {number} n - 子集大小
  * @returns {number[][]} - 包含大小為 n 的子集的二維陣列
@@ -482,6 +520,7 @@ export function eachCons(array, n) {
 }
 /**
  * Square(n) Sum
+ * 將每個傳入的數字平方，然後將結果相加。
  * @param {number[]} numbers - 數字陣列
  * @returns {number} - 平方和
  */
@@ -490,6 +529,7 @@ export function squareSum(numbers) {
 }
 /**
  * A Needle in the Haystack
+ * 在給定的陣列中找到 "needle" 並返回相應的消息。
  * @param {string[]} haystack - 包含 "needle" 的陣列
  * @returns {string} - 包含 "found the needle at position X" 或 "needle not found" 的消息
  */
@@ -499,6 +539,7 @@ export function findNeedle(haystack) {
 }
 /**
  * Get the mean of an array
+ * 計算給定陣列的平均值，並將其四捨五入為最接近的整數。
  * @param {number[]} marks - 成績陣列
  * @returns {number} - 平均成績（無條件捨去）
  */
@@ -508,6 +549,7 @@ export function getAverage(marks) {
 }
 /**
  * Find numbers which are divisible by given number
+ * 返回所有可以被給定除數整除的數字。
  * @param {number[]} numbers - 數字陣列
  * @param {number} divisor - 除數
  * @returns {number[]} - 所有可以被除數整除的數字陣列
@@ -517,6 +559,7 @@ export function divisibleBy(numbers, divisor) {
 }
 /**
  * Convert number to reversed array of digits
+ * 返回數字按相反順序排列在陣列中。
  * @param {number} n - 非負數
  * @returns {number[]} - 數字按相反順序排列的陣列
  */
@@ -539,6 +582,7 @@ export function digitize(n) {
 }
 /**
  * Count by X
+ * 返回前 n 個 x 的倍數的陣列。
  * @param {number} x - 基數
  * @param {number} n - 計數次數
  * @returns {number[]} - 陣列包含前 n 個 x 的倍數
@@ -555,6 +599,7 @@ export function countBy(x, n) {
 }
 /**
  * Enumerable Magic #1 - True for All?
+ * 根據給定的函數判斷序列中的所有元素是否都滿足條件。
  * @param {any[]} arr - 序列（陣列或其他結構）
  * @param {function} fun - 應用於每個元素的函數
  * @returns {boolean} - 如果所有元素都滿足條件，返回 true；否則返回 false
@@ -565,6 +610,7 @@ export function all(arr, fun) {
 }
 /**
  * Birthday II - Presents
+ * 根據傳遞次數和禮物類型返回結果。
  * @param {string} x - 禮物類型（'goodpresent', 'crap', 'empty', 'bang', 'badpresent', 'dog'）
  * @param {number} y - 傳遞次數
  * @returns {string|number} - 結果字串或數字
@@ -589,6 +635,7 @@ export function present(x, y) {
 }
 /**
  * Holiday VII - Local Talk
+ * 將句子中的單詞之間插入 'pak'。
  * @param {string} s - 輸入句子
  * @returns {string} - 轉換後的句子
  */
@@ -600,6 +647,7 @@ export function pak(s) {
 }
 /**
  * Christmas baubles on the tree
+ * 返回每個樹枝上的綵球陣列。
  * @param {number} baubles - 綵球數量
  * @param {number} branches - 樹枝數量
  * @returns {number[]|string} - 每個樹枝上的綵球陣列或提示資訊
@@ -615,6 +663,7 @@ export function baublesOnTree(baubles, branches) {
 }
 /**
  * Fifa 17 Launch
+ * 計算總獲獎金額。
  * @param {Object} ticket - 彩票對象，包含主場、客場和平局賭注
  * @param {string[]} results - 結果陣列，每個元素表示比分
  * @returns {string} - 帶有 £ 符號的總獲獎金額
