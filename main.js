@@ -587,3 +587,18 @@ export function present(x, y) {
     return `pass out from excitement ${y} times`
   }
 }
+/**
+ * Christmas baubles on the tree
+ * @param {number} baubles - 綵球數量
+ * @param {number} branches - 樹枝數量
+ * @returns {number[]|string} - 每個樹枝上的綵球陣列或提示資訊
+ */
+export function baublesOnTree(baubles, branches) {
+  if (!branches) return 'Grandma, we will have to buy a Christmas tree first!'
+  const tree = Array(branches).fill(0)
+  for (let i = 0, balls = baubles; balls > 0; i++) {
+    balls--
+    tree[i % tree.length]++
+  }
+  return tree
+}
