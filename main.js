@@ -613,3 +613,27 @@ export function baublesOnTree(baubles, branches) {
   }
   return tree
 }
+/**
+ * Fifa 17 Launch
+ * @param {Object} ticket - 彩票對象，包含主場、客場和平局賭注
+ * @param {string[]} results - 結果陣列，每個元素表示比分
+ * @returns {string} - 帶有 £ 符號的總獲獎金額
+ */
+export function fifa(ticket, results) {
+  const toNumber = value => {
+    const regex = /^£(\d+)/
+    return Number(regex.exec(value)[1])
+  }
+  const getResult = (a, b) => {
+    if (a > b) return 'Home'
+    if (a < b) return 'Away'
+    if (a === b) return 'Draw'
+  }
+  const ticketList = Object.entries(ticket)
+  const total = results.reduce((previous, current, index) => {
+    const result = getResult(...current.split('-'))
+    const [key, value] = ticketList[index]
+    return key === result ? previous + toNumber(value) : previous
+  }, 0)
+  return `£${total}`
+}

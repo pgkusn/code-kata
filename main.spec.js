@@ -48,6 +48,7 @@ import {
   present,
   pak,
   baublesOnTree,
+  fifa,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -598,5 +599,10 @@ describe('Christmas baubles on the tree', () => {
     expect(baublesOnTree(12, 5)).toEqual([3, 3, 2, 2, 2])
     expect(baublesOnTree(0, 10)).toStrictEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     expect(baublesOnTree(5, 0)).toBe('Grandma, we will have to buy a Christmas tree first!')
+  })
+})
+describe('Fifa 17 Launch', () => {
+  it('應計算總獲獎金額', () => {
+    expect(fifa({ Home: '£75', Away: '£5000', Draw: '£1324' }, ['1-0', '2-3', '0-1'])).toBe('£5075')
   })
 })
