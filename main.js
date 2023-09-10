@@ -745,3 +745,21 @@ export function numObj(s) {
     [n]: String.fromCharCode(n),
   }))
 }
+/**
+ * Likes Vs Dislikes
+ * 喜歡 vs. 不喜歡
+ * @param {string[]} buttons - 按鈕輸入的陣列，包含 'Like'、'Dislike'
+ * @returns {string} - 最終按鈕狀態，可能為 'Like'、'Dislike' 或 'Nothing'
+ */
+export function likeOrDislike(buttons) {
+  return buttons.reduce((previous, current) => {
+    return previous === current ? 'Nothing' : current
+  }, 'Nothing')
+
+  // or
+  // let result = 'Nothing'
+  // for (const button of buttons) {
+  //   result = result === button ? 'Nothing' : button
+  // }
+  // return result
+}
