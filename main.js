@@ -734,3 +734,14 @@ export function boatLoader(input) {
 
   return result
 }
+/**
+ * Numbers to Objects
+ * 數字轉物件
+ * @param {number[]} s - 數字陣列
+ * @returns {Object[]} - 包含數字與對應字串的物件陣列
+ */
+export function numObj(s) {
+  return s.map(n => ({
+    [n]: String.fromCharCode(n),
+  }))
+}
