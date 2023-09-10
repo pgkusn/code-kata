@@ -698,3 +698,39 @@ export function filterHomogenous(arrays) {
     return array.length && result
   })
 }
+/**
+ * Noye's Fludde
+ * 動物上船
+ * @param {Array<string|number>} input - 包含動物名字或數字的陣列
+ * @returns {Array<Array<string>>} - 排列好的動物成對陣列
+ */
+export function boatLoader(input) {
+  const animals = input.reduce((previous, current) => {
+    const obj = {}
+    obj[current] = current in previous ? current : null
+    return {
+      ...previous,
+      ...obj,
+    }
+  }, {})
+
+  // 移除單數個的項目與數字
+  for (let animal in animals) {
+    if (!animals[animal] || Number.isInteger(animals[animal])) {
+      delete animals[animal]
+    }
+  }
+
+  // 按字母順序排列、大寫在小寫前面
+  const result = Object.entries(animals).sort(([a], [b]) => {
+    if (a.toUpperCase() !== b.toUpperCase()) {
+      return a.toUpperCase().localeCompare(b.toUpperCase())
+    }
+    return a.localeCompare(b) * -1
+
+    // better
+    // return a.localeCompare(b, 'en-US-u-kf-upper')
+  })
+
+  return result
+}
