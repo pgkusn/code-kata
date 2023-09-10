@@ -49,6 +49,7 @@ import {
   pak,
   baublesOnTree,
   fifa,
+  filterHomogenous,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -604,5 +605,20 @@ describe('Christmas baubles on the tree', () => {
 describe('Fifa 17 Launch', () => {
   it('應計算總獲獎金額', () => {
     expect(fifa({ Home: '£75', Away: '£5000', Draw: '£1324' }, ['1-0', '2-3', '0-1'])).toBe('£5075')
+  })
+})
+describe('Homogenous arrays', () => {
+  it('應過濾符合條件的子陣列', () => {
+    expect(filterHomogenous([[1, 5, 4], ['a', 3, 5], ['b'], [], ['1', 2, 3]])).toEqual([
+      [1, 5, 4],
+      ['b'],
+    ])
+
+    expect(filterHomogenous([[123, 234, 432], ['', 'abc'], [''], ['', 1], ['', '1'], []])).toEqual([
+      [123, 234, 432],
+      ['', 'abc'],
+      [''],
+      ['', '1'],
+    ])
   })
 })

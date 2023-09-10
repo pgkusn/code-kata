@@ -686,3 +686,15 @@ export function fifa(ticket, results) {
   }, 0)
   return `£${total}`
 }
+/**
+ * Homogenous arrays
+ * 返回一個新陣列，僅包含原始陣列中不為空且所有項類型相同的子陣列。
+ * @param {Array[]} arrays - 二維陣列
+ * @returns {Array[]} - 符合條件的子陣列組成的新陣列
+ */
+export function filterHomogenous(arrays) {
+  return arrays.filter(array => {
+    const result = array.every(item => typeof item === typeof array[0])
+    return array.length && result
+  })
+}
