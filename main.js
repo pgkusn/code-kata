@@ -763,3 +763,31 @@ export function likeOrDislike(buttons) {
   // }
   // return result
 }
+/**
+ * Alan Partridge I - Partridge Watch
+ * @param {string[]} x - 包含詞彙的字串陣列
+ * @returns {string} - 返回相應的結果
+ */
+export function part(x) {
+  const keywords = [
+    'Partridge',
+    'PearTree',
+    'Chat',
+    'Dan',
+    'Toblerone',
+    'Lynn',
+    'AlphaPapa',
+    'Nomad',
+  ]
+  const marks = x.reduce((previous, current) => {
+    return previous + (keywords.includes(current) ? '!' : '')
+  }, '')
+  return marks ? `Mine's a Pint${marks}` : "Lynn, I've pierced my foot on a spike!!"
+
+  // or
+  // let arr = ['Partridge', 'PearTree', 'Chat', 'Dan', 'Toblerone', 'Lynn', 'AlphaPapa', 'Nomad']
+  // let count = x.filter(item => arr.includes(item)).length
+  // return count > 0
+  //   ? "Mine's a Pint!" + '!'.repeat(count - 1)
+  //   : "Lynn, I've pierced my foot on a spike!!"
+}
