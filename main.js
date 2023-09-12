@@ -791,3 +791,13 @@ export function part(x) {
   //   ? "Mine's a Pint!" + '!'.repeat(count - 1)
   //   : "Lynn, I've pierced my foot on a spike!!"
 }
+/**
+ * Slaphead
+ * @param {string} x - 代表頭部狀態的字串，包含 "-" 和 "/"
+ * @returns {string[]} - 包含替換後的頭部狀態和相應評價的陣列
+ */
+export function bald(x) {
+  const comments = ['Clean!', 'Unicorn!', 'Homer!', 'Careless!', 'Careless!', 'Careless!', 'Hobo!']
+  const total = x.match(/\//g)?.length ?? 0
+  return ['-'.repeat(x.length), comments[total >= comments.length ? comments.length - 1 : total]]
+}
