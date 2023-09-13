@@ -56,6 +56,7 @@ import {
   part,
   bald,
   sumTwoSmallestNumbers,
+  cake,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -777,5 +778,12 @@ describe('Sum of two lowest positive integers', function () {
     expect(sumTwoSmallestNumbers([3, 87, 45, 12, 7])).toBe(10)
     expect(sumTwoSmallestNumbers([23, 71, 33, 82, 1])).toBe(24)
     expect(sumTwoSmallestNumbers([52, 76, 14, 12, 4])).toBe(16)
+  })
+})
+describe('Birthday I - Cake', () => {
+  it('應返回相應的結果', () => {
+    expect(cake(900, 'abcdef')).toBe('That was close!')
+    expect(cake(56, 'ifkhchlhfd')).toBe('Fire!')
+    expect(cake(256, 'aaaaaddddr')).toBe('Fire!')
   })
 })

@@ -815,3 +815,17 @@ export function sumTwoSmallestNumbers(numbers) {
   // const [a, b] = [...numbers].sort((a, b) => a - b)
   // return a + b
 }
+/**
+ * Birthday I - Cake
+ * 生日 I - 蛋糕
+ * @param {number} x - 蠟燭總數
+ * @param {string} y - 用於計算蠟燭掉落數的字串
+ * @returns {string} - 返回相應的結果，可能為 'Fire!' 或 'That was close!'
+ */
+export function cake(x, y) {
+  const total = y.split('').reduce((previous, current, index) => {
+    const charCode = current.charCodeAt(0)
+    return previous + (index % 2 === 0 ? charCode : charCode - 96)
+  }, 0)
+  return total > x * 0.7 ? 'Fire!' : 'That was close!'
+}
