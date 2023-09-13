@@ -801,3 +801,17 @@ export function bald(x) {
   const total = x.match(/\//g)?.length ?? 0
   return ['-'.repeat(x.length), comments[total >= comments.length ? comments.length - 1 : total]]
 }
+/**
+ * Sum of two lowest positive integers
+ * 找出陣列中最小的兩個正整數的和
+ * @param {number[]} numbers - 包含至少四個正整數的陣列
+ * @returns {number} - 最小的兩個正整數的和
+ */
+export function sumTwoSmallestNumbers(numbers) {
+  const [a, b] = [...numbers].sort((a, b) => a - b).slice(0, 2)
+  return a + b
+
+  // better
+  // const [a, b] = [...numbers].sort((a, b) => a - b)
+  // return a + b
+}
