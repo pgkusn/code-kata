@@ -57,6 +57,7 @@ import {
   bald,
   sumTwoSmallestNumbers,
   cake,
+  fire,
 } from './main'
 
 describe('Gravity Flip', () => {
@@ -785,5 +786,11 @@ describe('Birthday I - Cake', () => {
     expect(cake(900, 'abcdef')).toBe('That was close!')
     expect(cake(56, 'ifkhchlhfd')).toBe('Fire!')
     expect(cake(256, 'aaaaaddddr')).toBe('Fire!')
+  })
+})
+describe('Grid blast!', () => {
+  it('應返回正確的戰場區域', () => {
+    expect(fire(0, 0)).toBe('top left')
+    expect(fire(1, 2)).toBe('bottom middle')
   })
 })

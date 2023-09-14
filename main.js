@@ -829,3 +829,15 @@ export function cake(x, y) {
   }, 0)
   return total > x * 0.7 ? 'Fire!' : 'That was close!'
 }
+/**
+ * Grid blast!
+ * 根據給定的 x 和 y 坐標，返回對應的戰場區域
+ * @param {number} x - x 坐標
+ * @param {number} y - y 坐標
+ * @returns {string} - 返回對應的戰場區域
+ */
+export function fire(x, y) {
+  const areaX = ['left', 'middle', 'right'][x]
+  const areaY = ['top', 'middle', 'bottom'][y]
+  return areaX === areaY ? 'center' : `${areaY} ${areaX}`
+}
