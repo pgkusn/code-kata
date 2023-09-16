@@ -852,3 +852,20 @@ export function binRota(arr) {
     return previous.concat(index % 2 === 0 ? current : current.reverse())
   })
 }
+/**
+ * Insert dashes
+ * 在兩個奇數數字之間插入破折號('-')
+ * @param {number} num - 非負整數
+ * @returns {string} - 返回插入破折號後的字串
+ */
+export function insertDash(num) {
+  const list = Array.from(num.toString())
+  return list.reduce((previous, current, index) => {
+    // @ts-ignore
+    const hyphen = list[index - 1] % 2 === 1 && current % 2 === 1 ? '-' : ''
+    return previous + hyphen + current
+  })
+
+  // better
+  // return num.toString().replace(/[13579](?=[13579])/g, "$&-")
+}
