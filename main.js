@@ -841,3 +841,14 @@ export function fire(x, y) {
   const areaY = ['top', 'middle', 'bottom'][y]
   return areaX === areaY ? 'center' : `${areaY} ${areaX}`
 }
+/**
+ * The Lazy Startup Office
+ * 根據員工座位安排，返回垃圾桶清理輪值名單
+ * @param {string[][]} arr - 二維陣列，代表員工座位安排
+ * @returns {string[]} - 返回員工垃圾桶清理輪值名單
+ */
+export function binRota(arr) {
+  return arr.reduce((previous, current, index) => {
+    return previous.concat(index % 2 === 0 ? current : current.reverse())
+  })
+}
