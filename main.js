@@ -869,3 +869,24 @@ export function insertDash(num) {
   // better
   // return num.toString().replace(/[13579](?=[13579])/g, "$&-")
 }
+/**
+ * Tetris Series #1 — Scoring System
+ * 使用原始的任天堂計分系統計算遊戲的最終得分
+ * @param {number[]} arr - 包含清理過的行數的陣列
+ * @returns {number} 計算出的最終得分
+ */
+export function getScore(arr) {
+  let level = 0
+  let lines = 0
+
+  const getPoint = (line, level) => {
+    const basePoints = [0, 40, 100, 300, 1200]
+    return basePoints[line] * (level + 1)
+  }
+
+  return arr.reduce((previous, current) => {
+    level = Math.trunc(lines / 10)
+    lines += current
+    return (previous += getPoint(current, level))
+  }, 0)
+}

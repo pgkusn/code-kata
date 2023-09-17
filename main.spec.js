@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
 describe('Gravity Flip', () => {
@@ -824,4 +824,14 @@ describe('Insert dashes', () => {
     expect(fn.insertDash(123456)).toBe('123456')
     expect(fn.insertDash(1003567)).toBe('1003-567')
   })
+})
+describe('Tetris Series #1 — Scoring System', () => {
+  const testing = (arr, exp) =>
+    it(`Testing for [${arr.join(', ')}]`, () => expect(fn.getScore(arr)).toBe(exp))
+  testing([0, 1, 2, 3, 4], 1640)
+  testing([0, 1, 1, 3, 0, 2, 1, 2], 620)
+  testing([2, 0, 4, 2, 2, 3, 0, 0, 3, 3], 3300)
+  testing([0], 0)
+  testing([], 0)
+  testing([2, 0, 1, 3, 1, 1, 3, 0, 0, 1], 900)
 })
