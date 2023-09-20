@@ -890,3 +890,19 @@ export function getScore(arr) {
     return (previous += getPoint(current, level))
   }, 0)
 }
+/**
+ * Mysterious Singularity Numbers
+ * 找出不超過 N 且不被 2、3、5 中的任何一個數整除的自然數的數量。
+ * @param {number} n - 自然數 N
+ * @returns {number} 不符合條件的自然數數量
+ */
+export function realNumbers(n) {
+  let total = 0
+  const list = [2, 3, 5]
+
+  for (let m = 1; m <= n; m++) {
+    if (list.every(x => m % x !== 0)) total++
+  }
+
+  return total
+}

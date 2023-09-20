@@ -835,3 +835,22 @@ describe('Tetris Series #1 — Scoring System', () => {
   testing([], 0)
   testing([2, 0, 1, 3, 1, 1, 3, 0, 0, 1], 900)
 })
+describe('Mysterious Singularity Numbers', function () {
+  it('應返回正確的數字', function () {
+    let arr = [
+      [5, 1],
+      [10, 2],
+      [20, 6],
+      [30, 8],
+      [40, 10],
+      [55, 15],
+      [66, 17],
+      [75, 20],
+      [100, 26],
+    ]
+    for (let [n, expected] of arr) {
+      let actual = fn.realNumbers(n)
+      expect(actual).toBe(expected)
+    }
+  })
+})
