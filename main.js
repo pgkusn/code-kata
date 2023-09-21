@@ -906,3 +906,12 @@ export function realNumbers(n) {
 
   return total
 }
+/**
+ * Coding Meetup #6 - Higher-Order Functions Series - Can they code in the same language?
+ * 檢查開發者列表中的所有開發者是否使用相同的程式語言
+ * @param {Array} list - 包含開發者資訊的物件陣列
+ * @returns {boolean} 若所有開發者使用相同程式語言則回傳 true，否則回傳 false
+ */
+export function isSameLanguage(list) {
+  return list.every(item => item.language === list[0].language)
+}
