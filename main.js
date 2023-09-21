@@ -922,5 +922,13 @@ export function isSameLanguage(list) {
  * @returns {number} 最小重複次數
  */
 export function diamondBurglar(locker) {
-  // TODO: Return how many turns the burglar needs to steal all the diamonds
+  const str = locker.map(item => item.replace(/\*{2}/g, '*').replace(/\./g, '')).join('')
+  return str.length
+
+  // better
+  // const str = locker.join('').replaceAll('**', '*').replaceAll('.', '')
+  // return str.length
+
+  // best
+  // return (locker.join('.').match(/\*{1,2}/g) || []).length
 }
