@@ -915,3 +915,12 @@ export function realNumbers(n) {
 export function isSameLanguage(list) {
   return list.every(item => item.language === list[0].language)
 }
+/**
+ * How fast can the burglar steal all the diamonds?
+ * 計算並返回一個整數，表示竊賊從保險箱中拿取所有鑽石所需的最小重複次數。
+ * @param {string[]} locker - 一個包含字符串的陣列，表示單個保險箱
+ * @returns {number} 最小重複次數
+ */
+export function diamondBurglar(locker) {
+  // TODO: Return how many turns the burglar needs to steal all the diamonds
+}

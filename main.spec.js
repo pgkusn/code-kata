@@ -914,3 +914,33 @@ describe('Coding Meetup #6 - Higher-Order Functions Series - Can they code in th
     expect(fn.isSameLanguage(list2)).toBe(false)
   })
 })
+describe('How fast can the burglar steal all the diamonds?', () => {
+  it('Example 1', () => {
+    expect(fn.diamondBurglar(['*.*.*.*.*.', '...*..**..', '**.**...*.', '**..**..**'])).toBe(13)
+  })
+
+  it('Example 2', () => {
+    expect(fn.diamondBurglar(['..*.*.*...', '.**.*.*.**', '*........*'])).toBe(9)
+  })
+
+  it('Example 3', () => {
+    expect(
+      fn.diamondBurglar([
+        '..*....*..',
+        '....*.....',
+        '*...**....',
+        '..**....**',
+        '..**..**.*',
+        '.*.*.*.**.',
+      ])
+    ).toBe(14)
+  })
+
+  it('Example 4', () => {
+    expect(fn.diamondBurglar(['.*...*...*', '..***..*..', '...**.*...', '.***.**..*'])).toBe(12)
+  })
+
+  it('Example 5', () => {
+    expect(fn.diamondBurglar(['..****..*.', '..***.....', '.*..*...*.', '......**..'])).toBe(9)
+  })
+})
