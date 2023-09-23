@@ -944,3 +944,21 @@ describe('How fast can the burglar steal all the diamonds?', () => {
     expect(fn.diamondBurglar(['..****..*.', '..***.....', '.*..*...*.', '......**..'])).toBe(9)
   })
 })
+describe('Quadrants', () => {
+  const tests = {
+    Example: [
+      [1, 2, 1],
+      [3, 5, 1],
+      [-10, 100, 2],
+      [-1, -9, 3],
+      [19, -56, 4],
+    ],
+  }
+  for (var k of Object.keys(tests)) {
+    it(k, () => {
+      for (var t of tests[k]) {
+        expect(fn.quadrant(t[0], t[1])).toBe(t[2])
+      }
+    })
+  }
+})

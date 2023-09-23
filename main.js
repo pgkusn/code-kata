@@ -932,3 +932,16 @@ export function diamondBurglar(locker) {
   // best
   // return (locker.join('.').match(/\*{1,2}/g) || []).length
 }
+/**
+ * Quadrants
+ * 根據給定的 x 和 y 座標，確定該點所在的象限
+ * @param {number} x - x 座標
+ * @param {number} y - y 座標
+ * @returns {number} 1、2、3 或 4，表示該點所在的象限
+ */
+export function quadrant(x, y) {
+  if (x > 0 && y > 0) return 1
+  if (x < 0 && y > 0) return 2
+  if (x < 0 && y < 0) return 3
+  if (x > 0 && y < 0) return 4
+}
