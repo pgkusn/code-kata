@@ -945,3 +945,15 @@ export function quadrant(x, y) {
   if (x < 0 && y < 0) return 3
   if (x > 0 && y < 0) return 4
 }
+/**
+ * Check same case
+ * 檢查兩個給定的字符是否相同大小寫
+ * @param {string} a - 字符 a
+ * @param {string} b - 字符 b
+ * @returns {number} 如果其中一個字符不是字母，返回 -1；如果兩個字符是相同大小寫，返回 1；如果兩個字符都是字母，但大小寫不同，返回 0
+ */
+export function sameCase(a, b) {
+  if (/[^A-Za-z]/.test(a + b)) return -1
+  if (/^[A-Z]+$|^[a-z]+$/.test(a + b)) return 1
+  return 0
+}
