@@ -957,3 +957,12 @@ export function sameCase(a, b) {
   if (/^[A-Z]+$|^[a-z]+$/.test(a + b)) return 1
   return 0
 }
+/**
+ * Quarter of the year
+ * 給定一個介於 1 到 12 之間的整數代表月份，返回它屬於哪一年的哪個季度（用一個整數表示）。
+ * @param {number} month - 月份（介於 1 到 12 之間的整數）
+ * @returns {number} 季度（用整數表示）
+ */
+export const quarterOf = month => {
+  return Math.ceil(month / 3)
+}

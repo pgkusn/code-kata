@@ -977,3 +977,10 @@ describe('Check same case', function () {
   doTest('\t', 'Z', -1)
   doTest('H', ':', -1)
 })
+describe('Quarter of the year', () => {
+  it('應返回正確的值', () => {
+    expect(fn.quarterOf(3)).toBe(1)
+    expect(fn.quarterOf(8)).toBe(3)
+    expect(fn.quarterOf(11)).toBe(4)
+  })
+})
