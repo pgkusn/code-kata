@@ -979,3 +979,16 @@ export function elevator(left, right, call) {
   const rightDistance = Math.abs(call - right)
   return leftDistance < rightDistance ? 'left' : 'right'
 }
+/**
+ * Pillars
+ * Calculate the distance between the first and the last pillar in centimeters
+ * (without the width of the first and last pillar).
+ * @param {number} numPill - Number of pillars (≥ 1)
+ * @param {number} dist - Distance between pillars (10 - 30 meters)
+ * @param {number} width - Width of the pillar (10 - 50 centimeters)
+ * @returns {number} Distance between the first and last pillar in centimeters
+ */
+export function pillars(numPill, dist, width) {
+  if (numPill === 1) return 0
+  return dist * 100 * (numPill - 1) + width * (numPill - 2)
+}

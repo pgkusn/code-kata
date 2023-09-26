@@ -984,7 +984,7 @@ describe('Quarter of the year', () => {
     expect(fn.quarterOf(11)).toBe(4)
   })
 })
-describe('call from 0:', function () {
+describe('Closest elevator', function () {
   it("If the left elevator is closer to the call, should return 'left'", function () {
     expect(fn.elevator(0, 1, 0)).toBe('left')
   })
@@ -999,5 +999,16 @@ describe('call from 0:', function () {
   })
   it("If both elevators are in equal distance from the call, should return 'right'", function () {
     expect(fn.elevator(0, 2, 1)).toBe('right')
+  })
+})
+describe('Pillars', function () {
+  it('Testing for number of pillars: 1, distance: 10 m and width: 10 cm', function () {
+    expect(fn.pillars(1, 10, 10)).toBe(0)
+  })
+  it('Testing for number of pillars: 2, distance: 20 m and width: 25 cm', function () {
+    expect(fn.pillars(2, 20, 25)).toBe(2000)
+  })
+  it('Testing for number of pillars: 11, distance: 15 m and width: 30 cm', function () {
+    expect(fn.pillars(11, 15, 30)).toBe(15270)
   })
 })
