@@ -966,3 +966,16 @@ export function sameCase(a, b) {
 export const quarterOf = month => {
   return Math.ceil(month / 3)
 }
+/**
+ * Closest elevator
+ * 根據兩台電梯目前所在樓層及呼叫樓層，返回離呼叫樓層較近的電梯的名稱。
+ * @param {number} left - 左側電梯目前所在樓層
+ * @param {number} right - 右側電梯目前所在樓層
+ * @param {number} call - 呼叫電梯的樓層
+ * @returns {string} 電梯的名稱 ("left" 或 "right")
+ */
+export function elevator(left, right, call) {
+  const leftDistance = Math.abs(call - left)
+  const rightDistance = Math.abs(call - right)
+  return leftDistance < rightDistance ? 'left' : 'right'
+}
