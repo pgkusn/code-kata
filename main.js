@@ -992,3 +992,20 @@ export function pillars(numPill, dist, width) {
   if (numPill === 1) return 0
   return dist * 100 * (numPill - 1) + width * (numPill - 2)
 }
+/**
+ * Twice as old
+ * 計算多少年前，父親的年齡是他的兒子的兩倍，或多少年後父親的年齡將是他的兒子的兩倍。
+ * @param {number} dadYearsOld - 父親目前的年齡（以年為單位）
+ * @param {number} sonYearsOld - 兒子目前的年齡（以年為單位）
+ * @returns {number} 多少年前或多少年後
+ */
+export function twiceAsOld(dadYearsOld, sonYearsOld) {
+  let i = 0
+  while (dadYearsOld - i !== (sonYearsOld - i) * 2 && dadYearsOld + i !== (sonYearsOld + i) * 2) {
+    i++
+  }
+  return i
+
+  // better
+  // return Math.abs(dadYearsOld - 2 * sonYearsOld);
+}
