@@ -1009,3 +1009,20 @@ export function twiceAsOld(dadYearsOld, sonYearsOld) {
   // better
   // return Math.abs(dadYearsOld - 2 * sonYearsOld);
 }
+/**
+ * Flick Switch
+ * 在給定的字符串陣列中，找出是否包含 "flick"，如果包含則切換對應元素的布爾值。
+ * @param {string[]} arr - 字符串陣列
+ * @returns {boolean[]} - 切換後的布爾值陣列
+ */
+export function flickSwitch(arr) {
+  return arr.reduce((previous, current) => {
+    const last = previous[previous.length - 1]
+    const result = current === 'flick' ? !last : last
+    return previous.length ? [...previous, result] : [current !== 'flick']
+  }, [])
+
+  // better
+  // let a = true
+  // return arr.map(b => (b === 'flick' ? (a = !a) : a))
+}

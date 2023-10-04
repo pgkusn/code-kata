@@ -1029,3 +1029,36 @@ describe('Twice as old', function () {
     expect(fn.twiceAsOld(29, 0)).toBe(29)
   })
 })
+describe('Flick Switch', function () {
+  it('應返回正確的值', function () {
+    expect(fn.flickSwitch(['codewars', 'flick', 'code', 'wars'])).toEqual([
+      true,
+      false,
+      false,
+      false,
+    ])
+    expect(fn.flickSwitch(['flick', 'chocolate', 'adventure', 'sunshine'])).toEqual([
+      false,
+      false,
+      false,
+      false,
+    ])
+    expect(fn.flickSwitch(['bicycle', 'jarmony', 'flick', 'sheep', 'flick'])).toEqual([
+      true,
+      true,
+      false,
+      false,
+      true,
+    ])
+    expect(fn.flickSwitch(['flick', 'flick', 'flick', 'flick', 'flick'])).toEqual([
+      false,
+      true,
+      false,
+      true,
+      false,
+    ])
+    expect(fn.flickSwitch(['bicycle'])).toEqual([true])
+    expect(fn.flickSwitch(['flick'])).toEqual([false])
+    expect(fn.flickSwitch([])).toEqual([])
+  })
+})
