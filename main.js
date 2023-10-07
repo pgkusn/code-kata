@@ -1026,3 +1026,23 @@ export function flickSwitch(arr) {
   // let a = true
   // return arr.map(b => (b === 'flick' ? (a = !a) : a))
 }
+/**
+ * Draw stairs
+ * 根據給定的數字 n，用字母 "I" 畫出 n 層高、n 層寬的樓梯，最高的樓梯在左上角。
+ * @param {number} n - 樓梯的層數
+ * @returns {string} - 用字母 "I" 畫出的樓梯
+ */
+export function drawStairs(n) {
+  let str = ''
+  for (let i = 0; i < n; i++) {
+    str += ' '.repeat(i)
+    str += 'I'
+    if (i < n - 1) {
+      str += '\n'
+    }
+  }
+  return str
+
+  // better
+  // return [...Array(n)].map((_, i) => ' '.repeat(i) + 'I').join('\n')
+}
