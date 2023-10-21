@@ -1046,3 +1046,26 @@ export function drawStairs(n) {
   // better
   // return [...Array(n)].map((_, i) => ' '.repeat(i) + 'I').join('\n')
 }
+/**
+ * The Feast of Many Beasts
+ * 判斷動物是否可以帶指定的菜參加盛宴。
+ * @param {string} beast - 動物的名字
+ * @param {string} dish - 菜的名字
+ * @returns {boolean} - 如果動物可以帶這道菜，則返回 true；否則返回 false。
+ */
+export function feast(beast, dish) {
+  const getChars = s => [s[0], s[s.length - 1]]
+  const [a, b] = getChars(beast)
+  const [c, d] = getChars(dish)
+  return a === c && b === d
+
+  // or
+  // function feast(beast, dish) {
+  //   return dish.startsWith(beast[0]) && dish.endsWith(beast[beast.length-1])
+  // }
+
+  // better
+  // function feast(beast, dish) {
+  //   return beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
+  // }
+}
