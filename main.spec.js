@@ -1080,3 +1080,12 @@ describe('The Feast of Many Beasts', () => {
     expect(fn.feast('brown bear', 'bear claw')).toBe(false)
   })
 })
+describe('Find Nearest square number', () => {
+  it('應回傳正確的結果', () => {
+    expect(fn.nearestSq(1)).toBe(1)
+    expect(fn.nearestSq(2)).toBe(1)
+    expect(fn.nearestSq(10)).toBe(9)
+    expect(fn.nearestSq(111)).toBe(121)
+    expect(fn.nearestSq(9999)).toBe(10000)
+  })
+})

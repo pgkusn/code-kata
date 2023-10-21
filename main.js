@@ -1069,3 +1069,23 @@ export function feast(beast, dish) {
   //   return beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
   // }
 }
+/**
+ * Find Nearest square number
+ * 找到正整數 n 的最近平方數。
+ * @param {number} n - 正整數 n
+ * @returns {number} - 最近的平方數
+ */
+export function nearestSq(n) {
+  let m = 0
+  let smaller = 0
+  let bigger = 0
+  while (bigger < n) {
+    smaller = Math.pow(m - 1, 2)
+    bigger = Math.pow(m, 2)
+    m++
+  }
+  return n - smaller < bigger - n ? smaller : bigger
+
+  // better
+  // return Math.pow(Math.round(Math.sqrt(n)), 2)
+}
