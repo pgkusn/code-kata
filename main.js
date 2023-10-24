@@ -1107,3 +1107,12 @@ export function humanYearsCatYearsDogYears(humanYears) {
   }
   return [humanYears, getYear({ humanYears, stuff: 'cat' }), getYear({ humanYears, stuff: 'dog' })]
 }
+/**
+ * Multiplication table for number
+ * 回傳指定數字的乘法表
+ * @param {number} number - 介於 1 到 10 之間的整數
+ * @returns {string} - 乘法表字串
+ */
+export function multiTable(number) {
+  return [...Array(10)].map((_, i) => `${i + 1} * ${number} = ${(i + 1) * number}`).join('\n')
+}
