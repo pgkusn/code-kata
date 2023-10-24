@@ -1089,3 +1089,10 @@ describe('Find Nearest square number', () => {
     expect(fn.nearestSq(9999)).toBe(10000)
   })
 })
+describe('Cat years, Dog years', () => {
+  it('應回傳人年、貓年、狗年的年齡', () => {
+    expect(fn.humanYearsCatYearsDogYears(1)).toEqual([1, 15, 15])
+    expect(fn.humanYearsCatYearsDogYears(2)).toEqual([2, 24, 24])
+    expect(fn.humanYearsCatYearsDogYears(10)).toEqual([10, 56, 64])
+  })
+})

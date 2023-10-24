@@ -1089,3 +1089,21 @@ export function nearestSq(n) {
   // better
   // return Math.pow(Math.round(Math.sqrt(n)), 2)
 }
+/**
+ * Cat years, Dog years
+ * 回傳人年、貓年、狗年的年齡
+ * @param {number} humanYears - 人年
+ * @returns {number[]} - [人年, 貓年, 狗年]
+ */
+export function humanYearsCatYearsDogYears(humanYears) {
+  const getYear = ({ humanYears, stuff }) => {
+    const baseYear = {
+      cat: 4,
+      dog: 5,
+    }
+    if (humanYears === 1) return 15
+    if (humanYears === 2) return 24
+    return baseYear[stuff] * (humanYears - 2) + 24
+  }
+  return [humanYears, getYear({ humanYears, stuff: 'cat' }), getYear({ humanYears, stuff: 'dog' })]
+}
