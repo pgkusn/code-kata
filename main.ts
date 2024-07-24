@@ -1,3 +1,82 @@
+export function tribonacci(ary: number[], n: number): number[] {
+  if (n < 3) return ary.slice(0, n)
+
+  while (ary.length < n) {
+    const sum = ary[ary.length - 3] + ary[ary.length - 2] + ary[ary.length - 1]
+    ary.push(sum)
+  }
+
+  return ary
+
+  // better
+  // for (let i = 0; ary.length < n; i++) {
+  //   const sum = ary[i] + ary[i + 1] + ary[i + 2]
+  //   ary.push(sum)
+  // }
+  // return ary.slice(0, n)
+}
+
+export function order(words: string): string {
+  return words
+    .split(' ')
+    .sort((a, b) => {
+      const [d1] = a.match(/\d/) ?? []
+      const [d2] = b.match(/\d/) ?? []
+      return Number(d1) - Number(d2)
+    })
+    .join(' ')
+}
+
+export function narcissistic(value: number): boolean {
+  const result = [...String(value)].reduce((acc, cur, _, array) => {
+    return acc + Math.pow(+cur, array.length)
+  }, 0)
+  return result === value
+}
+
+export function toCamelCase(str: string): string {
+  return str.replace(/[_-][A-Za-z]/g, ([, s]) => s.toUpperCase())
+}
+
+export function persistence(num: number): number {
+  let count = 0
+
+  const multiply = (n: number): number => {
+    const result = [...String(n)].reduce((acc, cur) => Number(acc) * Number(cur), 1)
+
+    if (result !== n) {
+      count++
+      return multiply(result)
+    } else {
+      return count
+    }
+  }
+
+  return multiply(num)
+
+  // better
+  // while (num > 9) {
+  //   num = [...String(num)].reduce((acc, cur) => Number(acc) * Number(cur), 1)
+  //   count++
+  // }
+
+  // return count
+}
+
+export function alphabetPosition(text: string): string {
+  const alphabets = text.match(/([A-Za-z])/g) ?? []
+  return alphabets.map(s => s.toLocaleLowerCase().charCodeAt(0) - 96).join(' ')
+}
+
+export function isValidWalk(walk: string[]) {
+  const walkCount: { [key: string]: number } = { n: 0, s: 0, w: 0, e: 0 }
+  walk.forEach(w => walkCount[w]++)
+
+  return walk.length === 10 && walkCount.n - walkCount.s === 0 && walkCount.w - walkCount.e === 0
+  // better
+  // return walk.length === 10 && walkCount.n === walkCount.s && walkCount.w === walkCount.e
+}
+
 export function findOutlier(numbers: number[]): number {
   const oddNumbers = numbers.filter(n => n % 2 !== 0)
   const evenNumbers = numbers.filter(n => n % 2 === 0)

@@ -1,6 +1,109 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Tribonacci Sequence', () => {
+  it('應返回指定長度的泰波拿契數列', () => {
+    expect(fn.tribonacci([1, 1, 1], 10)).toEqual([1, 1, 1, 3, 5, 9, 17, 31, 57, 105])
+    expect(fn.tribonacci([0, 0, 1], 10)).toEqual([0, 0, 1, 1, 2, 4, 7, 13, 24, 44])
+    expect(fn.tribonacci([0, 1, 1], 10)).toEqual([0, 1, 1, 2, 4, 7, 13, 24, 44, 81])
+    expect(fn.tribonacci([1, 0, 0], 10)).toEqual([1, 0, 0, 1, 1, 2, 4, 7, 13, 24])
+    expect(fn.tribonacci([0, 0, 0], 10)).toEqual([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    expect(fn.tribonacci([1, 2, 3], 10)).toEqual([1, 2, 3, 6, 11, 20, 37, 68, 125, 230])
+    expect(fn.tribonacci([3, 2, 1], 10)).toEqual([3, 2, 1, 6, 9, 16, 31, 56, 103, 190])
+    expect(fn.tribonacci([1, 1, 1], 1)).toEqual([1])
+    expect(fn.tribonacci([2, 10, 2], 2)).toEqual([2, 10])
+    expect(fn.tribonacci([300, 200, 100], 0)).toEqual([])
+    expect(fn.tribonacci([0.5, 0.5, 0.5], 30)).toEqual([
+      0.5, 0.5, 0.5, 1.5, 2.5, 4.5, 8.5, 15.5, 28.5, 52.5, 96.5, 177.5, 326.5, 600.5, 1104.5,
+      2031.5, 3736.5, 6872.5, 12640.5, 23249.5, 42762.5, 78652.5, 144664.5, 266079.5, 489396.5,
+      900140.5, 1655616.5, 3045153.5, 5600910.5, 10301680.5,
+    ])
+  })
+})
+
+describe('Your order, please', () => {
+  it('應返回一個根據單詞中數字順序排序後的字串', () => {
+    expect(fn.order('is2 Thi1s T4est 3a')).toBe('Thi1s is2 3a T4est')
+    expect(fn.order('is2 This T4est 3a')).toBe('is2 This 3a T4est')
+    expect(fn.order('4of Fo1r pe6ople g3ood th5e the2')).toBe('Fo1r the2 g3ood 4of th5e pe6ople')
+    expect(fn.order('')).toBe('')
+  })
+})
+
+describe('Does my number look big in this?', () => {
+  it('應判斷數字是否為阿姆斯壯數', () => {
+    expect(fn.narcissistic(7)).toBe(true)
+    expect(fn.narcissistic(153)).toBe(true)
+    expect(fn.narcissistic(1634)).toBe(true)
+  })
+})
+
+describe('Convert string to camel case', () => {
+  it('應返回空字串', () => {
+    expect(fn.toCamelCase('')).toBe('')
+  })
+
+  it("應將 'the_stealth_warrior' 轉換為 'theStealthWarrior'", () => {
+    expect(fn.toCamelCase('the_stealth_warrior')).toBe('theStealthWarrior')
+  })
+
+  it("應將 'The-Stealth-Warrior' 轉換為 'TheStealthWarrior'", () => {
+    expect(fn.toCamelCase('The-Stealth-Warrior')).toBe('TheStealthWarrior')
+  })
+
+  it("應將 'A-B-C' 轉換為 'ABC'", () => {
+    expect(fn.toCamelCase('A-B-C')).toBe('ABC')
+  })
+})
+
+describe('Persistent Bugger', () => {
+  it('應返回 39 的持續性為 3', () => {
+    expect(fn.persistence(39)).toBe(3)
+  })
+
+  it('應返回 4 的持續性為 0', () => {
+    expect(fn.persistence(4)).toBe(0)
+  })
+
+  it('應返回 25 的持續性為 2', () => {
+    expect(fn.persistence(25)).toBe(2)
+  })
+
+  it('應返回 999 的持續性為 4', () => {
+    expect(fn.persistence(999)).toBe(4)
+  })
+})
+
+describe('alphabetPosition', () => {
+  it('應返回 "The sunset sets at twelve o\' clock." 的正確位置', () => {
+    expect(fn.alphabetPosition("The sunset sets at twelve o' clock.")).toBe(
+      '20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11'
+    )
+  })
+
+  it('應返回 "The narwhal bacons at midnight." 的正確位置', () => {
+    expect(fn.alphabetPosition('The narwhal bacons at midnight.')).toBe(
+      '20 8 5 14 1 18 23 8 1 12 2 1 3 15 14 19 1 20 13 9 4 14 9 7 8 20'
+    )
+  })
+
+  it('當沒有任何英文字母時，應返回空字串', () => {
+    expect(fn.alphabetPosition('123')).toBe('')
+  })
+})
+
+describe('Take a Ten Minutes Walk', () => {
+  it('如有用十步走完並回到原點，應返回 true', () => {
+    expect(fn.isValidWalk(['n', 's', 'n', 's', 'n', 's', 'n', 's', 'n', 's'])).toBe(true)
+  })
+
+  it('如未用十步走完並回到原點，應返回 false', () => {
+    expect(fn.isValidWalk(['w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e', 'w', 'e'])).toBe(false)
+    expect(fn.isValidWalk(['w'])).toBe(false)
+    expect(fn.isValidWalk(['n', 'n', 'n', 's', 'n', 's', 'n', 's', 'n', 's'])).toBe(false)
+  })
+})
+
 describe('findOutlier', () => {
   it('應返回陣列中唯一的奇數或偶數', () => {
     expect(fn.findOutlier([0, 1, 2])).toBe(1)
@@ -111,6 +214,7 @@ describe('Printer Errors', () => {
 
 describe("What's the real floor?", function () {
   it('應該返回實際樓層數', () => {
+    expect(fn.getRealFloor(-1)).toBe(-1)
     expect(fn.getRealFloor(1)).toBe(0)
     expect(fn.getRealFloor(5)).toBe(4)
     expect(fn.getRealFloor(15)).toBe(13)
