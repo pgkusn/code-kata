@@ -1,6 +1,37 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Equal Sides Of An Array', () => {
+  it('應返回正確的結果', () => {
+    expect(fn.findEvenIndex([1, 2, 3, 4, 3, 2, 1])).toBe(3) // "陣列為: [1,2,3,4,3,2,1]"
+    expect(fn.findEvenIndex([1, 100, 50, -51, 1, 1])).toBe(1) // "陣列為: [1,100,50,-51,1,1]"
+    expect(fn.findEvenIndex([1, 2, 3, 4, 5, 6])).toBe(-1) // "陣列為: [1,2,3,4,5,6]"
+    expect(fn.findEvenIndex([20, 10, 30, 10, 10, 15, 35])).toBe(3) // "陣列為: [20,10,30,10,10,15,35]"
+  })
+})
+
+describe('Playing with digits', () => {
+  it('應返回正確的結果', () => {
+    expect(fn.digPow(89, 1)).toBe(1) // 返回 1 (因為 8^1 + 9^2 = 89 = 89 * 1)
+    expect(fn.digPow(92, 1)).toBe(-1) // 返回 -1 (因為 9^1 + 2^2 = 13，無法被 92 整除)
+    expect(fn.digPow(46288, 3)).toBe(51) // 返回 51 (因為 4^3 + 6^4 + 2^5 + 8^6 + 8^7 = 2360688 = 46288 * 51)
+  })
+})
+
+describe('Detect Pangram', () => {
+  it('應判斷是否為全字母句', () => {
+    expect(fn.isPangram('The quick brown fox jumps over the lazy dog.')).toBe(true) // 'The quick brown fox jumps over the lazy dog.' 是全字母句
+    expect(fn.isPangram('This is not a pangram.')).toBe(false) // 'This is not a pangram.' 不是全字母句
+    expect(fn.isPangram('123')).toBe(false)
+  })
+})
+
+describe('Unique In Order', () => {
+  it('應返回一個沒有相鄰重複元素的陣列，並保持原有順序', () => {
+    expect(fn.uniqueInOrder('AAAABBBCCDAABBB')).toEqual(['A', 'B', 'C', 'D', 'A', 'B'])
+  })
+})
+
 describe('Tribonacci Sequence', () => {
   it('應返回指定長度的泰波拿契數列', () => {
     expect(fn.tribonacci([1, 1, 1], 10)).toEqual([1, 1, 1, 3, 5, 9, 17, 31, 57, 105])

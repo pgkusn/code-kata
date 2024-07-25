@@ -1,3 +1,50 @@
+export function findEvenIndex(arr: number[]): number {
+  const sum = (num: number[]) => num.reduce((acc, cur) => acc + cur, 0)
+
+  for (let i = 0; i < arr.length; i++) {
+    const left = arr.slice(0, i)
+    const right = arr.slice(i + 1)
+
+    if (sum(left) === sum(right)) return i
+  }
+
+  return -1
+
+  // better
+  // return arr.findIndex((_, i, arr) => {
+  //   const left = arr.slice(0, i)
+  //   const right = arr.slice(i + 1)
+  //   return sum(left) === sum(right)
+  // })
+}
+
+export const digPow = (n: number, p: number): number => {
+  const result = [...String(n)].reduce((acc, cur, index) => acc + Number(cur) ** (p + index), 0)
+  return result % n === 0 ? result / n : -1
+}
+
+export const isPangram = (phrase: string): boolean => {
+  const matched = phrase.match(/[A-Za-z]/g) ?? []
+  const mapped = matched.map(s => s.toLocaleLowerCase())
+  return [...new Set(mapped)].length === 26
+
+  // better
+  // const matched = phrase.toLocaleLowerCase().match(/[a-z]/g)
+  // return new Set(matched).size === 26
+}
+
+export function uniqueInOrder(iterable: string | (string | number)[]): (string | number)[] {
+  return [...iterable].reduce((acc: (string | number)[], cur, index, array) => {
+    if (array[index - 1] !== cur) {
+      acc.push(cur)
+    }
+    return acc
+  }, [])
+
+  // better
+  // return [...iterable].filter((x, i) => x != iterable[i - 1])
+}
+
 export function tribonacci(ary: number[], n: number): number[] {
   if (n < 3) return ary.slice(0, n)
 
