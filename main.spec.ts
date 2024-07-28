@@ -1,6 +1,37 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Find the missing letter', () => {
+  it('應返回陣列中缺少的字母', () => {
+    expect(fn.findMissingLetter(['a', 'b', 'c', 'd', 'f'])).toBe('e')
+    expect(fn.findMissingLetter(['O', 'Q', 'R', 'S'])).toBe('P')
+    expect(fn.findMissingLetter([])).toBe('')
+  })
+})
+
+describe('Sort the odd', () => {
+  it('應返回正確的數字陣列', () => {
+    expect(fn.sortArray([5, 3, 2, 8, 1, 4])).toEqual([1, 3, 2, 8, 5, 4])
+    expect(fn.sortArray([5, 3, 1, 8, 0])).toEqual([1, 3, 5, 8, 0])
+    expect(fn.sortArray([])).toEqual([])
+  })
+})
+
+describe('Find the unique number', () => {
+  it('應返回陣列中唯一的數字', () => {
+    expect(fn.findUniq([1, 1, 1, 2, 1, 1])).toBe(2)
+    expect(fn.findUniq([0, 0, 0.55, 0, 0])).toBe(0.55)
+  })
+})
+
+describe('Split Strings', () => {
+  it('應將給定的字串拆分成長度為兩個字元的子串', () => {
+    expect(fn.splitStrings('abcdef')).toEqual(['ab', 'cd', 'ef']) // "字串為: 'abcdef'"
+    expect(fn.splitStrings('abcdefg')).toEqual(['ab', 'cd', 'ef', 'g_']) // "字串為: 'abcdefg'"
+    expect(fn.splitStrings('')).toEqual([]) // "字串為: ''"
+  })
+})
+
 describe('Equal Sides Of An Array', () => {
   it('應返回正確的結果', () => {
     expect(fn.findEvenIndex([1, 2, 3, 4, 3, 2, 1])).toBe(3) // "陣列為: [1,2,3,4,3,2,1]"

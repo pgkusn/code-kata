@@ -1,3 +1,47 @@
+export function findMissingLetter(array: string[]): string {
+  for (let i = 0; i < array.length - 1; i++) {
+    const charCodeA = array[i].charCodeAt(0)
+    const charCodeB = array[i + 1].charCodeAt(0)
+
+    if (charCodeB - charCodeA !== 1) {
+      return String.fromCharCode(charCodeB - 1)
+    }
+  }
+
+  return ''
+}
+
+export function sortArray(array: number[]): (number | undefined)[] {
+  const sortedOdds = array.filter(n => n % 2).sort((a, b) => a - b)
+  return array.map(n => (n % 2 ? sortedOdds.shift() : n))
+}
+
+export function findUniq(arr: number[]): number | undefined {
+  const counts = arr.reduce((acc: { [key: string]: number }, cur) => {
+    if (!acc[cur]) acc[cur] = 0
+    acc[cur]++
+    return acc
+  }, {})
+
+  return arr.find(n => counts[n] === 1)
+
+  // better
+  // arr = arr.sort()
+  // return arr[0] == arr[1] ? arr[arr.length - 1] : arr[0]
+}
+
+export function splitStrings(str: string): string[] {
+  const result = []
+
+  for (let i = 0; i < str.length; i += 2) {
+    const s1 = str[i]
+    const s2 = str[i + 1] ?? '_'
+    result.push(s1 + s2)
+  }
+
+  return result
+}
+
 export function findEvenIndex(arr: number[]): number {
   const sum = (num: number[]) => num.reduce((acc, cur) => acc + cur, 0)
 
