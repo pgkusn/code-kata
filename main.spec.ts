@@ -1,6 +1,14 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Build Tower', () => {
+  it('應返回一個包含塔每一層的字串陣列', () => {
+    expect(fn.towerBuilder(1)).toEqual(['*'])
+    expect(fn.towerBuilder(2)).toEqual([' * ', '***'])
+    expect(fn.towerBuilder(3)).toEqual(['  *  ', ' *** ', '*****'])
+  })
+})
+
 describe('Find the missing letter', () => {
   it('應返回陣列中缺少的字母', () => {
     expect(fn.findMissingLetter(['a', 'b', 'c', 'd', 'f'])).toBe('e')
