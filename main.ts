@@ -1,3 +1,25 @@
+export function breakCamelCase(string: string): string {
+  return string.replace(/[A-Z]/g, s => ` ${s}`)
+
+  // better
+  // return string.replace(/([A-Z])/g, ' $1')
+}
+
+export function countSmileys(arr: string[]): number {
+  return arr.reduce((acc, cur) => {
+    if (cur.match(/^[:;][-~]?[)D]$/)) return acc + 1
+    return acc
+  }, 0)
+}
+
+export function deleteNth(arr: number[], n: number) {
+  return arr.reduce((acc: number[], cur) => {
+    const count = acc.filter(n => n === cur).length
+    if (count < n) acc.push(cur)
+    return acc
+  }, [])
+}
+
 export const towerBuilder = (nFloors: number): string[] => {
   // [                 字串長度  空白長度
   //   '     *     ',  1+0=1    11-1=10

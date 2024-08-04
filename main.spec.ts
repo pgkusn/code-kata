@@ -1,6 +1,31 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Break camelCase', () => {
+  it('應將駝峰式命名的字串拆分，在每個大寫字母之前插入一個空格', () => {
+    expect(fn.breakCamelCase('')).toBe('')
+    expect(fn.breakCamelCase('camelCasing')).toBe('camel Casing')
+    expect(fn.breakCamelCase('camelCasingTest')).toBe('camel Casing Test')
+  })
+})
+
+describe('Count the smiley faces!', () => {
+  it('應返回笑臉表情符號的數量', () => {
+    expect(fn.countSmileys([])).toBe(0)
+    expect(fn.countSmileys([':D', ':~)', ';~D', ':)'])).toBe(4)
+    expect(fn.countSmileys([':)', ':(', ':D', ':O', ':;'])).toBe(2)
+    expect(fn.countSmileys([';]', ':[', ';*', ':$', ';-D'])).toBe(1)
+  })
+})
+
+describe('Delete occurrences of an element if it occurs more than n times', () => {
+  it('應刪除多餘次數的元素', () => {
+    expect(fn.deleteNth([20, 37, 20, 21], 1)).toEqual([20, 37, 21])
+    expect(fn.deleteNth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3)).toEqual([1, 1, 3, 3, 7, 2, 2, 2])
+    expect(fn.deleteNth([12, 39, 19, 39, 39, 19, 12], 1)).toEqual([12, 39, 19])
+  })
+})
+
 describe('Build Tower', () => {
   it('應返回一個包含塔每一層的字串陣列', () => {
     expect(fn.towerBuilder(1)).toEqual(['*'])
