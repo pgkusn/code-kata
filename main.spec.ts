@@ -1,6 +1,14 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Valid Braces', () => {
+  it('應驗證括號是否匹配', () => {
+    expect(fn.validBraces('()')).toBe(true)
+    expect(fn.validBraces('[(])')).toBe(false)
+    expect(fn.validBraces('([{}])')).toBe(true)
+  })
+})
+
 describe('Break camelCase', () => {
   it('應將駝峰式命名的字串拆分，在每個大寫字母之前插入一個空格', () => {
     expect(fn.breakCamelCase('')).toBe('')
