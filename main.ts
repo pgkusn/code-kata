@@ -1,3 +1,81 @@
+export function bouncingBall(h: number, bounce: number, window: number): number {
+  if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) return -1
+
+  let count = 0
+  while (h > window) {
+    count += 2
+    h *= bounce
+  }
+  return count - 1
+}
+
+export function comp(a1: number[] | null, a2: number[] | null): boolean {
+  if (!a1 || !a2) return false
+
+  a1.sort((a, b) => a - b)
+  a2.sort((a, b) => a - b)
+
+  return a2.every((n, i) => n === a1[i] ** 2)
+}
+
+export function expandedForm(num: number): string {
+  const numStr = String(num)
+  const result = []
+  for (let i = numStr.length - 1, j = 0; i >= 0; i--, j++) {
+    const num = Number(numStr[i]) * 10 ** j
+    if (num) {
+      result.unshift(num)
+    }
+  }
+  return result.join(' + ')
+
+  // better
+  // return [...String(num)]
+  //   .reverse()
+  //   .map((n, i) => Number(n) * 10 ** i)
+  //   .filter(Boolean)
+  //   .reverse()
+  //   .join(' + ')
+}
+
+export function longestConsec(strarr: string[], k: number): string {
+  const generateStringList = () => {
+    const stringList = []
+    for (let i = 0; i < strarr.length; i++) {
+      const joinString = []
+      for (let j = 0; j < k; j++) {
+        joinString.push(strarr[i + j])
+      }
+      stringList.push(joinString.join(''))
+    }
+    return stringList
+  }
+
+  const findLongestString = (stringList: string[]) => {
+    stringList.sort((a, b) => b.length - a.length)
+    return stringList[0]
+  }
+
+  if (strarr.length === 0 || k > strarr.length || k <= 0) return ''
+
+  const stringList = generateStringList()
+  return findLongestString(stringList)
+}
+
+export function isPrime(num: number): boolean {
+  if (num < 2) return false
+  if (num === 2) return true
+  if (num % 2 === 0) return false
+
+  const sqrt = Math.sqrt(num)
+
+  for (let i = 3; i <= sqrt; i += 2) {
+    if (num % i === 0) return false
+  }
+
+  return true
+}
+
 export function validBraces(braces: string): boolean {
   const mapping: { [key: string]: string } = { ')': '(', ']': '[', '}': '{' }
 

@@ -1,6 +1,63 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Bouncing Balls', () => {
+  it('應返回球從窗前經過的次數', () => {
+    expect(fn.bouncingBall(3.0, 0.66, 1.5)).toBe(3)
+    expect(fn.bouncingBall(30.0, 0.66, 1.5)).toBe(15)
+    expect(fn.bouncingBall(30, 0.75, 1.5)).toBe(21)
+    expect(fn.bouncingBall(30, 0.4, 10)).toBe(3)
+  })
+})
+
+describe('Are they the "same"?', () => {
+  it('應判斷 a2 陣列中的元素是否為 a1 陣列中每個元素的平方', () => {
+    const a1 = [121, 144, 19, 161, 19, 144, 19, 11]
+    const a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
+    expect(fn.comp(a1, a2)).toBe(true)
+
+    const a1Alt = [121, 144, 19, 161, 19, 144, 19, 11]
+    const a2Alt = [11 * 21, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
+    expect(fn.comp(a1Alt, a2Alt)).toBe(false)
+  })
+})
+
+describe('Write Number in Expanded Form', () => {
+  it('應返回數字的擴展形式', () => {
+    expect(fn.expandedForm(12)).toBe('10 + 2')
+    expect(fn.expandedForm(42)).toBe('40 + 2')
+    expect(fn.expandedForm(70304)).toBe('70000 + 300 + 4')
+  })
+})
+
+describe('Consecutive strings', () => {
+  it('應返回最長的字串', () => {
+    expect(fn.longestConsec(['zone', 'abigail', 'theta', 'form', 'libe', 'zas'], 2)).toBe(
+      'abigailtheta'
+    )
+    expect(
+      fn.longestConsec(
+        ['ejjjjmmtthh', 'zxxuueeg', 'aanlljrrrxx', 'dqqqaaabbb', 'oocccffuucccjjjkkkjyyyeehh'],
+        1
+      )
+    ).toBe('oocccffuucccjjjkkkjyyyeehh')
+    expect(fn.longestConsec(['it', 'wkppv', 'ixoyx', '3452', 'zzzzzzzzzzzz'], 3)).toBe(
+      'ixoyx3452zzzzzzzzzzzz'
+    )
+  })
+})
+
+describe('Is a number prime?', () => {
+  it('應判斷數字是否為質數', () => {
+    expect(fn.isPrime(0)).toBe(false)
+    expect(fn.isPrime(1)).toBe(false)
+    expect(fn.isPrime(2)).toBe(true)
+    expect(fn.isPrime(73)).toBe(true)
+    expect(fn.isPrime(75)).toBe(false)
+    expect(fn.isPrime(-1)).toBe(false)
+  })
+})
+
 describe('Valid Braces', () => {
   it('應驗證括號是否匹配', () => {
     expect(fn.validBraces('()')).toBe(true)
