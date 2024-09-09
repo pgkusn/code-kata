@@ -1,6 +1,120 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('amelCase Method', () => {
+  it('應將字串轉換為駝峰命名法', () => {
+    expect(fn.camelCase('')).toBe('')
+    expect(fn.camelCase('test case')).toBe('TestCase')
+    expect(fn.camelCase('camel case method')).toBe('CamelCaseMethod')
+    expect(fn.camelCase('say hello')).toBe('SayHello')
+    expect(fn.camelCase('camel case word')).toBe('CamelCaseWord')
+  })
+})
+
+describe('Take a Number And Sum Its Digits Raised To The Consecutive Powers', () => {
+  it('應返回正確的數字列表', () => {
+    expect(fn.sumDigPow(1, 10)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9])
+    expect(fn.sumDigPow(1, 100)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 89])
+    expect(fn.sumDigPow(10, 100)).toEqual([89])
+    expect(fn.sumDigPow(90, 100)).toEqual([])
+    expect(fn.sumDigPow(90, 150)).toEqual([135])
+    expect(fn.sumDigPow(50, 150)).toEqual([89, 135])
+    expect(fn.sumDigPow(10, 150)).toEqual([89, 135])
+  })
+})
+
+describe('Two Sum', () => {
+  function doTest(numbers: number[], targetSum: number): void {
+    const [idx0, idx1] = fn.twoSum(numbers, targetSum) ?? []
+    const num0 = numbers[idx0]
+    const num1 = numbers[idx1]
+
+    expect(idx0).not.toBe(idx1)
+    expect(num0 + num1).toBe(targetSum)
+  }
+
+  it('應返回正確的兩個索引值', () => {
+    doTest([1, 2, 3], 4)
+    doTest([1234, 5678, 9012], 14690)
+    doTest([2, 2, 3], 4)
+    doTest([2, 3, 1], 3)
+  })
+})
+
+describe('Mexican Wave', () => {
+  let result: string[]
+
+  it('應返回墨西哥波陣列', () => {
+    result = ['Hello', 'hEllo', 'heLlo', 'helLo', 'hellO']
+    expect(fn.wave('hello')).toEqual(result)
+
+    result = [
+      'Codewars',
+      'cOdewars',
+      'coDewars',
+      'codEwars',
+      'codeWars',
+      'codewArs',
+      'codewaRs',
+      'codewarS',
+    ]
+    expect(fn.wave('codewars')).toEqual(result)
+
+    result = []
+    expect(fn.wave('')).toEqual(result)
+
+    result = [
+      'Two words',
+      'tWo words',
+      'twO words',
+      'two Words',
+      'two wOrds',
+      'two woRds',
+      'two worDs',
+      'two wordS',
+    ]
+    expect(fn.wave('two words')).toEqual(result)
+
+    result = [' Gap ', ' gAp ', ' gaP ']
+    expect(fn.wave(' gap ')).toEqual(result)
+  })
+})
+
+describe('The Supermarket Queue', () => {
+  it('應返回所有顧客結帳所需的最短時間', () => {
+    expect(fn.queueTime([], 1)).toBe(0)
+    expect(fn.queueTime([1, 2, 3, 4], 1)).toBe(10)
+    expect(fn.queueTime([2, 2, 3, 3, 4, 4], 2)).toBe(9)
+    expect(fn.queueTime([1, 2, 3, 4, 5], 100)).toBe(5)
+    expect(fn.queueTime([5, 3, 4], 1)).toBe(12)
+    expect(fn.queueTime([10, 2, 3, 3], 2)).toBe(10)
+    expect(fn.queueTime([2, 3, 10, 2], 2)).toBe(12)
+  })
+})
+
+describe('Which are in?', () => {
+  function testing(a1: string[], a2: string[], expected: string[]) {
+    expect(fn.inArray(a1, a2)).toEqual(expected)
+  }
+
+  it('應按照字母順序返回正確的結果', () => {
+    const a2 = ['lively', 'alive', 'harp', 'sharp', 'armstrong']
+
+    let a1 = ['arp', 'live', 'strong']
+    testing(a1, a2, ['arp', 'live', 'strong'])
+    a1 = ['xyz', 'live', 'strong']
+    testing(a1, a2, ['live', 'strong'])
+    a1 = ['live', 'strong', 'arp']
+    testing(a1, a2, ['arp', 'live', 'strong'])
+    a1 = ['live', 'strong', 'lyal', 'lysh', 'arp']
+    testing(a1, a2, ['arp', 'live', 'strong'])
+    a1 = ['tarp', 'mice', 'bull']
+    testing(a1, a2, [])
+    a1 = []
+    testing(a1, a2, [])
+  })
+})
+
 describe('Bouncing Balls', () => {
   it('應返回球從窗前經過的次數', () => {
     expect(fn.bouncingBall(3.0, 0.66, 1.5)).toBe(3)

@@ -1,3 +1,90 @@
+export function camelCase(str: string): string {
+  return str.replace(/\b\w/g, s => s.toUpperCase()).replace(/\s/g, '')
+}
+
+export function sumDigPow(a: number, b: number) {
+  const sum = (n: number) => {
+    return [...String(n)].reduce((prev, acc, index) => prev + Number(acc) ** (index + 1), 0)
+  }
+
+  const result = []
+  for (let n = a; n <= b; n++) {
+    if (n === sum(n)) {
+      result.push(n)
+    }
+  }
+  return result
+}
+
+export function twoSum(numbers: number[], target: number) {
+  for (let i = 0; i < numbers.length; i++) {
+    const j = numbers.findIndex(n => target - n === numbers[i])
+
+    // or
+    // const j = numbers.indexOf(target - numbers[i])
+
+    if (j !== -1 && j !== i) {
+      return [i, j]
+    }
+
+    // better
+    // const j = numbers.findLastIndex(n => target - n === numbers[i])
+    // if (j !== -1) {
+    //   return [i, j]
+    // }
+  }
+}
+
+export function wave(str: string): Array<string> {
+  return Array(str.length)
+    .fill(str)
+    .map((word, i) => {
+      const chars = word.split('')
+      chars[i] = chars[i].toUpperCase()
+      return chars.join('')
+
+      // better
+      // return word.substr(0, i) + word[i].toUpperCase() + word.substr(i + 1)
+    })
+    .filter(item => item !== str)
+}
+
+export function queueTime(customers: number[], n: number): number {
+  const counters = Array(n).fill(0)
+
+  const getMinIndex = () => {
+    const min = Math.min(...counters)
+    return counters.findIndex(n => n === min)
+
+    // better
+    // return counters.indexOf(min)
+  }
+
+  for (const n of customers) {
+    counters[getMinIndex()] += n
+  }
+
+  return Math.max(...counters)
+}
+
+export function inArray(a1: string[], a2: string[]): string[] {
+  const matchedWords = a1.reduce((prev: string[], curr) => {
+    const isMatch = a2.find(item => item.match(curr))
+    if (isMatch) {
+      prev.push(curr)
+    }
+    return prev
+  }, [])
+
+  // better
+  // const matchedWords = a1.filter(substr => {
+  //   const isMatch = a2.some(str => str.includes(substr))
+  //   return isMatch
+  // })
+
+  return matchedWords.sort()
+}
+
 export function bouncingBall(h: number, bounce: number, window: number): number {
   if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h) return -1
 
