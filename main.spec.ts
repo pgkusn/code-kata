@@ -1,6 +1,64 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Give me a Diamond', () => {
+  it('當輸入為奇數並大於零時，應返回正確的字串', () => {
+    expect(fn.diamond(1)).toBe('*\n')
+    expect(fn.diamond(3)).toBe(' *\n***\n *\n')
+    expect(fn.diamond(5)).toBe('  *\n ***\n*****\n ***\n  *\n')
+  })
+
+  it('當輸入為偶數或小於1時，應返回 null', () => {
+    expect(fn.diamond(2)).toBeNull()
+    expect(fn.diamond(-3)).toBeNull()
+    expect(fn.diamond(0)).toBeNull()
+  })
+})
+
+describe('WeIrD StRiNg CaSe', () => {
+  function doTest(input: string, expected: string): void {
+    const actual = fn.toWeirdCase(input)
+    expect(actual).toBe(expected)
+  }
+
+  it('應返回正確的字串', () => {
+    doTest('This is a test', 'ThIs Is A TeSt')
+    doTest('', '')
+    doTest('unique', 'UnIqUe')
+    doTest('UPPER CASE', 'UpPeR CaSe')
+    doTest('lower case', 'LoWeR CaSe')
+  })
+})
+
+describe('Simple Encryption #1 - Alternating Split', () => {
+  it('應返回正確的加密字串', () => {
+    expect(fn.encrypt('This is a test!', 0)).toBe('This is a test!')
+    expect(fn.encrypt('This is a test!', 1)).toBe('hsi  etTi sats!')
+    expect(fn.encrypt('This is a test!', 2)).toBe('s eT ashi tist!')
+    expect(fn.encrypt('This is a test!', 3)).toBe(' Tah itse sits!')
+    expect(fn.encrypt('This is a test!', 4)).toBe('This is a test!')
+    expect(fn.encrypt('This is a test!', -1)).toBe('This is a test!')
+    expect(fn.encrypt('This kata is very interesting!', 1)).toBe('hskt svr neetn!Ti aai eyitrsig')
+  })
+
+  it('應返回正確的解密字串', () => {
+    expect(fn.decrypt('This is a test!', 0)).toBe('This is a test!')
+    expect(fn.decrypt('hsi  etTi sats!', 1)).toBe('This is a test!')
+    expect(fn.decrypt('s eT ashi tist!', 2)).toBe('This is a test!')
+    expect(fn.decrypt(' Tah itse sits!', 3)).toBe('This is a test!')
+    expect(fn.decrypt('This is a test!', 4)).toBe('This is a test!')
+    expect(fn.decrypt('This is a test!', -1)).toBe('This is a test!')
+    expect(fn.decrypt('hskt svr neetn!Ti aai eyitrsig', 1)).toBe('This kata is very interesting!')
+  })
+
+  it('當傳入的第一個參數為空字串或 null，應直接回傳第一個參數', () => {
+    expect(fn.encrypt('', 0)).toBe('')
+    expect(fn.decrypt('', 0)).toBe('')
+    expect(fn.encrypt(null, 0)).toBeNull()
+    expect(fn.decrypt(null, 0)).toBeNull()
+  })
+})
+
 describe('amelCase Method', () => {
   it('應將字串轉換為駝峰命名法', () => {
     expect(fn.camelCase('')).toBe('')

@@ -1,3 +1,79 @@
+export function diamond(n: number): string | null {
+  if (n % 2 === 0 || n < 1) return null
+
+  const printLine = (i: number) => {
+    const chars = '*'.repeat(i)
+    const spaces = ' '.repeat((n - i) / 2)
+    return spaces + chars + '\n'
+  }
+
+  let result = ''
+  for (let i = 1; i < n; i += 2) {
+    result += printLine(i)
+  }
+  for (let i = n; i > 0; i -= 2) {
+    result += printLine(i)
+  }
+  return result
+}
+
+export function toWeirdCase(string: string): string {
+  const mapWord = (word: string) => {
+    let result = ''
+    for (let i = 0; i < word.length; i++) {
+      const char = word[i]
+      result += i % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+    }
+    return result
+  }
+
+  return string.split(' ').map(mapWord).join(' ')
+}
+
+export function encrypt(text: string | null, n: number) {
+  if (!text) return text
+
+  while (n > 0) {
+    const even = []
+    const odd = []
+
+    for (let i = 0; i < text.length; i++) {
+      if (i % 2 === 0) {
+        even.push(text[i])
+      } else {
+        odd.push(text[i])
+      }
+    }
+
+    text = [...odd, ...even].join('')
+
+    n--
+  }
+
+  return text
+}
+
+export function decrypt(encryptedText: string | null, n: number) {
+  if (!encryptedText) return encryptedText
+
+  // 取前半部原字串的奇數索引，與後半部原字串的偶數索引，將兩者進行重組
+  while (n > 0) {
+    const oddEnd = Math.trunc(encryptedText.length / 2)
+    const odd = encryptedText.slice(0, oddEnd)
+    const even = encryptedText.slice(oddEnd)
+
+    encryptedText = ''
+    for (let i = 0; i < even.length; i++) {
+      encryptedText += even[i]
+      encryptedText += odd[i] ?? ''
+    }
+
+    n--
+  }
+
+  return encryptedText
+}
+
 export function camelCase(str: string): string {
   return str.replace(/\b\w/g, s => s.toUpperCase()).replace(/\s/g, '')
 }
