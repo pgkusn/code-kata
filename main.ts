@@ -1,3 +1,96 @@
+export function partsSums(ls: number[]): number[] {
+  const calculateSum = (numbers: number[]) => {
+    return numbers.reduce((prev, curr) => prev + curr, 0)
+  }
+
+  const result = ls.map((_, index, array) => {
+    const slicedList = array.slice(index)
+    return calculateSum(slicedList)
+  })
+
+  result.push(0)
+
+  return result
+
+  // better
+  // const totalSum = ls.reduce((acc, curr) => acc + curr, 0)
+  // const result = [totalSum]
+
+  // for (let i = 0; i < ls.length; i++) {
+  //   result.push(result[i] - ls[i])
+  // }
+
+  // return result
+}
+
+export function multiplicationTable(size: number): number[][] {
+  const rows = []
+
+  for (let i = 1; i <= size; i++) {
+    const row = []
+    for (let j = 1; j <= size; j++) {
+      row.push(i * j)
+    }
+    rows.push(row)
+  }
+
+  return rows
+}
+
+export function parse(data: string): number[] {
+  let count = 0
+
+  const command = {
+    i() {
+      count += 1
+    },
+    d() {
+      count -= 1
+    },
+    s() {
+      count *= count
+    },
+  }
+
+  return [...data].reduce((prev: number[], curr) => {
+    if (curr in command) {
+      command[curr as keyof typeof command]()
+    }
+
+    if (curr === 'o') {
+      prev.push(count)
+    }
+
+    return prev
+  }, [])
+}
+
+export const sqInRect = (l: number, w: number): null | number[] => {
+  if (l === w) return null
+
+  const result: number[] = []
+
+  const calc = (x: number, y: number) => {
+    // 計算當前能夠切割出的最大的正方形邊長（取長度和寬度中的較小值）
+    const min = Math.min(x, y)
+
+    // 將該正方形的邊長新增到結果中
+    result.push(min)
+
+    // 根據哪一側剩餘空間更大，從那一側減去正方形的邊長
+    const diff = Math.abs(x - y)
+
+    // 繼續此過程，直到其中一側變為零
+    if (x !== y) {
+      calc(min, diff)
+    }
+  }
+
+  calc(l, w)
+
+  return result
+}
+
 export function diamond(n: number): string | null {
   if (n % 2 === 0 || n < 1) return null
 

@@ -1,6 +1,56 @@
 import { describe, it, expect } from 'vitest'
 import * as fn from './main'
 
+describe('Sums of Parts', () => {
+  it('應回傳正確的對應總和', function () {
+    expect(fn.partsSums([])).toEqual([0])
+    expect(fn.partsSums([0, 1, 3, 6, 10])).toEqual([20, 20, 19, 16, 10, 0])
+    expect(fn.partsSums([1, 2, 3, 4, 5, 6])).toEqual([21, 20, 18, 15, 11, 6, 0])
+    expect(fn.partsSums([744125, 935, 407, 454, 430, 90, 144, 6710213, 889, 810, 2579358])).toEqual(
+      [
+        10037855, 9293730, 9292795, 9292388, 9291934, 9291504, 9291414, 9291270, 2581057, 2580168,
+        2579358, 0,
+      ]
+    )
+  })
+})
+
+describe('Multiplication table', () => {
+  it('應返回正確的九九乘法表', () => {
+    expect(fn.multiplicationTable(1)).toEqual([[1]])
+    expect(fn.multiplicationTable(2)).toEqual([
+      [1, 2],
+      [2, 4],
+    ])
+    expect(fn.multiplicationTable(3)).toEqual([
+      [1, 2, 3],
+      [2, 4, 6],
+      [3, 6, 9],
+    ])
+  })
+})
+
+describe('Make the Deadfish Swim', () => {
+  it('應返回正確的解析結果', () => {
+    expect(fn.parse('iiisdoso')).toEqual([8, 64])
+    expect(fn.parse('iiisxxxdoso')).toEqual([8, 64])
+  })
+})
+
+describe('Rectangle into Squares', () => {
+  function testing(l: number, w: number, expected: number[] | null): void {
+    expect(fn.sqInRect(l, w)).toEqual(expected)
+  }
+
+  it('應返回正確的正方形邊長', () => {
+    testing(5, 5, null)
+    testing(5, 3, [3, 2, 1, 1])
+    testing(3, 5, [3, 2, 1, 1])
+    testing(20, 14, [14, 6, 6, 2, 2, 2])
+    testing(14, 20, [14, 6, 6, 2, 2, 2])
+  })
+})
+
 describe('Give me a Diamond', () => {
   it('當輸入為奇數並大於零時，應返回正確的字串', () => {
     expect(fn.diamond(1)).toBe('*\n')
