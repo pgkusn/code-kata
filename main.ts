@@ -1,3 +1,30 @@
+export function revRot(s: string, sz: number): string {
+  if (!s || sz <= 0 || s.length < sz) return ''
+
+  const splitStr = (s: string): string[] => {
+    return Array.from({ length: Math.ceil(s.length / sz) }, (_, i) => {
+      const start = i * sz
+      return s.slice(start, sz + start)
+    })
+  }
+
+  const mapStr = (s: string): string => {
+    if (s.length < sz) return ''
+
+    if (sumStr(s) % 2 === 0) {
+      return s.split('').reverse().join('')
+    }
+
+    return s.slice(1) + s[0]
+  }
+
+  const sumStr = (s: string): number => {
+    return [...s].reduce((prev, curr) => prev + Number(curr), 0)
+  }
+
+  return splitStr(s).map(mapStr).join('')
+}
+
 export function partsSums(ls: number[]): number[] {
   const calculateSum = (numbers: number[]) => {
     return numbers.reduce((prev, curr) => prev + curr, 0)
@@ -188,20 +215,27 @@ export function sumDigPow(a: number, b: number) {
 export function twoSum(numbers: number[], target: number) {
   for (let i = 0; i < numbers.length; i++) {
     const j = numbers.findIndex(n => target - n === numbers[i])
-
-    // or
-    // const j = numbers.indexOf(target - numbers[i])
-
     if (j !== -1 && j !== i) {
       return [i, j]
     }
 
-    // better
+    // or
     // const j = numbers.findLastIndex(n => target - n === numbers[i])
     // if (j !== -1) {
     //   return [i, j]
     // }
   }
+
+  // better
+  // const map = new Map()
+  // for (let i = 0; i < numbers.length; i++) {
+  //   const complement = target - numbers[i]
+  //   if (map.has(complement)) {
+  //     return [map.get(complement), i]
+  //   }
+  //   map.set(numbers[i], i)
+  // }
+  // return []
 }
 
 export function wave(str: string): Array<string> {
@@ -796,4 +830,997 @@ export function reverseSeq(n: number): number[] {
 
 export function sakuraFall(v: number): number {
   return v > 0 ? 400 / v : 0
+}
+
+/**
+ * Gravity Flip
+ * 重力翻轉
+ * @param {string} d
+ * @param {number[]} a
+ * @returns {number[]}
+ */
+export function flip(d: string, a: number[]): number[] {
+  if (d === 'R') {
+    return a.sort((a, b) => a - b)
+  } else if (d === 'L') {
+    return a.sort((a, b) => b - a)
+  }
+  return a
+}
+
+/**
+ * A wolf in sheep's clothing
+ * 狼穿著羊皮
+ * @param {string[]} queue
+ * @returns {string}
+ */
+export function warnTheSheep(queue: string[]): string {
+  const ary = [...queue].reverse()
+  const n = ary.findIndex(item => item === 'wolf')
+  return n === 0
+    ? 'Pls go away and stop eating my sheep'
+    : `Oi! Sheep number ${n}! You are about to be eaten by a wolf!`
+}
+
+/**
+ * Total amount of points
+ * 總分計算
+ * @param {string[]} games
+ * @returns {number}
+ */
+export function points(games: string[]): number {
+  return games.reduce((previousValue, currentValue) => {
+    const [x, y] = currentValue.split(':')
+    if (x > y) return previousValue + 3
+    if (x < y) return previousValue
+    if (x === y) return previousValue + 1
+    return previousValue
+  }, 0)
+}
+
+/**
+ * Sum of differences in array
+ * 陣列差值總和
+ * @param {number[]} arr
+ * @returns {number}
+ */
+export function sumOfDifferences(arr: number[]): number {
+  if (arr.length < 2) return 0
+  const sortedArr = [...arr].sort((a, b) => b - a)
+  return sortedArr.reduce((previousValue, currentValue, currentIndex) => {
+    const next = sortedArr[currentIndex + 1]
+    return previousValue + (currentValue - next || 0)
+  }, 0)
+}
+
+/**
+ * Multiple of index
+ * 索引倍數
+ * @param {number[]} array
+ * @returns {number[]}
+ */
+export function multipleOfIndex(array: number[]): number[] {
+  return array.filter((item, index) => (item === 0 ? true : item % index === 0))
+}
+
+/**
+ * CSV representation of array
+ * 陣列的 CSV 表示法
+ * @param {number[][]} array
+ * @returns {string}
+ */
+export function toCsvText(array: number[][]): string {
+  return array.map(item => item.join()).join('\n')
+}
+
+/**
+ * Array plus array
+ * 陣列相加
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @returns {number}
+ */
+export function arrayPlusArray(arr1: number[], arr2: number[]): number {
+  const arr = [...arr1, ...arr2]
+  return arr.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+}
+
+/**
+ * Find the first non-consecutive number
+ * 找到第一個非連續數字
+ * @param {number[]} arr
+ * @returns {(number|null)}
+ */
+export function firstNonConsecutive(arr: number[]): number | null {
+  return arr.find((n, i) => i && n - 1 !== arr[i - 1]) ?? null
+}
+
+/**
+ * Find Multiples of a Number
+ * 找到數字的倍數
+ * @param {number} integer
+ * @param {number} limit
+ * @returns {number[]}
+ */
+export function findMultiples(integer: number, limit: number): number[] {
+  const result: number[] = []
+  for (let n = integer; n <= limit; n += integer) {
+    result.push(n)
+  }
+  return result
+}
+
+/**
+ * Invert values
+ * 反轉數字元號
+ * @param {number[]} array
+ * @returns {number[]}
+ */
+export function invert(array: number[]): number[] {
+  return array.map(n => n * -1 || 0)
+}
+
+/**
+ * Merge two sorted arrays into one
+ * 將兩個排序好的陣列合併成一個
+ * @param {number[]} arr1
+ * @param {number[]} arr2
+ * @returns {number[]}
+ */
+export function mergeArrays(arr1: number[], arr2: number[]): number[] {
+  const setObj = new Set([...arr1, ...arr2])
+  return Array.from(setObj).sort((a, b) => a - b)
+}
+
+/**
+ * Duck Duck Goose
+ * 鴨子、鴨子、鵝
+ * @param {object[]} players
+ * @param {number} goose
+ */
+export function duckDuckGoose(players: { name: string }[], goose: number): string {
+  return players[(goose - 1) % players.length].name
+}
+
+/**
+ * Beginner - Lost Without a Map
+ * 基礎 - 一張地圖也不會丟
+ * @param {number[]} x
+ * @returns {number[]}
+ */
+export function maps(x: number[]): number[] {
+  return x.map(n => n * 2)
+}
+
+/**
+ * Beginner - Reduce but Grow
+ * 基礎 - 縮減但成長
+ * @param {number[]} x
+ * @returns {number}
+ */
+export function grow(x: number[]): number {
+  return x.reduce((previousValue, currentValue, currentIndex) => {
+    if (currentIndex === 0) return previousValue
+    return previousValue * currentValue
+  }, x[0])
+}
+
+/**
+ * To square(root) or not to square(root)
+ * 要平方根還是不要平方根
+ * @param {number[]} array
+ * @returns {number[]}
+ */
+export function squareOrSquareRoot(array: number[]): number[] {
+  return array.map(n => (Number.isInteger(Math.sqrt(n)) ? Math.sqrt(n) : n ** 2))
+}
+
+/**
+ * I love you, a little , a lot, passionately ... not at all
+ * 我愛你，一點點，很多，熱情...一點也不
+ * @param {number} nbPetals
+ * @returns {string}
+ */
+export function howMuchILoveYou(nbPetals: number): string {
+  const phrases = ['I love you', 'a little', 'a lot', 'passionately', 'madly', 'not at all']
+  return phrases[(nbPetals - 1) % phrases.length]
+}
+
+/**
+ * Well of Ideas - Easy Version
+ * 點子之井 - 簡易版
+ * @param {string[]} x
+ * @returns {string}
+ */
+export function well(x: string[]): string {
+  const filtered = x.filter(item => item === 'good')
+  if (filtered.length > 2) {
+    return 'I smell a series!'
+  } else if (filtered.length > 0) {
+    return 'Publish!'
+  } else {
+    return 'Fail!'
+  }
+}
+
+/**
+ * Filter out the geese
+ * 過濾出大雁
+ * @param {string[]} birds
+ * @returns {string[]}
+ */
+export function gooseFilter(birds: string[]): string[] {
+  var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher']
+  return birds.filter(item => !geese.includes(item))
+}
+
+/**
+ * Sum Mixed Array
+ * 求和混合陣列
+ * @param {(string | number)[]} x
+ * @returns {number}
+ */
+export function sumMix(x: (string | number)[]): number {
+  return x.reduce((previousValue: number, currentValue) => {
+    return previousValue + Number(currentValue)
+  }, 0)
+}
+
+/**
+ * Fake Binary
+ * 假二進制
+ * @param {string} x
+ * @returns {string}
+ */
+export function fakeBin(x: string): string {
+  return x
+    .split('')
+    .map(n => (+n < 5 ? '0' : '1'))
+    .join('')
+}
+
+/**
+ * Convert a string to an array
+ * 將字串轉為陣列
+ * @param {string} string
+ * @returns {string[]}
+ */
+export function stringToArray(string: string): string[] {
+  return string.split(' ')
+}
+
+/**
+ * Is there a vowel in there?
+ * 是否有元音字母？
+ * @param {number[]} a
+ * @returns {(number|string)[]}
+ */
+export function isVow(a: number[]): (number | string)[] {
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  return a.map(n => {
+    const s = String.fromCharCode(n)
+    return vowels.includes(s) ? s : n
+  })
+}
+
+/**
+ * Sort and Star
+ * 排序並用星號隔開
+ * @param {string[]} s
+ * @returns {string}
+ */
+export function twoSort(s: string[]): string {
+  const sortedArray = [...s].sort()
+  return sortedArray[0].split('').join('***')
+}
+
+/**
+ * Calculate average
+ * 計算平均值
+ * @param {number[]} array
+ * @returns {number}
+ */
+export function findAverage(array: number[]): number {
+  const total = array.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  return total / array.length || 0
+}
+
+/**
+ * Count of positives / sum of negatives
+ * 正數個數 / 負數總和
+ * @param {number[]} input
+ * @returns {number[]}
+ */
+export function countPositivesSumNegatives(input: number[] | null): number[] {
+  if (!input || !input.length) return []
+  const positivesCount = input.filter(n => n > 0).length
+  const negativeTotal = input
+    .filter(n => n < 0)
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+  return [positivesCount, negativeTotal]
+}
+
+/**
+ * Removing Elements
+ * 移除元素
+ * @param {array} arr - 要處理的陣列
+ * @returns {array} - 移除後的陣列
+ */
+export function removeEveryOther<T>(arr: T[]): T[] {
+  return arr.filter((value, index) => index % 2 === 0)
+}
+
+/**
+ * Arguments to Binary addition
+ * 二進制加法
+ * @param {array} arr - 包含數字和其他元素的陣列
+ * @returns {string} - 總和的二進制表示
+ */
+export function arr2bin(arr: any[]): string {
+  if (arr.includes(NaN)) return 'NaN'
+  const total = arr.reduce((previousValue, currentValue) => {
+    return previousValue + (Number.isInteger(currentValue) ? currentValue : 0)
+  }, 0)
+  return total.toString(2)
+}
+
+/**
+ * UEFA EURO 2016
+ * 歐洲國家盃 2016
+ * @param {string[]} teams - 兩支球隊的名稱
+ * @param {number[]} scores - 兩支球隊的得分
+ * @returns {string} - 比賽結果字串
+ */
+export function uefaEuro2016(teams: string[], scores: number[]): string {
+  const title = `At match ${teams[0]} - ${teams[1]}, `
+  const max = Math.max(...scores)
+  const min = Math.min(...scores)
+  const winner = teams[scores.findIndex(n => n === max)]
+  const result = max === min ? 'teams played draw.' : `${winner} won!`
+  return title + result
+}
+
+/**
+ * pick a set of first elements
+ * 選擇前 n 個元素
+ * @param {array} arr - 要處理的序列
+ * @param {number} n - 要返回的元素數量（預設值為 1）
+ * @returns {array} - 第一個元素或前 n 個元素的序列
+ */
+export function first<T>(arr: T[], n: number = 1): T[] {
+  return arr.slice(0, n)
+}
+
+/**
+ * Find the Difference in Age between Oldest and Youngest Family Members
+ * 找到家庭成員最大和最小年齡的差異
+ * @param {number[]} ages - 包含家庭成員年齡的陣列
+ * @returns {number[]} - 包含最年輕年齡、最年長年齡和年齡差的陣列
+ */
+export function differenceInAges(ages: number[]): number[] {
+  const min = Math.min(...ages)
+  const max = Math.max(...ages)
+  return [min, max, max - min]
+}
+
+/**
+ * Sum of positive
+ * 計算陣列中所有正數的總和。
+ * @param {number[]} arr - 輸入的數字陣列
+ * @returns {number} - 所有正數的總和
+ */
+export function positiveSum(arr: number[]): number {
+  const positiveNumbers = arr.filter(n => n > 0)
+  return positiveNumbers.reduce((previousValue, currentValue) => previousValue + currentValue, 0)
+}
+
+/**
+ * Logical calculator
+ * 根據指定的邏輯運算符計算陣列中的布林值。
+ * @param {boolean[]} array - 包含布林值的陣列
+ * @param {string} op - 邏輯運算符，可選值為 "AND", "OR", "XOR"
+ * @returns {boolean} - 計算結果的布林值
+ */
+export function logicalCalc(array: boolean[], op: string): boolean {
+  return array.reduce((previous, current) => {
+    if (op === 'AND') return previous && current
+    if (op === 'OR') return previous || current
+    if (op === 'XOR') return previous !== current
+    return previous
+  })
+}
+
+/**
+ * Remove First and Last Character Part Two
+ * 刪除輸入字串中的第一個和最後一個字元序列，並用空格分隔其餘序列。
+ * @param {string} string - 包含以逗號分隔的字符序列的字串
+ * @returns {string | null} - 新的字串，或如果輸入為空或只有一個序列則返回空值
+ */
+export function array(string: string): string | null {
+  const arrayList = string.split(',')
+  if (arrayList.length < 3) return null
+  return arrayList.slice(1, arrayList.length - 1).join(' ')
+}
+
+/**
+ * Array Madness
+ * 判斷陣列 a 中每個元素的平方和是否大於陣列 b 中每個元素的立方和。
+ * @param {number[]} a - 整數陣列 a
+ * @param {number[]} b - 整數陣列 b
+ * @returns {boolean} - 如果 a 中每個元素的平方和大於 b 中每個元素的立方和，則返回 true；否則返回 false。
+ */
+export function arrayMadness(a: number[], b: number[]): boolean {
+  const sumA = a.map(n => n ** 2).reduce((previous, current) => previous + current)
+  const sumB = b.map(n => n ** 3).reduce((previous, current) => previous + current)
+  return sumA > sumB
+}
+
+/**
+ * How many stairs will Suzuki climb in 20 years?
+ * 計算 20 年內可能爬的階梯數。
+ * @param {number[][]} s - 包含整年爬樓梯記錄的陣列，每個元素都是一週的爬樓梯數字陣列。
+ * @returns {number} - 20 年內可能爬的階梯數。
+ */
+export function stairsIn20(s: number[][]): number {
+  return s.flat().reduce((previous, current) => previous + current) * 20
+}
+
+/**
+ * Count the Monkeys!
+ * 生成包含從 1 到指定數字的所有數字的陣列，但不包括 0。
+ * @param {number} n - 指定的數字
+ * @returns {number[]} - 包含從 1 到 n 的所有數字的陣列
+ */
+export function monkeyCount(n: number): number[] {
+  const countList: number[] = []
+  for (let i = 1; i <= n; i++) {
+    countList.push(i)
+  }
+  return countList
+}
+
+/**
+ * Add Length
+ * 給定一個字串，將每個單詞的長度新增到該單詞的末尾，並返回一個陣列。
+ * @param {string} str - 輸入字串，其中單詞由空格分隔
+ * @returns {string[]} - 包含每個單詞的長度添加到該單詞的末尾的陣列
+ */
+export function addLength(str: string): string[] {
+  return str.split(' ').map(s => `${s} ${s.length}`)
+}
+
+/**
+ * Cascading Subsets
+ * 返回大小為 n 的列表的級聯子集。
+ * @param {number[]} array - 輸入列表
+ * @param {number} n - 子集大小
+ * @returns {number[][]} - 包含大小為 n 的子集的二維陣列
+ */
+export function eachCons(array: number[], n: number): number[][] {
+  if (n < 1 || n > array.length) return []
+  const result: number[][] = []
+  for (let i = 0; i <= array.length - n; i++) {
+    const target = array.slice(i, i + n)
+    result.push(target)
+  }
+  return result
+}
+
+/**
+ * Square(n) Sum
+ * 將每個傳入的數字平方，然後將結果相加。
+ * @param {number[]} numbers - 數字陣列
+ * @returns {number} - 平方和
+ */
+export function squareSum(numbers: number[]): number {
+  return numbers.reduce((previous, current) => previous + current ** 2, 0)
+}
+
+/**
+ * A Needle in the Haystack
+ * 在給定的陣列中找到 "needle" 並返回相應的消息。
+ * @param {string[]} haystack - 包含 "needle" 的陣列
+ * @returns {string} - 包含 "found the needle at position X" 或 "needle not found" 的消息
+ */
+export function findNeedle(haystack: string[]): string {
+  const index = haystack.findIndex(s => s === 'needle')
+  return index === -1 ? 'needle not found' : `found the needle at position ${index}`
+}
+
+/**
+ * Get the mean of an array
+ * 計算給定陣列的平均值，並將其四捨五入為最接近的整數。
+ * @param {number[]} marks - 成績陣列
+ * @returns {number} - 平均成績（無條件捨去）
+ */
+export function getAverage(marks: number[]): number {
+  const average = marks.reduce((a, b) => a + b) / marks.length
+  return Math.floor(average)
+}
+
+/**
+ * Find numbers which are divisible by given number
+ * 返回所有可以被給定除數整除的數字。
+ * @param {number[]} numbers - 數字陣列
+ * @param {number} divisor - 除數
+ * @returns {number[]} - 所有可以被除數整除的數字陣列
+ */
+export function divisibleBy(numbers: number[], divisor: number): number[] {
+  return numbers.filter(n => n % divisor === 0)
+}
+
+/**
+ * Convert number to reversed array of digits
+ * 返回數字按相反順序排列在陣列中。
+ * @param {number} n - 非負數
+ * @returns {number[]} - 數字按相反順序排列的陣列
+ */
+export function digitize(n: number): number[] {
+  return Array.from(String(n), Number).reverse()
+}
+
+/**
+ * Count by X
+ * 返回前 n 個 x 的倍數的陣列。
+ * @param {number} x - 基數
+ * @param {number} n - 計數次數
+ * @returns {number[]} - 陣列包含前 n 個 x 的倍數
+ */
+export function countBy(x: number, n: number): number[] {
+  return [...Array(n)].map((_, index) => x * (index + 1))
+}
+
+/**
+ * Enumerable Magic #1 - True for All?
+ * 根據給定的函數判斷序列中的所有元素是否都滿足條件。
+ * @param {T[]} arr - 序列（陣列或其他結構）
+ * @param {(item: T) => boolean} fun - 應用於每個元素的函數
+ * @returns {boolean} - 如果所有元素都滿足條件，返回 true；否則返回 false
+ */
+export function all<T>(arr: T[], fun: (item: T) => boolean): boolean {
+  return arr.every(fun)
+}
+
+/**
+ * Birthday II - Presents
+ * 根據傳遞次數和禮物類型返回結果。
+ * @param {string} x - 禮物類型（'goodpresent', 'crap', 'empty', 'bang', 'badpresent', 'dog'）
+ * @param {number} y - 傳遞次數
+ * @returns {string|number} - 結果字串或數字
+ */
+export function present(x: string, y: number): string | number {
+  if (x === 'goodpresent') {
+    return Array.from(x, s => String.fromCharCode(s.charCodeAt(0) + y)).join('')
+  }
+  if (x === 'crap' || x === 'empty') {
+    return [...x].sort().join('')
+  }
+  if (x === 'bang') {
+    return Array.from(x, s => s.charCodeAt(0) - y).reduce((a, b) => a + b)
+  }
+  if (x === 'badpresent') {
+    return 'Take this back!'
+  }
+  if (x === 'dog') {
+    return `pass out from excitement ${y} times`
+  }
+  return ''
+}
+
+/**
+ * Holiday VII - Local Talk
+ * 將句子中的單詞之間插入 'pak'。
+ * @param {string} s - 輸入句子
+ * @returns {string} - 轉換後的句子
+ */
+export function pak(s: string): string {
+  return s.trim().replace(/ /g, ' pak ')
+}
+
+/**
+ * Christmas baubles on the tree
+ * 返回每個樹枝上的綵球陣列。
+ * @param {number} baubles - 綵球數量
+ * @param {number} branches - 樹枝數量
+ * @returns {number[]|string} - 每個樹枝上的綵球陣列或提示資訊
+ */
+export function baublesOnTree(baubles: number, branches: number): number[] | string {
+  if (!branches) return 'Grandma, we will have to buy a Christmas tree first!'
+  const tree = Array(branches).fill(0)
+  for (let i = 0, balls = baubles; balls > 0; i++) {
+    balls--
+    tree[i % tree.length]++
+  }
+  return tree
+}
+
+/**
+ * Fifa 17 Launch
+ * 計算總獲獎金額。
+ * @param {Record<string, string>} ticket - 彩票對象，包含主場、客場和平局賭注
+ * @param {string[]} results - 結果陣列，每個元素表示比分
+ * @returns {string} - 帶有 £ 符號的總獲獎金額
+ */
+export function fifa(ticket: Record<string, string>, results: string[]): string {
+  const toNumber = (value: string): number => {
+    const regex = /^£(\d+)/
+    const match = regex.exec(value)
+    return match ? Number(match[1]) : 0
+  }
+  const getResult = (a: number, b: number): string => {
+    if (a > b) return 'Home'
+    if (a < b) return 'Away'
+    if (a === b) return 'Draw'
+    return ''
+  }
+  const ticketList = Object.entries(ticket)
+  const total = results.reduce((previous, current, index) => {
+    const [a, b] = current.split('-').map(Number)
+    const result = getResult(a, b)
+    const [key, value] = ticketList[index]
+    return key === result ? previous + toNumber(value) : previous
+  }, 0)
+  return `£${total}`
+}
+
+/**
+ * Homogenous arrays
+ * 返回一個新陣列，僅包含原始陣列中不為空且所有項類型相同的子陣列。
+ * @param {any[][]} arrays - 二維陣列
+ * @returns {any[][]} - 符合條件的子陣列組成的新陣列
+ */
+export function filterHomogenous(arrays: any[][]): any[][] {
+  return arrays.filter(array => {
+    const result = array.every(item => typeof item === typeof array[0])
+    return array.length && result
+  })
+}
+
+/**
+ * Noye's Fludde
+ * 動物上船
+ * @param {(string|number)[]} input - 包含動物名字或數字的陣列
+ * @returns {[string, string][]} - 排列好的動物成對陣列
+ */
+export function boatLoader(input: (string | number)[]): [string, string][] {
+  const animals: Record<string, string | null> = input.reduce((previous, current) => {
+    const obj: Record<string, string | null> = {}
+    obj[current.toString()] = current.toString() in previous ? current.toString() : null
+    return {
+      ...previous,
+      ...obj,
+    }
+  }, {} as Record<string, string | null>)
+
+  // 移除單數個的項目與數字
+  for (let animal in animals) {
+    if (!animals[animal] || !isNaN(Number(animals[animal]))) {
+      delete animals[animal]
+    }
+  }
+
+  // 按字母順序排列、大寫在小寫前面
+  const result = Object.entries(animals).sort(([a], [b]) => {
+    return a.localeCompare(b, 'en-US-u-kf-upper')
+  })
+
+  return result as [string, string][]
+}
+
+/**
+ * Numbers to Objects
+ * 數字轉物件
+ * @param {number[]} s - 數字陣列
+ * @returns {Record<number, string>[]} - 包含數字與對應字串的物件陣列
+ */
+export function numObj(s: number[]): Record<number, string>[] {
+  return s.map(n => ({
+    [n]: String.fromCharCode(n),
+  }))
+}
+
+/**
+ * Likes Vs Dislikes
+ * 喜歡 vs. 不喜歡
+ * @param {string[]} buttons - 按鈕輸入的陣列，包含 'Like'、'Dislike'
+ * @returns {string} - 最終按鈕狀態，可能為 'Like'、'Dislike' 或 'Nothing'
+ */
+export function likeOrDislike(buttons: string[]): string {
+  return buttons.reduce((previous, current) => {
+    return previous === current ? 'Nothing' : current
+  }, 'Nothing')
+}
+
+/**
+ * Alan Partridge I - Partridge Watch
+ * @param {string[]} x - 包含詞彙的字串陣列
+ * @returns {string} - 返回相應的結果
+ */
+export function part(x: string[]): string {
+  const keywords = [
+    'Partridge',
+    'PearTree',
+    'Chat',
+    'Dan',
+    'Toblerone',
+    'Lynn',
+    'AlphaPapa',
+    'Nomad',
+  ]
+  const marks = x.reduce((previous, current) => {
+    return previous + (keywords.includes(current) ? '!' : '')
+  }, '')
+  return marks ? `Mine's a Pint${marks}` : "Lynn, I've pierced my foot on a spike!!"
+}
+
+/**
+ * Slaphead
+ * @param {string} x - 代表頭部狀態的字串，包含 "-" 和 "/"
+ * @returns {[string, string]} - 包含替換後的頭部狀態和相應評價的陣列
+ */
+export function bald(x: string): [string, string] {
+  const comments = ['Clean!', 'Unicorn!', 'Homer!', 'Careless!', 'Careless!', 'Careless!', 'Hobo!']
+  const total = x.match(/\//g)?.length ?? 0
+  return ['-'.repeat(x.length), comments[total >= comments.length ? comments.length - 1 : total]]
+}
+
+/**
+ * Sum of two lowest positive integers
+ * 找出陣列中最小的兩個正整數的和
+ * @param {number[]} numbers - 包含至少四個正整數的陣列
+ * @returns {number} - 最小的兩個正整數的和
+ */
+export function sumTwoSmallestNumbers(numbers: number[]): number {
+  const [a, b] = [...numbers].sort((a, b) => a - b)
+  return a + b
+}
+
+/**
+ * Birthday I - Cake
+ * 生日 I - 蛋糕
+ * @param {number} x - 蠟燭總數
+ * @param {string} y - 用於計算蠟燭掉落數的字串
+ * @returns {string} - 返回相應的結果，可能為 'Fire!' 或 'That was close!'
+ */
+export function cake(x: number, y: string): string {
+  const total = y.split('').reduce((previous, current, index) => {
+    const charCode = current.charCodeAt(0)
+    return previous + (index % 2 === 0 ? charCode : charCode - 96)
+  }, 0)
+  return total > x * 0.7 ? 'Fire!' : 'That was close!'
+}
+
+/**
+ * Grid blast!
+ * 根據給定的 x 和 y 坐標，返回對應的戰場區域
+ * @param {number} x - x 坐標
+ * @param {number} y - y 坐標
+ * @returns {string} - 返回對應的戰場區域
+ */
+export function fire(x: number, y: number): string {
+  const areaX = ['left', 'middle', 'right'][x]
+  const areaY = ['top', 'middle', 'bottom'][y]
+  return areaX === areaY ? 'center' : `${areaY} ${areaX}`
+}
+
+/**
+ * The Lazy Startup Office
+ * 根據員工座位安排，返回垃圾桶清理輪值名單
+ * @param {string[][]} arr - 二維陣列，代表員工座位安排
+ * @returns {string[]} - 返回員工垃圾桶清理輪值名單
+ */
+export function binRota(arr: string[][]): string[] {
+  return arr.reduce((previous, current, index) => {
+    return previous.concat(index % 2 === 0 ? current : current.reverse())
+  }, [] as string[])
+}
+
+/**
+ * Insert dashes
+ * 在兩個奇數數字之間插入破折號('-')
+ * @param {number} num - 非負整數
+ * @returns {string} - 返回插入破折號後的字串
+ */
+export function insertDash(num: number): string {
+  return num.toString().replace(/[13579](?=[13579])/g, '$&-')
+}
+
+/**
+ * Tetris Series #1 — Scoring System
+ * 使用原始的任天堂計分系統計算遊戲的最終得分
+ * @param {number[]} arr - 包含清理過的行數的陣列
+ * @returns {number} 計算出的最終得分
+ */
+export function getScore(arr: number[]): number {
+  let level = 0
+  let lines = 0
+
+  const getPoint = (line: number, level: number): number => {
+    const basePoints = [0, 40, 100, 300, 1200]
+    return basePoints[line] * (level + 1)
+  }
+
+  return arr.reduce((previous, current) => {
+    level = Math.trunc(lines / 10)
+    lines += current
+    return (previous += getPoint(current, level))
+  }, 0)
+}
+
+/**
+ * Mysterious Singularity Numbers
+ * 找出不超過 N 且不被 2、3、5 中的任何一個數整除的自然數的數量。
+ * @param {number} n - 自然數 N
+ * @returns {number} 不符合條件的自然數數量
+ */
+export function realNumbers(n: number): number {
+  let total = 0
+  const list = [2, 3, 5]
+
+  for (let m = 1; m <= n; m++) {
+    if (list.every(x => m % x !== 0)) total++
+  }
+
+  return total
+}
+
+/**
+ * Coding Meetup #6 - Higher-Order Functions Series - Can they code in the same language?
+ * 檢查開發者列表中的所有開發者是否使用相同的程式語言
+ * @param {Array<{ language: string }>} list - 包含開發者資訊的物件陣列
+ * @returns {boolean} 若所有開發者使用相同程式語言則回傳 true，否則回傳 false
+ */
+export function isSameLanguage(list: Array<{ language: string }>): boolean {
+  return list.every(item => item.language === list[0].language)
+}
+
+/**
+ * How fast can the burglar steal all the diamonds?
+ * 計算並返回一個整數，表示竊賊從保險箱中拿取所有鑽石所需的最小重複次數。
+ * @param {string[]} locker - 一個包含字符串的陣列，表示單個保險箱
+ * @returns {number} 最小重複次數
+ */
+export function diamondBurglar(locker: string[]): number {
+  return (locker.join('.').match(/\*{1,2}/g) || []).length
+}
+
+/**
+ * Quadrants
+ * 根據給定的 x 和 y 座標，確定該點所在的象限
+ * @param {number} x - x 座標
+ * @param {number} y - y 座標
+ * @returns {number} 1、2、3 或 4，表示該點所在的象限
+ */
+export function quadrant(x: number, y: number): number {
+  if (x > 0 && y > 0) return 1
+  if (x < 0 && y > 0) return 2
+  if (x < 0 && y < 0) return 3
+  if (x > 0 && y < 0) return 4
+  return 0 // 當點在座標軸上時
+}
+
+/**
+ * Check same case
+ * 檢查兩個給定的字符是否相同大小寫
+ * @param {string} a - 字符 a
+ * @param {string} b - 字符 b
+ * @returns {number} 如果其中一個字符不是字母，返回 -1；如果兩個字符是相同大小寫，返回 1；如果兩個字符都是字母，但大小寫不同，返回 0
+ */
+export function sameCase(a: string, b: string): number {
+  if (/[^A-Za-z]/.test(a + b)) return -1
+  if (/^[A-Z]+$|^[a-z]+$/.test(a + b)) return 1
+  return 0
+}
+
+/**
+ * Quarter of the year
+ * 給定一個介於 1 到 12 之間的整數代表月份，返回它屬於哪一年的哪個季度（用一個整數表示）。
+ * @param {number} month - 月份（介於 1 到 12 之間的整數）
+ * @returns {number} 季度（用整數表示）
+ */
+export const quarterOf = (month: number): number => {
+  return Math.ceil(month / 3)
+}
+
+/**
+ * Closest elevator
+ * 根據兩台電梯目前所在樓層及呼叫樓層，返回離呼叫樓層較近的電梯的名稱。
+ * @param {number} left - 左側電梯目前所在樓層
+ * @param {number} right - 右側電梯目前所在樓層
+ * @param {number} call - 呼叫電梯的樓層
+ * @returns {string} 電梯的名稱 ("left" 或 "right")
+ */
+export function elevator(left: number, right: number, call: number): string {
+  const leftDistance = Math.abs(call - left)
+  const rightDistance = Math.abs(call - right)
+  return leftDistance < rightDistance ? 'left' : 'right'
+}
+
+/**
+ * Pillars
+ * Calculate the distance between the first and the last pillar in centimeters
+ * (without the width of the first and last pillar).
+ * @param {number} numPill - Number of pillars (≥ 1)
+ * @param {number} dist - Distance between pillars (10 - 30 meters)
+ * @param {number} width - Width of the pillar (10 - 50 centimeters)
+ * @returns {number} Distance between the first and last pillar in centimeters
+ */
+export function pillars(numPill: number, dist: number, width: number): number {
+  if (numPill === 1) return 0
+  return dist * 100 * (numPill - 1) + width * (numPill - 2)
+}
+
+/**
+ * Twice as old
+ * 計算多少年前，父親的年齡是他的兒子的兩倍，或多少年後父親的年齡將是他的兒子的兩倍。
+ * @param {number} dadYearsOld - 父親目前的年齡（以年為單位）
+ * @param {number} sonYearsOld - 兒子目前的年齡（以年為單位）
+ * @returns {number} 多少年前或多少年後
+ */
+export function twiceAsOld(dadYearsOld: number, sonYearsOld: number): number {
+  return Math.abs(dadYearsOld - 2 * sonYearsOld)
+}
+
+/**
+ * Flick Switch
+ * 在給定的字符串陣列中，找出是否包含 "flick"，如果包含則切換對應元素的布爾值。
+ * @param {string[]} arr - 字符串陣列
+ * @returns {boolean[]} - 切換後的布爾值陣列
+ */
+export function flickSwitch(arr: string[]): boolean[] {
+  let a = true
+  return arr.map(b => (b === 'flick' ? (a = !a) : a))
+}
+
+/**
+ * Draw stairs
+ * 根據給定的數字 n，用字母 "I" 畫出 n 層高、n 層寬的樓梯，最高的樓梯在左上角。
+ * @param {number} n - 樓梯的層數
+ * @returns {string} - 用字母 "I" 畫出的樓梯
+ */
+export function drawStairs(n: number): string {
+  return [...Array(n)].map((_, i) => ' '.repeat(i) + 'I').join('\n')
+}
+
+/**
+ * The Feast of Many Beasts
+ * 判斷動物是否可以帶指定的菜參加盛宴。
+ * @param {string} beast - 動物的名字
+ * @param {string} dish - 菜的名字
+ * @returns {boolean} - 如果動物可以帶這道菜，則返回 true；否則返回 false。
+ */
+export function feast(beast: string, dish: string): boolean {
+  return beast[0] === dish[0] && beast[beast.length - 1] === dish[dish.length - 1]
+}
+
+/**
+ * Find Nearest square number
+ * 找到正整數 n 的最近平方數。
+ * @param {number} n - 正整數 n
+ * @returns {number} - 最近的平方數
+ */
+export function nearestSq(n: number): number {
+  return Math.pow(Math.round(Math.sqrt(n)), 2)
+}
+
+/**
+ * Cat years, Dog years
+ * 回傳人年、貓年、狗年的年齡
+ * @param {number} humanYears - 人年
+ * @returns {[number, number, number]} - [人年, 貓年, 狗年]
+ */
+export function humanYearsCatYearsDogYears(humanYears: number): [number, number, number] {
+  const catYears = humanYears === 1 ? 15 : humanYears === 2 ? 24 : 24 + (humanYears - 2) * 4
+  const dogYears = humanYears === 1 ? 15 : humanYears === 2 ? 24 : 24 + (humanYears - 2) * 5
+  return [humanYears, catYears, dogYears]
+}
+
+/**
+ * Multiplication table for number
+ * 回傳指定數字的乘法表
+ * @param {number} number - 介於 1 到 10 之間的整數
+ * @returns {string} - 乘法表字串
+ */
+export function multiTable(number: number): string {
+  return [...Array(10)].map((_, i) => `${i + 1} * ${number} = ${(i + 1) * number}`).join('\n')
 }
