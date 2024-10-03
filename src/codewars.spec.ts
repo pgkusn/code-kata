@@ -1,4 +1,4 @@
-import * as fn from './main'
+import * as fn from './codewars'
 
 describe('Reverse or rotate?', function () {
   it('應返回正確的字串', function () {
