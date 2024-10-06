@@ -1,5 +1,16 @@
 import * as fn from './codewars'
 
+describe('Valid Parentheses', () => {
+  it('應返回正確的括號驗證結果', () => {
+    expect(fn.validParentheses('()')).toBe(true)
+    expect(fn.validParentheses('(())')).toBe(true)
+    expect(fn.validParentheses('()()')).toBe(true)
+    expect(fn.validParentheses(')(')).toBe(false)
+    expect(fn.validParentheses('()()(')).toBe(false)
+    expect(fn.validParentheses(')()(')).toBe(false)
+  })
+})
+
 describe('Reverse or rotate?', function () {
   it('應返回正確的字串', function () {
     expect(fn.revRot('1234', 0)).toBe('')
