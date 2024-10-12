@@ -1,3 +1,107 @@
+export function encode(string: string): string {
+  const mapping = {
+    a: '1',
+    e: '2',
+    i: '3',
+    o: '4',
+    u: '5',
+  }
+  return string.replace(/[aeiou]/g, x => mapping[x as keyof typeof mapping])
+}
+
+export function decode(string: string): string {
+  const mapping = {
+    '1': 'a',
+    '2': 'e',
+    '3': 'i',
+    '4': 'o',
+    '5': 'u',
+  }
+  return string.replace(/[1-5]/g, x => mapping[x as keyof typeof mapping])
+}
+
+export function thirt(n: number): number {
+  const getValue = (num: number) => {
+    const arr = [...num.toString()].toReversed()
+    const value = arr.reduce((prev, curr, index) => {
+      const res = (10 ** index % 13) * Number(curr)
+      return prev + res
+    }, 0)
+
+    if (value === num) return value
+
+    return getValue(value)
+  }
+
+  return getValue(n)
+}
+
+export function cleanString(str: string): string {
+  let result = ''
+  for (const s of str) {
+    if (s === '#') {
+      result = result.slice(0, -1)
+    } else {
+      result += s
+    }
+  }
+  return result
+}
+
+export function solve(s: string) {
+  // better:
+  // const consonants = s.split(/[aeiou]/)
+  const consonants = s.replace(/[aeiou]/g, ',').split(',')
+
+  const getValue = (letter: string) => {
+    return letter.charCodeAt(0) - 'a'.charCodeAt(0) + 1
+  }
+
+  const values = consonants.map(item => {
+    return [...item].reduce((prev, curr) => prev + getValue(curr), 0)
+  })
+
+  return Math.max(...values)
+}
+
+export function meeting(s: string): string {
+  return s
+    .toUpperCase()
+    .split(';')
+    .map(name => `(${name.replace(/(\w+):(\w+)/, '$2, $1')})`)
+    .toSorted()
+    .join('')
+}
+
+export function decipherThis(str: string): string {
+  const decipherWord = (word: string) => {
+    const [, x, y = ''] = word.match(/(\d+)(\w*)/) ?? []
+
+    const arrY = [...y]
+    const temp = arrY[0]
+    arrY[0] = arrY[arrY.length - 1]
+    arrY[arrY.length - 1] = temp
+
+    return String.fromCharCode(+x) + arrY.join('')
+  }
+
+  return str && str.split(' ').map(decipherWord).join(' ')
+}
+
+export const encryptThis = (str: string): string => {
+  const encryptWord = (word: string) => {
+    const [first, ...rest] = [...word]
+
+    const temp = rest[0]
+    rest[0] = rest[rest.length - 1]
+    rest[rest.length - 1] = temp
+
+    return first.charCodeAt(0) + rest.join('')
+  }
+
+  return str && str.split(' ').map(encryptWord).join(' ')
+}
+
 export function validParentheses(parenStr: string): boolean {
   let count = 0
   for (const p of parenStr) {

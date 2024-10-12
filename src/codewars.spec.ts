@@ -1,5 +1,98 @@
 import * as fn from './codewars'
 
+describe('The Vowel Code', () => {
+  it('應正確編碼字串', () => {
+    expect(fn.encode('hello')).toBe('h2ll4')
+    expect(fn.encode('How are you today?')).toBe('H4w 1r2 y45 t4d1y?')
+    expect(fn.encode('This is an encoding test.')).toBe('Th3s 3s 1n 2nc4d3ng t2st.')
+  })
+
+  it('應正確解碼字串', () => {
+    expect(fn.decode('h2ll4')).toBe('hello')
+    expect(fn.decode('H4w 1r2 y45 t4d1y?')).toBe('How are you today?')
+    expect(fn.decode('Th3s 3s 1n 2nc4d3ng t2st.')).toBe('This is an encoding test.')
+  })
+})
+
+describe('A Rule of Divisibility by 13', function () {
+  it('應正確計算13的整除規則', () => {
+    expect(fn.thirt(8529)).toBe(79)
+    expect(fn.thirt(85299258)).toBe(31)
+  })
+})
+
+describe('Backspaces in string', function () {
+  it('應正確處理刪除字串', () => {
+    expect(fn.cleanString('abc#d##c')).toBe('ac')
+    expect(fn.cleanString('abc####d##c#')).toBe('')
+  })
+})
+
+describe('Consonant value', function () {
+  it('應返回正確的字母值', () => {
+    expect(fn.solve('zodiac')).toBe(26)
+    expect(fn.solve('chruschtschov')).toBe(80)
+    expect(fn.solve('khrushchev')).toBe(38)
+    expect(fn.solve('strength')).toBe(57)
+    expect(fn.solve('catchphrase')).toBe(73)
+    expect(fn.solve('twelfthstreet')).toBe(103)
+    expect(fn.solve('mischtschenkoana')).toBe(80)
+  })
+})
+
+describe('Meeting', () => {
+  it('應返回正確的會議字串', () => {
+    expect(
+      fn.meeting(
+        'Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn'
+      )
+    ).toBe(
+      '(ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(SCHWARZ, VICTORIA)(STAN, MADISON)(STAN, MEGAN)(WAHL, ALEXIS)'
+    )
+    expect(
+      fn.meeting(
+        'John:Gates;Michael:Wahl;Megan:Bell;Paul:Dorries;James:Dorny;Lewis:Steve;Alex:Meta;Elizabeth:Russel;Anna:Korn;Ann:Kern;Amber:Cornwell'
+      )
+    ).toBe(
+      '(BELL, MEGAN)(CORNWELL, AMBER)(DORNY, JAMES)(DORRIES, PAUL)(GATES, JOHN)(KERN, ANN)(KORN, ANNA)(META, ALEX)(RUSSEL, ELIZABETH)(STEVE, LEWIS)(WAHL, MICHAEL)'
+    )
+  })
+})
+
+describe('Decipher this!', () => {
+  it('應返回正確的解密字串', () => {
+    expect(fn.decipherThis('')).toBe('')
+    expect(fn.decipherThis('72eva 97 103o 97t 116sih 97dn 115ee 104wo 121uo 100o')).toBe(
+      'Have a go at this and see how you do'
+    )
+    expect(fn.decipherThis('65 119esi 111dl 111lw 108dvei 105n 97n 111ka')).toBe(
+      'A wise old owl lived in an oak'
+    )
+  })
+})
+
+describe('Encrypt this!', () => {
+  it('應返回正確的加密字串', () => {
+    expect(fn.encryptThis('')).toBe('')
+    expect(fn.encryptThis('A')).toBe('65')
+    expect(fn.encryptThis('A wise old owl lived in an oak')).toBe(
+      '65 119esi 111dl 111lw 108dvei 105n 97n 111ka'
+    )
+    expect(fn.encryptThis('The more he saw the less he spoke')).toBe(
+      '84eh 109ero 104e 115wa 116eh 108sse 104e 115eokp'
+    )
+    expect(fn.encryptThis('The less he spoke the more he heard')).toBe(
+      '84eh 108sse 104e 115eokp 116eh 109ero 104e 104dare'
+    )
+    expect(fn.encryptThis('Why can we not all be like that wise old bird')).toBe(
+      '87yh 99na 119e 110to 97ll 98e 108eki 116tah 119esi 111dl 98dri'
+    )
+    expect(fn.encryptThis('Thank you Piotr for all your help')).toBe(
+      '84kanh 121uo 80roti 102ro 97ll 121ruo 104ple'
+    )
+  })
+})
+
 describe('Valid Parentheses', () => {
   it('應返回正確的括號驗證結果', () => {
     expect(fn.validParentheses('()')).toBe(true)
