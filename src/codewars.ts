@@ -1,3 +1,58 @@
+export function getLengthOfMissingArray(arrayOfArrays: any[] | null): number {
+  if (!arrayOfArrays) return 0
+
+  const numbers = arrayOfArrays.map(array => (array ? array.length : 0)).toSorted()
+
+  for (let n = numbers[0], i = 0; n < numbers.at(-1); n++, i++) {
+    if (!n) return 0
+    if (n !== numbers[i]) return n
+  }
+
+  return 0
+}
+
+type matrix = number[][]
+export function matrixAddition(a: matrix, b: matrix): matrix {
+  return a.map((row, i) => row.map((value, j) => value + b[i][j]))
+}
+
+export function dashatize(num: number): string {
+  num = Math.abs(num)
+
+  return `${num}`.replace(/([13579])/g, '-$1-').replace(/^-|--|-$/g, x => {
+    return x === '--' ? '-' : ''
+  })
+}
+
+export function streetFighterSelection(
+  fighters: string[][],
+  position: number[],
+  moves: ('down' | 'up' | 'right' | 'left')[]
+) {
+  let [x, y] = position
+
+  const controls = {
+    up() {
+      x = 0
+    },
+    down() {
+      x = 1
+    },
+    right() {
+      y = y < 5 ? y + 1 : 0
+    },
+    left() {
+      y = y > 0 ? y - 1 : 5
+    },
+  }
+
+  return moves.reduce((prev: string[], curr) => {
+    controls[curr]()
+    prev.push(fighters[x][y])
+    return prev
+  }, [])
+}
+
 export function encode(string: string): string {
   const mapping = {
     a: '1',

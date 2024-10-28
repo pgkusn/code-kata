@@ -1,5 +1,177 @@
 import * as fn from './codewars'
 
+describe('Length of missing array', function () {
+  it('應該正確計算缺失數組的長度', () => {
+    expect(fn.getLengthOfMissingArray([[1, 2], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]])).toBe(3)
+    expect(fn.getLengthOfMissingArray([[5, 2, 9], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]])).toBe(2)
+    expect(fn.getLengthOfMissingArray([[null], [null, null, null]])).toBe(2)
+    expect(
+      fn.getLengthOfMissingArray([
+        ['a', 'a', 'a'],
+        ['a', 'a'],
+        ['a', 'a', 'a', 'a'],
+        ['a'],
+        ['a', 'a', 'a', 'a', 'a', 'a'],
+      ])
+    ).toBe(5)
+    expect(fn.getLengthOfMissingArray([])).toBe(0)
+    expect(fn.getLengthOfMissingArray([[], [1], [2, 3, 3]])).toBe(0)
+    expect(fn.getLengthOfMissingArray(null)).toBe(0)
+    expect(fn.getLengthOfMissingArray([null, []])).toBe(0)
+  })
+})
+
+describe('Matrix Addition', () => {
+  it('應該正確地將兩個1x1矩陣相加', () => {
+    expect(fn.matrixAddition([[1]], [[2]])).toEqual([[3]])
+  })
+
+  it('應該正確地將兩個2x2矩陣相加', () => {
+    expect(
+      fn.matrixAddition(
+        [
+          [1, 2],
+          [1, 2],
+        ],
+        [
+          [2, 3],
+          [2, 3],
+        ]
+      )
+    ).toEqual([
+      [3, 5],
+      [3, 5],
+    ])
+  })
+
+  it('應該正確地將兩個3x3矩陣相加', () => {
+    expect(
+      fn.matrixAddition(
+        [
+          [1, 2, 3],
+          [3, 2, 1],
+          [1, 1, 1],
+        ],
+        [
+          [2, 2, 1],
+          [3, 2, 3],
+          [1, 1, 3],
+        ]
+      )
+    ).toEqual([
+      [3, 4, 4],
+      [6, 4, 4],
+      [2, 2, 4],
+    ])
+  })
+})
+
+describe('Dashatize it', () => {
+  it('應該正確處理正整數', () => {
+    expect(fn.dashatize(274)).toBe('2-7-4')
+    expect(fn.dashatize(5311)).toBe('5-3-1-1')
+    expect(fn.dashatize(86320)).toBe('86-3-20')
+    expect(fn.dashatize(974302)).toBe('9-7-4-3-02')
+  })
+
+  it('應該正確處理零和負數', () => {
+    expect(fn.dashatize(0)).toBe('0')
+    expect(fn.dashatize(-1)).toBe('1')
+    expect(fn.dashatize(-28369)).toBe('28-3-6-9')
+  })
+})
+
+describe('Street Fighter 2 - Character Selection', () => {
+  type Move = 'down' | 'up' | 'right' | 'left'
+
+  const fighters: string[][] = [
+    ['Ryu', 'E.Honda', 'Blanka', 'Guile', 'Balrog', 'Vega'],
+    ['Ken', 'Chun Li', 'Zangief', 'Dhalsim', 'Sagat', 'M.Bison'],
+  ]
+  const opts: Move[] = ['up', 'down', 'right', 'left']
+  let moves: Move[] = []
+
+  describe('街頭霸王2 - 角色選擇', () => {
+    it('應該能處理少量移動', () => {
+      moves = ['up', 'left', 'right', 'left', 'left']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'Ryu',
+        'Vega',
+        'Ryu',
+        'Vega',
+        'Balrog',
+      ])
+    })
+
+    it('應該能處理沒有選擇游標移動的情況', () => {
+      moves = []
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([])
+    })
+
+    it('應該能處理一直向左移動的情況', () => {
+      moves = ['left', 'left', 'left', 'left', 'left', 'left', 'left', 'left']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'Vega',
+        'Balrog',
+        'Guile',
+        'Blanka',
+        'E.Honda',
+        'Ryu',
+        'Vega',
+        'Balrog',
+      ])
+    })
+
+    it('應該能處理一直向右移動的情況', () => {
+      moves = ['right', 'right', 'right', 'right', 'right', 'right', 'right', 'right']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'E.Honda',
+        'Blanka',
+        'Guile',
+        'Balrog',
+        'Vega',
+        'Ryu',
+        'E.Honda',
+        'Blanka',
+      ])
+    })
+
+    it('應該能使用所有4個方向順時針移動兩次', () => {
+      moves = ['up', 'left', 'down', 'right', 'up', 'left', 'down', 'right']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'Ryu',
+        'Vega',
+        'M.Bison',
+        'Ken',
+        'Ryu',
+        'Vega',
+        'M.Bison',
+        'Ken',
+      ])
+    })
+
+    it('應該能處理一直向下移動的情況', () => {
+      moves = ['down', 'down', 'down', 'down']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'Ken',
+        'Ken',
+        'Ken',
+        'Ken',
+      ])
+    })
+
+    it('應該能處理一直向上移動的情況', () => {
+      moves = ['up', 'up', 'up', 'up']
+      expect(fn.streetFighterSelection(fighters, [0, 0], moves)).toEqual([
+        'Ryu',
+        'Ryu',
+        'Ryu',
+        'Ryu',
+      ])
+    })
+  })
+})
+
 describe('The Vowel Code', () => {
   it('應正確編碼字串', () => {
     expect(fn.encode('hello')).toBe('h2ll4')
