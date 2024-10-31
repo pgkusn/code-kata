@@ -1,5 +1,72 @@
 import * as fn from './codewars'
 
+describe('Fruit Machine', () => {
+  let reel, reel1, reel2, reel3, spin
+
+  it('應該正確計算獎勵', () => {
+    reel = ['Wild', 'Star', 'Bell', 'Shell', 'Seven', 'Cherry', 'Bar', 'King', 'Queen', 'Jack']
+    spin = [0, 0, 0]
+    expect(fn.fruit([reel, reel, reel], spin)).toBe(100)
+
+    reel1 = ['Wild', 'Star', 'Bell', 'Shell', 'Seven', 'Cherry', 'Bar', 'King', 'Queen', 'Jack']
+    reel2 = ['Bar', 'Wild', 'Queen', 'Bell', 'King', 'Seven', 'Cherry', 'Jack', 'Star', 'Shell']
+    reel3 = ['Bell', 'King', 'Wild', 'Bar', 'Seven', 'Jack', 'Shell', 'Cherry', 'Queen', 'Star']
+    spin = [5, 4, 3]
+    expect(fn.fruit([reel1, reel2, reel3], spin)).toBe(0)
+
+    reel1 = ['King', 'Cherry', 'Bar', 'Jack', 'Seven', 'Queen', 'Star', 'Shell', 'Bell', 'Wild']
+    reel2 = ['Bell', 'Seven', 'Jack', 'Queen', 'Bar', 'Star', 'Shell', 'Wild', 'Cherry', 'King']
+    reel3 = ['Wild', 'King', 'Queen', 'Seven', 'Star', 'Bar', 'Shell', 'Cherry', 'Jack', 'Bell']
+    spin = [0, 0, 1]
+    expect(fn.fruit([reel1, reel2, reel3], spin)).toBe(3)
+
+    reel1 = ['King', 'Jack', 'Wild', 'Bell', 'Star', 'Seven', 'Queen', 'Cherry', 'Shell', 'Bar']
+    reel2 = ['Star', 'Bar', 'Jack', 'Seven', 'Queen', 'Wild', 'King', 'Bell', 'Cherry', 'Shell']
+    reel3 = ['King', 'Bell', 'Jack', 'Shell', 'Star', 'Cherry', 'Queen', 'Bar', 'Wild', 'Seven']
+    spin = [0, 5, 0]
+    expect(fn.fruit([reel1, reel2, reel3], spin)).toBe(6)
+  })
+})
+
+describe('Primorial Of a Number', () => {
+  it('應該計算正確的質數乘積', () => {
+    expect(fn.numPrimorial(3)).toBe(30) // 2 * 3 * 5 = 30
+    expect(fn.numPrimorial(4)).toBe(210)
+    expect(fn.numPrimorial(5)).toBe(2310) // 2 * 3 * 5 * 7 * 11 = 2310
+    expect(fn.numPrimorial(8)).toBe(9699690)
+    expect(fn.numPrimorial(9)).toBe(223092870)
+  })
+})
+
+describe('Maze Runner', function () {
+  const maze = [
+    [1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 3],
+    [1, 0, 1, 0, 1, 0, 1],
+    [0, 0, 1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 1],
+    [1, 2, 1, 0, 1, 0, 1],
+  ]
+
+  it('應該正確運行迷宮', () => {
+    expect(fn.mazeRunner(maze, ['N', 'N', 'N', 'N', 'N', 'E', 'E', 'E', 'E', 'E'])).toBe('Finish')
+    expect(
+      fn.mazeRunner(maze, ['N', 'N', 'N', 'N', 'N', 'E', 'E', 'S', 'S', 'E', 'E', 'N', 'N', 'E'])
+    ).toBe('Finish')
+    expect(fn.mazeRunner(maze, ['N', 'N', 'N', 'N', 'N', 'E', 'E', 'E', 'E', 'E', 'W', 'W'])).toBe(
+      'Finish'
+    )
+
+    expect(fn.mazeRunner(maze, ['N', 'N', 'N', 'W', 'W'])).toBe('Dead')
+    expect(
+      fn.mazeRunner(maze, ['N', 'N', 'N', 'N', 'N', 'E', 'E', 'S', 'S', 'S', 'S', 'S', 'S'])
+    ).toBe('Dead')
+
+    expect(fn.mazeRunner(maze, ['N', 'E', 'E', 'E', 'E'])).toBe('Lost')
+  })
+})
+
 describe('Length of missing array', function () {
   it('應該正確計算缺失數組的長度', () => {
     expect(fn.getLengthOfMissingArray([[1, 2], [4, 5, 1, 1], [1], [5, 6, 7, 8, 9]])).toBe(3)
