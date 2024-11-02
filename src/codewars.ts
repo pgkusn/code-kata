@@ -53,31 +53,32 @@ export function fruit(reels: string[][], spins: number[]): number {
   return getTotalScore(getCounts())
 }
 
-export function numPrimorial(n: number) {
-  const isPrimeNumber = (n: number) => {
+export const numPrimorial = (n: number) => {
+  const isPrime = (n: number) => {
+    // better:
+    // for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+    //   if (n % i === 0) return false
+    // }
     for (let i = 2; i < n; i++) {
       if (n % i === 0) return false
     }
+
     return true
   }
 
-  const generatePrimeNumbers = (length: number) => {
-    const numbers = []
-
-    let n = 2
-    while (numbers.length < length) {
-      if (isPrimeNumber(n)) {
-        numbers.push(n)
+  const primeGenerator = function* () {
+    let num = 2
+    while (true) {
+      if (isPrime(num)) {
+        yield num
       }
-      n++
+      num++
     }
-
-    return numbers
   }
 
-  const primeNumbers = generatePrimeNumbers(n)
+  const generator = primeGenerator()
 
-  return primeNumbers.reduce((prev, curr) => prev * curr)
+  return Array.from({ length: n }, _ => generator.next().value).reduce((prev, curr) => prev * curr)
 }
 
 export function mazeRunner(maze: number[][], directions: string[]): string {
@@ -1106,7 +1107,7 @@ export function between(a: number, b: number): number[] {
 }
 
 export function power(x: number, y: number) {
-  const numbers = [...Array(y)].fill(x)
+  const numbers = Array(y).fill(x)
   return numbers.reduce((prev, curr) => prev * curr)
 }
 
