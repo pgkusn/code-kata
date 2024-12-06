@@ -1,5 +1,19 @@
 import * as fn from './leetcode'
 
+describe('Array Partition', () => {
+  it('應該返回正確的數對和', () => {
+    expect(fn.arrayPairSum([1, 4, 3, 2])).toBe(4)
+    expect(fn.arrayPairSum([6, 2, 6, 5, 1, 2])).toBe(9)
+  })
+})
+
+describe('Sort Array By Parity', () => {
+  it('應該正確排序數組 (偶數在前，奇數在後)', () => {
+    // The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted
+    expect(fn.sortArrayByParity([3, 1, 2, 4])).toEqual([2, 4, 3, 1])
+  })
+})
+
 describe('Valid Parentheses', () => {
   it('應返回正確的括號驗證結果', () => {
     expect(fn.isValid('()')).toBe(true)

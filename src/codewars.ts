@@ -1,3 +1,18 @@
+export function sortTwisted37(array: number[]): number[] {
+  const toString = (n: number) => n.toString()
+  const toNumber = (s: string) => Number(s)
+  const replaceBy = (mapping: Record<string, string>) => (s: string) => {
+    const keys = Object.keys(mapping).join('')
+    const regex = new RegExp(`[${keys}]`, 'g')
+    return s.replace(regex, x => (x in mapping ? mapping[x] : x))
+  }
+  const ascend = (a: number, b: number) => a - b
+
+  const mapping = { '3': '7', '7': '3' }
+  const twist = (data: number[]) => data.map(toString).map(replaceBy(mapping)).map(toNumber)
+  return twist(twist(array).toSorted(ascend))
+}
+
 export function fruit(reels: string[][], spins: number[]): number {
   interface Counts {
     [key: string]: number
@@ -77,8 +92,8 @@ export const numPrimorial = (n: number) => {
   }
 
   const generator = primeGenerator()
-
-  return Array.from({ length: n }, _ => generator.next().value).reduce((prev, curr) => prev * curr)
+  const primes = Array.from({ length: n }, _ => generator.next().value)
+  return primes.reduce((prev, curr) => prev * curr)
 }
 
 export function mazeRunner(maze: number[][], directions: string[]): string {
@@ -1621,7 +1636,7 @@ export function findNeedle(haystack: string[]): string {
 /**
  * Get the mean of an array
  * 計算給定陣列的平均值，並將其四捨五入為最接近的整數。
- * @param {number[]} marks - 成績陣列
+ * @param {number[]} marks - 成績陣��
  * @returns {number} - 平均成績（無條件捨去）
  */
 export function getAverage(marks: number[]): number {

@@ -1,3 +1,22 @@
+export function arrayPairSum(nums: number[]): number {
+  const sortedAry = [...nums].sort((a, b) => a - b)
+
+  let total = 0
+  for (let i = 0; i < sortedAry.length; i += 2) {
+    total += Math.min(sortedAry[i], sortedAry[i + 1])
+  }
+  return total
+}
+
+export function sortArrayByParity(nums: number[]): number[] {
+  return nums.toSorted((a, b) => {
+    // better:
+    // return a % 2 === 0 ? -1 : 1
+    const isEven = (n: number) => n % 2 === 0
+    return isEven(a) && !isEven(b) ? -1 : 1
+  })
+}
+
 export function isValid(s: string): boolean {
   const bracketsMap = new Map([
     ['(', ')'],
