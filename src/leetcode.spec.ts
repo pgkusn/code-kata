@@ -1,5 +1,18 @@
 import * as fn from './leetcode'
 
+describe('Unique Morse Code Words', () => {
+  it('應該返回正確的摩爾斯碼單詞數量 (不重複)', () => {
+    expect(fn.uniqueMorseRepresentations(['gin', 'zen', 'gig', 'msg'])).toBe(2)
+  })
+})
+
+describe('Contains Duplicate', () => {
+  it('應該返回正確的結果 (是否包含重複元素)', () => {
+    expect(fn.containsDuplicate([1, 2, 3, 1])).toBe(true)
+    expect(fn.containsDuplicate([1, 2, 3, 4])).toBe(false)
+  })
+})
+
 describe('Array Partition', () => {
   it('應該返回正確的數對和', () => {
     expect(fn.arrayPairSum([1, 4, 3, 2])).toBe(4)
