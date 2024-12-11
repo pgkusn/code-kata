@@ -1,5 +1,35 @@
 import * as fn from './codewars'
 
+describe('Reducing by steps', () => {
+  function testing(actual: any, expected: any) {
+    expect(actual).toEqual(expected)
+  }
+
+  it('應該返回正確的結果', function () {
+    let a = [18, 69, -90, -78, 65, 40]
+
+    let r = [18, 3, 3, 3, 1, 1]
+    let op = fn.operArray(fn.gcdi, a, a[0])
+    testing(op, r)
+
+    r = [18, 414, 2070, 26910, 26910, 107640]
+    op = fn.operArray(fn.lcmu, a, a[0])
+    testing(op, r)
+
+    r = [18, 87, -3, -81, -16, 24]
+    op = fn.operArray(fn.som, a, 0)
+    testing(op, r)
+
+    r = [18, 18, -90, -90, -90, -90]
+    op = fn.operArray(fn.mini, a, a[0])
+    testing(op, r)
+
+    r = [18, 69, 69, 69, 69, 69]
+    op = fn.operArray(fn.maxi, a, a[0])
+    testing(op, r)
+  })
+})
+
 describe('Sorting on planet Twisted-3-7', function () {
   it('應該正確排序扭曲的3和7', function () {
     expect(fn.sortTwisted37([1, 2, 3, 4, 5, 6, 7, 8, 9])).toEqual([1, 2, 7, 4, 5, 6, 3, 8, 9])
