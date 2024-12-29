@@ -1,5 +1,39 @@
 import * as fn from './codewars'
 
+describe('Last Survivors Ep.2', () => {
+  it('應該處理基本的情況', () => {
+    expect(fn.lastSurvivors('abaa').split('').sort().join('')).toBe('ac')
+  })
+
+  it('應該處理包含 z 的情況', () => {
+    expect(fn.lastSurvivors('zzab').split('').sort().join('')).toBe('c')
+  })
+
+  it('應該處理空字串', () => {
+    expect(fn.lastSurvivors('').split('').sort().join('')).toBe('')
+  })
+
+  it('應該處理長字串', () => {
+    expect(
+      fn
+        .lastSurvivors(
+          'xsdlafqpcmjytoikojsecamgdkehrqqgfknlhoudqygkbxftivfbpxhxtqgpkvsrfflpgrlhkbfnyftwkdebwfidmpauoteahyh'
+        )
+        .split('')
+        .sort()
+        .join('')
+    ).toBe('acdeghlmnqrvyz')
+  })
+})
+
+describe('Manhattan distance', () => {
+  it('應該正確計算曼哈頓距離', () => {
+    expect(fn.manhattanDistance([1, 1], [1, 1])).toBe(0)
+    expect(fn.manhattanDistance([5, 4], [3, 2])).toBe(4)
+    expect(fn.manhattanDistance([1, 1], [0, 3])).toBe(3)
+  })
+})
+
 describe('Reducing by steps', () => {
   function testing(actual: any, expected: any) {
     expect(actual).toEqual(expected)

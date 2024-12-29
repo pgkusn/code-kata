@@ -1,3 +1,45 @@
+export function lastSurvivors(str: string): string {
+  const getNextChar = (char: string) => {
+    let charCode = char.charCodeAt(0) + 1
+
+    if (charCode > 'z'.charCodeAt(0)) {
+      charCode = 'a'.charCodeAt(0)
+    }
+
+    return String.fromCharCode(charCode)
+  }
+
+  const replaceBy = (source: string, target: string) => {
+    const regex = new RegExp(`${target}{2}`, 'g')
+    return source.replace(regex, getNextChar(target))
+  }
+
+  const sortAndReplaceStr = (str: string): string => {
+    const sortedStr = [...str].sort().join('')
+
+    if (str === sortedStr) return str
+
+    let replacedStr = sortedStr
+
+    for (const s of replacedStr) {
+      replacedStr = replaceBy(replacedStr, s)
+    }
+
+    return sortAndReplaceStr(replacedStr)
+  }
+
+  return sortAndReplaceStr(str)
+}
+
+export function manhattanDistance(pointA: [number, number], pointB: [number, number]): number {
+  const [x1, y1] = pointA
+  const [x2, y2] = pointB
+
+  const getDistance = (a: number, b: number) => Math.abs(a - b)
+
+  return getDistance(x1, x2) + getDistance(y1, y2)
+}
+
 export const gcdi = (x: number, y: number): number => {
   x = Math.abs(x)
   y = Math.abs(y)
