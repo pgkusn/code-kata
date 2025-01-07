@@ -1,3 +1,5 @@
+import _ from 'lodash/fp'
+
 type RuleFunction = (a: number, b: number) => number
 
 export function reduceByRules(numbers: number[], rules: RuleFunction[]): number {
@@ -5,6 +7,51 @@ export function reduceByRules(numbers: number[], rules: RuleFunction[]): number 
     const ruleFn = rules[(index - 1) % rules.length]
     return ruleFn(prev, curr)
   })
+}
+
+export function nextVersion(version: string): string {
+  const increment = (str: string) => Number(str) + 1
+  const toArray = (n: number) => [...`${n}`]
+  const transform = (oldVersion: string) => (newVersion: string) => {
+    if (newVersion.length !== oldVersion.length) {
+      return newVersion.replace('.', '')
+    }
+    return newVersion
+  }
+
+  const getNextVersion = _.pipe(
+    _.replace(/\./g, ''),
+    increment,
+    toArray,
+    _.join('.'),
+    transform(version)
+  )
+  return getNextVersion(version)
+}
+
+export function catMouse(x: string, j: number): string {
+  const hasAllAnimals = ['C', 'm', 'D'].every(item => x.includes(item))
+  if (!hasAllAnimals) return 'boring without all three'
+
+  const findAnimal = (str: string) => (target: string) => {
+    return [...str].findIndex(item => item === target)
+  }
+
+  const sliceBetween = (str: string) => {
+    return ([a, b]: number[]) => {
+      const start = Math.min(a, b)
+      const end = Math.max(a, b)
+      return str.slice(start, end)
+    }
+  }
+
+  const getRoute = _.pipe(_.map(findAnimal(x)), sliceBetween(x))
+  const route = getRoute(['C', 'm'])
+
+  if (route.length - 1 > j) return 'Escaped!'
+  if (route.includes('D')) return 'Protected!'
+
+  return 'Caught!'
 }
 
 export function lastSurvivors(str: string): string {
@@ -104,11 +151,10 @@ export function sortTwisted37(array: number[]): number[] {
     const regex = new RegExp(`[${keys}]`, 'g')
     return s.replace(regex, x => (x in mapping ? mapping[x] : x))
   }
-  const ascend = (a: number, b: number) => a - b
 
   const mapping = { '3': '7', '7': '3' }
-  const twist = (data: number[]) => data.map(toString).map(replaceBy(mapping)).map(toNumber)
-  return twist(twist(array).toSorted(ascend))
+  const twist = _.map(_.pipe(toString, replaceBy(mapping), toNumber))
+  return _.pipe(twist, _.sortBy(_.identity), twist)(array)
 }
 
 export function fruit(reels: string[][], spins: number[]): number {
