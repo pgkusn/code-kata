@@ -1,5 +1,16 @@
 import * as fn from './codewars'
 
+describe('Vowels Back', () => {
+  it('vowelBack 應正確轉換字串', () => {
+    expect(fn.vowelBack('testcase')).toBe('tabtbvba')
+    expect(fn.vowelBack('codewars')).toBe('bnaafvab')
+    expect(fn.vowelBack('exampletesthere')).toBe('agvvyuatabtqaaa')
+    expect(fn.vowelBack('returnofthespacecamel')).toBe('aatpawnftqabyvbabvvau')
+    expect(fn.vowelBack('bringonthebootcamp')).toBe('kaiwpnwtqaknntbvvy')
+    expect(fn.vowelBack('weneedanofficedog')).toBe('fawaaavwnffibaanp')
+  })
+})
+
 describe('Words to Hex', () => {
   it('應將每組文字轉換成十六進位', () => {
     expect(fn.wordsToHex('Hello, my name is Gary and I like cheese.')).toEqual([
