@@ -1,5 +1,31 @@
 import * as fn from './codewars'
 
+describe('Sort the columns of a csv-file', function () {
+  it('應正確地排序 CSV 欄位', function () {
+    let preSorting =
+      'myjinxin2015;raulbc777;smile67;Dentzil;SteffenVogel_79\n' +
+      '17945;10091;10088;3907;10132\n' +
+      '2;12;13;48;11'
+    let postSorting =
+      'Dentzil;myjinxin2015;raulbc777;smile67;SteffenVogel_79\n' +
+      '3907;17945;10091;10088;10132\n' +
+      '48;2;12;13;11'
+    expect(fn.sortCsvColumns(preSorting)).toBe(postSorting)
+
+    preSorting =
+      'IronMan;Thor;Captain America;Hulk\n' +
+      'arrogant;divine;honorably;angry\n' +
+      'armor;hammer;shield;greenhorn\n' +
+      'Tony;Thor;Steven;Bruce'
+    postSorting =
+      'Captain America;Hulk;IronMan;Thor\n' +
+      'honorably;angry;arrogant;divine\n' +
+      'shield;greenhorn;armor;hammer\n' +
+      'Steven;Bruce;Tony;Thor'
+    expect(fn.sortCsvColumns(preSorting)).toBe(postSorting)
+  })
+})
+
 describe('Vowels Back', () => {
   it('vowelBack 應正確轉換字串', () => {
     expect(fn.vowelBack('testcase')).toBe('tabtbvba')
