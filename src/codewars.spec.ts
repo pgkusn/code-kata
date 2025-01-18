@@ -1,5 +1,30 @@
 import * as fn from './codewars'
 
+describe('Hollow array', function () {
+  it('應判斷陣列是否符合 hollow 的定義', () => {
+    expect(fn.isHollow([1, 2, 0, 0, 0, 3, 4])).toBe(true) // 左右各 2 個非零數字
+    expect(fn.isHollow([1, 0, 0, 0, 0])).toBe(false) // 不平衡的結構
+    expect(fn.isHollow([0, 0, 0, 1, 2])).toBe(false) // 零在開頭是不允許的
+    expect(fn.isHollow([1, 2, 0, 0, 4, 0])).toBe(false) // 零不連續
+    expect(fn.isHollow([1, 0, 0, 4])).toBe(false) // 只有 2 個零不夠
+  })
+})
+
+describe('Getting MAD', function () {
+  it('應處理包含負數的陣列', () => {
+    expect(fn.gettingMad([-10, 0, -3, 1])).toBe(1)
+  })
+
+  it('應處理包含零的陣列', () => {
+    expect(fn.gettingMad([0, 0, 0, 0])).toBe(0)
+  })
+
+  it('應處理較大數字', () => {
+    expect(fn.gettingMad([-570, 542])).toBe(1112)
+    expect(fn.gettingMad([-69, -808, 828, 57])).toBe(126)
+  })
+})
+
 describe('Sort the columns of a csv-file', function () {
   it('應正確地排序 CSV 欄位', function () {
     let preSorting =
