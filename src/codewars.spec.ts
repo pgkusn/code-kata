@@ -1,5 +1,23 @@
 import * as fn from './codewars'
 
+describe('Fold an array', () => {
+  it('應返回折疊後的陣列', () => {
+    let input = [1, 2, 3, 4, 5]
+    let expected = [6, 6, 3]
+    expect(fn.foldArray(input, 1)).toEqual(expected)
+
+    expected = [9, 6]
+    expect(fn.foldArray(input, 2)).toEqual(expected)
+
+    expected = [15]
+    expect(fn.foldArray(input, 3)).toEqual(expected)
+
+    input = [-9, 9, -8, 8, 66, 23]
+    expected = [14, 75, 0]
+    expect(fn.foldArray(input, 1)).toEqual(expected)
+  })
+})
+
 describe('Split all even numbers to odd ones in different ways', function () {
   it('當第二個參數為 0 時，應將偶數拆分最接近的兩個奇數', () => {
     expect(fn.splitAllEvenNumbers([1, 10, 1, 3], 0)).toEqual([1, 5, 5, 1, 3])
