@@ -1,5 +1,38 @@
 import * as fn from './codewars'
 
+describe('IP Validation', () => {
+  it('應該能驗證有效的 IPv4 地址', () => {
+    expect(fn.isValidIP('1.2.3.4')).toBe(true)
+    expect(fn.isValidIP('123.45.67.89')).toBe(true)
+    expect(fn.isValidIP('192.168.1.1')).toBe(true)
+    expect(fn.isValidIP('0.0.0.0')).toBe(true)
+    expect(fn.isValidIP('255.255.255.255')).toBe(true)
+  })
+
+  it('應該拒絕無效的 IP 地址格式', () => {
+    expect(fn.isValidIP('1.2.3')).toBe(false) // 少一個區段
+    expect(fn.isValidIP('1.2.3.4.5')).toBe(false) // 多一個區段
+    expect(fn.isValidIP('123.456.78.90')).toBe(false) // 數字超過 255
+    expect(fn.isValidIP('123.045.067.089')).toBe(false) // 不可有前導零
+  })
+
+  it('應該拒絕包含非數字字符的輸入', () => {
+    expect(fn.isValidIP('1.2.3.4\n')).toBe(false) // 含有換行符
+    expect(fn.isValidIP('1.2.3.4\t')).toBe(false) // 含有 tab
+    expect(fn.isValidIP('1.2.3.a')).toBe(false) // 含有字母
+    expect(fn.isValidIP('1.2.3.-4')).toBe(false) // 含有負號
+    expect(fn.isValidIP('1.2.3. 4')).toBe(false) // 含有空格
+  })
+
+  it('應該拒絕空字串和特殊格式', () => {
+    expect(fn.isValidIP('')).toBe(false) // 空字串
+    expect(fn.isValidIP('abc.def.ghi.jkl')).toBe(false) // 全是字母
+    expect(fn.isValidIP('12.34.56')).toBe(false) // 不完整
+    expect(fn.isValidIP(' 1.2.3.4')).toBe(false) // 開頭有空格
+    expect(fn.isValidIP('1.2.3.4 ')).toBe(false) // 結尾有空格
+  })
+})
+
 describe('Fold an array', () => {
   it('應返回折疊後的陣列', () => {
     let input = [1, 2, 3, 4, 5]
@@ -1254,7 +1287,7 @@ describe('Stop gninnipS My sdroW!', () => {
 describe('Multiples of 3 or 5', () => {
   it('應找到小於傳入的數字且是 3 或 5 的倍數的所有自然數，並返回這些數字的和', () => {
     expect(fn.solution(10)).toBe(23) // 返回 23 (3 + 5 + 6 + 9)
-    expect(fn.solution(20)).toBe(78) // 返回 78 (3 + 5 + 6 + 9 + 10 + 12 + 15 + 18)
+    expect(fn.solution(20)).toBe(78) // 返回 78 (3 + 5 +  6 + 9 + 10 + 12 + 15 + 18)
   })
 
   it('如傳入的數字小於 0 時，應返回 0', () => {
@@ -1696,7 +1729,7 @@ describe('Fake Binary', () => {
 })
 
 describe('Convert a string to an array', () => {
-  it('應回傳分割後的字串並將其轉換為單詞陣列', () => {
+  it('應回傳分割後的字串並將其轉换為單詞陣列', () => {
     expect(fn.stringToArray('Robin Singh')).toEqual(['Robin', 'Singh'])
     expect(fn.stringToArray('I love arrays they are my favorite')).toEqual([
       'I',
