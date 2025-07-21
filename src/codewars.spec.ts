@@ -1,5 +1,12 @@
 import * as fn from './codewars'
 
+describe('Pyramid Array', () => {
+  it('Testing for 0', () => expect(fn.pyramid(0)).toEqual([]))
+  it('Testing for 1', () => expect(fn.pyramid(1)).toEqual([[1]]))
+  it('Testing for 2', () => expect(fn.pyramid(2)).toEqual([[1], [1, 1]]))
+  it('Testing for 3', () => expect(fn.pyramid(3)).toEqual([[1], [1, 1], [1, 1, 1]]))
+})
+
 describe('IP Validation', () => {
   it('應該能驗證有效的 IPv4 地址', () => {
     expect(fn.isValidIP('1.2.3.4')).toBe(true)
