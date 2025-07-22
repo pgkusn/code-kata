@@ -1,5 +1,28 @@
 import * as fn from './codewars'
 
+describe('Word a10n (abbreviation)', () => {
+  it('應該能處理基本範例', () => {
+    expect(fn.abbreviate('elephant-rides are really fun!')).toBe('e6t-r3s are r4y fun!')
+  })
+
+  it('應該能處理短於4個字的單字', () => {
+    expect(fn.abbreviate('cat dog rat')).toBe('cat dog rat')
+  })
+
+  it('應該能處理剛好4個字的單字', () => {
+    expect(fn.abbreviate('book test')).toBe('b2k t2t')
+  })
+
+  it('應該能處理包含標點符號的文字', () => {
+    expect(fn.abbreviate('internationalization-localization')).toBe('i18n-l10n')
+    expect(fn.abbreviate('accessibility, abbreviation!')).toBe('a11y, a10n!')
+  })
+
+  it('應該能處理混合長度的單字', () => {
+    expect(fn.abbreviate('you and me are programming')).toBe('you and me are p9g')
+  })
+})
+
 describe('Pyramid Array', () => {
   it('Testing for 0', () => expect(fn.pyramid(0)).toEqual([]))
   it('Testing for 1', () => expect(fn.pyramid(1)).toEqual([[1]]))
