@@ -1,5 +1,16 @@
 import * as fn from './codewars'
 
+describe('Buying a car', () => {
+  it('當舊車比新車便宜時應計算正確的月數和剩餘金額', () => {
+    expect(fn.nbMonths(2000, 8000, 1000, 1.5)).toEqual([6, 766])
+  })
+
+  it('當舊車等於或大於新車時應立即購買', () => {
+    expect(fn.nbMonths(12000, 8000, 1000, 1.5)).toEqual([0, 4000])
+    expect(fn.nbMonths(8000, 8000, 1000, 1.5)).toEqual([0, 0])
+  })
+})
+
 describe('Statistics for an Athletic Association', () => {
   it('應正確計算基本的範圍、平均值和中位數', () => {
     expect(fn.stat('01|15|59, 1|47|6, 01|17|20, 1|32|34, 2|3|17')).toBe(
