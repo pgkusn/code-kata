@@ -1,5 +1,139 @@
 import * as fn from './codewars'
 
+describe('Backwards Read Primes', () => {
+  it('應該回傳 2 到 100 之間的所有反轉質數', () => {
+    expect(fn.backwardsPrime(2, 100)).toEqual([13, 17, 31, 37, 71, 73, 79, 97])
+  })
+
+  it('若範圍內沒有反轉質數，應該回傳空陣列', () => {
+    expect(fn.backwardsPrime(501, 599)).toEqual([])
+  })
+
+  it('應該正確回傳 9900 到 10000 之間的反轉質數', () => {
+    expect(fn.backwardsPrime(9900, 10000)).toEqual([9923, 9931, 9941, 9967])
+  })
+
+  it('若只有一個反轉質數，應回傳包含該數字的陣列', () => {
+    expect(fn.backwardsPrime(13, 13)).toEqual([13])
+  })
+
+  it('當 start > end 時應回傳空陣列（邊界情況）', () => {
+    expect(fn.backwardsPrime(100, 2)).toEqual([])
+  })
+
+  it('應該排除回文質數', () => {
+    expect(fn.backwardsPrime(11, 11)).toEqual([]) // 11 是質數但為回文，應排除
+  })
+})
+
+describe('IPv4 to int32', () => {
+  it('should convert 128.32.10.1 to 2149583361', () => {
+    expect(fn.ipToInt32('128.32.10.1')).toBe(2149583361)
+  })
+
+  it('should convert 0.0.0.0 to 0', () => {
+    expect(fn.ipToInt32('0.0.0.0')).toBe(0)
+  })
+
+  it('should convert 255.255.255.255 to 4294967295', () => {
+    expect(fn.ipToInt32('255.255.255.255')).toBe(4294967295)
+  })
+
+  it('should convert 192.168.1.1 to 3232235777', () => {
+    expect(fn.ipToInt32('192.168.1.1')).toBe(3232235777)
+  })
+
+  it('should convert 10.0.0.1 to 167772161', () => {
+    expect(fn.ipToInt32('10.0.0.1')).toBe(167772161)
+  })
+})
+
+describe('String transformer', () => {
+  it('應該轉換大小寫並反轉單字順序', () => {
+    expect(fn.stringTransformer('Example Input')).toBe('iNPUT eXAMPLE')
+    expect(fn.stringTransformer('hello WORLD')).toBe('world HELLO')
+  })
+
+  it('應該正確處理多個連續空格', () => {
+    expect(fn.stringTransformer('You  are    awesome')).toBe('AWESOME    ARE  yOU')
+    expect(fn.stringTransformer('Good   Morning')).toBe('mORNING   gOOD')
+  })
+
+  it('應該正確處理前後空格', () => {
+    expect(fn.stringTransformer('  Hello World  ')).toBe('  wORLD hELLO  ')
+    expect(fn.stringTransformer(' JavaScript ')).toBe(' jAVAsCRIPT ')
+  })
+
+  it('應該處理只有一個單字的情況', () => {
+    expect(fn.stringTransformer('Hello')).toBe('hELLO')
+    expect(fn.stringTransformer('WORLD')).toBe('world')
+  })
+})
+
+describe('nthFibo', () => {
+  it('should return 0 for n = 1', () => {
+    expect(fn.nthFibo(1)).toBe(0)
+  })
+
+  it('should return 1 for n = 2', () => {
+    expect(fn.nthFibo(2)).toBe(1)
+  })
+
+  it('should return 1 for n = 3', () => {
+    expect(fn.nthFibo(3)).toBe(1)
+  })
+
+  it('should return 2 for n = 4', () => {
+    expect(fn.nthFibo(4)).toBe(2)
+  })
+
+  it('should return 3 for n = 5', () => {
+    expect(fn.nthFibo(5)).toBe(3)
+  })
+
+  it('should return 5 for n = 6', () => {
+    expect(fn.nthFibo(6)).toBe(5)
+  })
+
+  it('should return 13 for n = 8', () => {
+    expect(fn.nthFibo(8)).toBe(13)
+  })
+
+  it('should return 21 for n = 9', () => {
+    expect(fn.nthFibo(9)).toBe(21)
+  })
+
+  it('should return 144 for n = 13', () => {
+    expect(fn.nthFibo(13)).toBe(144)
+  })
+
+  it('should return 6765 for n = 21', () => {
+    expect(fn.nthFibo(21)).toBe(6765)
+  })
+})
+
+describe('Character with longest consecutive repetition', () => {
+  it('應該處理空字串', () => {
+    expect(fn.longestRepetition('')).toEqual(['', 0])
+  })
+
+  it('應該找出連續重複次數最多的字元', () => {
+    expect(fn.longestRepetition('aaaabb')).toEqual(['a', 4])
+    expect(fn.longestRepetition('bbbaaabaaaa')).toEqual(['a', 4])
+    expect(fn.longestRepetition('cbdeuuu900')).toEqual(['u', 3])
+  })
+
+  it('當有多個字元具有相同重複次數時，應返回首次出現的字元', () => {
+    expect(fn.longestRepetition('aabb')).toEqual(['a', 2])
+    expect(fn.longestRepetition('abbbccc')).toEqual(['b', 3])
+  })
+
+  it('應該區分大小寫', () => {
+    expect(fn.longestRepetition('AAaaBBbb')).toEqual(['A', 2])
+    expect(fn.longestRepetition('aAaaBBbb')).toEqual(['a', 2])
+  })
+})
+
 describe('Buying a car', () => {
   it('當舊車比新車便宜時應計算正確的月數和剩餘金額', () => {
     expect(fn.nbMonths(2000, 8000, 1000, 1.5)).toEqual([6, 766])

@@ -1,6 +1,65 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function backwardsPrime(start: number, stop: number): number[] {
+  const isPrime = (n: number) => {
+    for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+      if (n % i === 0) return false
+    }
+    return true
+  }
+  const isPalindrome = (s: string) => R.reverse(s) === s
+
+  const result = []
+  for (let n = start; n <= stop; n++) {
+    const isMatch = isPrime(n) && isPrime(+R.reverse(String(n))) && !isPalindrome(String(n))
+    if (isMatch) result.push(n)
+  }
+  return result
+
+  // better
+  // const isMatch = (n: number) => {
+  //   return isPrime(n) && isPrime(+R.reverse(String(n))) && !isPalindrome(String(n))
+  // }
+  // return R.range(start, stop + 1).filter(isMatch)
+}
+
+export function ipToInt32(ip: string): number {
+  const reduce = (x: string[]) => {
+    return x.reduce((prev, curr, index) => prev + +curr * Math.pow(2, 24 - 8 * index), 0)
+  }
+  return R.pipe(R.split('.'), reduce)(ip)
+}
+
+export function stringTransformer(str: string) {
+  const transform = (x: string) => {
+    return /[A-Z]/.test(x) ? x.toLowerCase() : x.toUpperCase()
+    // another
+    // return x === x.toUpperCase() ? x.toLowerCase() : x.toUpperCase()
+  }
+  return R.pipe(R.replace(/[A-Za-z]/g, transform), R.split(' '), R.reverse, R.join(' '))(str)
+}
+
+export function nthFibo(n: number): number {
+  const fibonacci: number[] = []
+
+  for (let i = 0; i < n; i++) {
+    const num = i > 1 ? fibonacci[i - 2] + fibonacci[i - 1] : i
+    fibonacci.push(num)
+  }
+
+  return fibonacci.pop() || 0
+}
+
+export function longestRepetition(text: string): [string, number] {
+  const [longest = ''] = R.pipe(
+    R.match(/(.)\1*/g),
+    R.sort((a, b) => b.length - a.length)
+  )(text)
+
+  return [longest && longest[0], longest.length]
+}
+
 export function nbMonths(
   startPriceOld: number,
   startPriceNew: number,
