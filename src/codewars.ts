@@ -1,6 +1,95 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function sortTheInnerContent(words: string): string {
+  const sortWord = (word: string) => {
+    if (word.length < 3) return word
+
+    const sortedWord = R.pipe(
+      R.slice(1, -1),
+      R.sort((a: string, b: string) => b.localeCompare(a)),
+      R.join('')
+    )([...word])
+
+    return R.head(word) + sortedWord + R.last(word)
+  }
+
+  return R.pipe(R.split(' '), R.map(sortWord), R.join(' '))(words)
+}
+
+export function grabscrab(anagram: string, dictionary: string[]): string[] {
+  const sortString = (s: string) => {
+    return R.pipe(
+      R.split(''),
+      R.sort((a, b) => a.localeCompare(b)),
+      R.join('')
+    )(s)
+  }
+  const sortedAnagram = sortString(anagram)
+
+  return R.filter(x => sortString(x) === sortedAnagram, dictionary)
+}
+
+export function triangleType(a: number, b: number, c: number): number {
+  const isTriangle = (a: number, b: number, c: number) => {
+    return a + b > c && a + c > b && b + c > a
+  }
+  const isAcuteTriangle = (x: number, y: number, z: number) => {
+    return z ** 2 < x ** 2 + y ** 2
+  }
+  const isRightTriangle = (x: number, y: number, z: number) => {
+    return z ** 2 === x ** 2 + y ** 2
+  }
+  const isObtuseTriangle = (x: number, y: number, z: number) => {
+    return z ** 2 > x ** 2 + y ** 2
+  }
+
+  if (!isTriangle(a, b, c)) return 0
+
+  const [x, y, z] = [a, b, c].sort((a, b) => a - b)
+
+  if (isAcuteTriangle(x, y, z)) return 1
+  if (isRightTriangle(x, y, z)) return 2
+  if (isObtuseTriangle(x, y, z)) return 3
+
+  return 0
+}
+
+export const travel = (r: string, zipcode: string): string => {
+  const regex = new RegExp(`^(\\d+)\\s(.+)\\s${zipcode}`)
+
+  const formatAddress = (data: string[][]) => {
+    const streetAndTown = R.pipe(R.map(R.last), R.join(','))(data)
+    const houseNumber = R.pipe(R.map(R.head), R.join(','))(data)
+    return `${streetAndTown}/${houseNumber}`
+  }
+
+  return R.pipe(
+    R.split(','),
+    R.filter(R.includes(zipcode)),
+    R.map(R.pipe(R.match(regex), R.slice(1, 3)) as (a: string) => string[]),
+    formatAddress,
+    R.concat(`${zipcode}:`)
+  )(r)
+}
+
+export function step(g: number, m: number, n: number): [number, number] | null {
+  const isPrime = (n: number) => {
+    for (let i = 2, s = Math.sqrt(n); i <= s; i++) {
+      if (n % i === 0) return false
+    }
+    return true
+  }
+
+  for (let i = m; i <= n - g; i++) {
+    const next = i + g
+    if (isPrime(i) && isPrime(next)) {
+      return [i, next]
+    }
+  }
+  return null
+}
+
 const getMonthlyValues = (town: string, s: string) => {
   const toObj = ([town, value]: string[]) => ({ town, value })
 

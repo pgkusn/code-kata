@@ -1,5 +1,157 @@
 import * as fn from './codewars'
 
+describe('Srot the inner ctonnet in dsnnieedcg oredr', () => {
+  it('應正確排序句子的每個單字中間字母 (範例 1)', () => {
+    const input = 'sort the inner content in descending order'
+    const output = 'srot the inner ctonnet in dsnnieedcg oredr'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+
+  it('應正確處理短句 (範例 2)', () => {
+    const input = 'wait for me'
+    const output = 'wiat for me'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+
+  it('應正確處理三個單字 (範例 3)', () => {
+    const input = 'this kata is easy'
+    const output = 'tihs ktaa is esay'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+
+  it('應保持長度小於等於 2 的單字不變', () => {
+    const input = 'a an in is it at'
+    const output = 'a an in is it at'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+
+  it('應正確處理只有一個單字的情況', () => {
+    const input = 'amazing'
+    const output = 'aznmiag'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+
+  it('應正確處理所有單字都是三個字母的句子', () => {
+    const input = 'dog cat rat'
+    const output = 'dog cat rat'
+    expect(fn.sortTheInnerContent(input)).toBe(output)
+  })
+})
+
+describe('Arrh, grabscrab!', () => {
+  it('應該找出與 scramble 字母相同的單字', () => {
+    const result = fn.grabscrab('ortsp', ['sport', 'parrot', 'ports', 'matey'])
+    expect(result).toEqual(['sport', 'ports'])
+  })
+
+  it('若無任何符合單字，應回傳空陣列', () => {
+    const result = fn.grabscrab('abc', ['def', 'ghi', 'jkl'])
+    expect(result).toEqual([])
+  })
+
+  it('應只比對整個單字是否為 anagram，而非部分匹配', () => {
+    const result = fn.grabscrab('listen', ['enlists', 'google', 'inlets', 'banana'])
+    expect(result).toEqual(['inlets'])
+  })
+
+  it('若字典為空，應回傳空陣列', () => {
+    const result = fn.grabscrab('abc', [])
+    expect(result).toEqual([])
+  })
+
+  it('若 scramble 為空，應只匹配空字串', () => {
+    const result = fn.grabscrab('', ['', 'a', 'b'])
+    expect(result).toEqual([''])
+  })
+})
+
+describe('Triangle type', () => {
+  it('should return 0 for invalid triangle (2, 4, 6)', () => {
+    expect(fn.triangleType(2, 4, 6)).toBe(0)
+  })
+
+  it('should return 1 for acute triangle (8, 5, 7)', () => {
+    expect(fn.triangleType(8, 5, 7)).toBe(1)
+  })
+
+  it('should return 2 for right triangle (3, 4, 5)', () => {
+    expect(fn.triangleType(3, 4, 5)).toBe(2)
+  })
+
+  it('should return 3 for obtuse triangle (7, 12, 8)', () => {
+    expect(fn.triangleType(7, 12, 8)).toBe(3)
+  })
+
+  it('should return 0 for degenerate triangle (1, 2, 3)', () => {
+    expect(fn.triangleType(1, 2, 3)).toBe(0)
+  })
+
+  it('should return 0 for zero side (0, 4, 5)', () => {
+    expect(fn.triangleType(0, 4, 5)).toBe(0)
+  })
+
+  it('should return 1 for floating point acute triangle (2.5, 2.5, 2.5)', () => {
+    expect(fn.triangleType(2.5, 2.5, 2.5)).toBe(1)
+  })
+
+  it('should return 2 for floating point right triangle (1.2, 1.6, 2)', () => {
+    expect(fn.triangleType(1.2, 1.6, 2)).toBe(2)
+  })
+})
+
+describe('travel', () => {
+  const r =
+    '123 Main Street St. Louisville OH 43071,' +
+    '432 Main Long Road St. Louisville OH 43071,' +
+    '786 High Street Pollocksville NY 56432,' +
+    '54 Holy Grail Street Niagara Town ZP 32908,' +
+    '3200 Main Rd. Bern AE 56210'
+
+  it('should return correct result for OH 43071', () => {
+    expect(fn.travel(r, 'OH 43071')).toBe(
+      'OH 43071:Main Street St. Louisville,Main Long Road St. Louisville/123,432'
+    )
+  })
+
+  it('should return correct result for NY 56432', () => {
+    expect(fn.travel(r, 'NY 56432')).toBe('NY 56432:High Street Pollocksville/786')
+  })
+
+  it('should return correct result for ZP 32908', () => {
+    expect(fn.travel(r, 'ZP 32908')).toBe('ZP 32908:Holy Grail Street Niagara Town/54')
+  })
+
+  it('should return correct result for non-existing zipcode', () => {
+    expect(fn.travel(r, 'AA 00000')).toBe('AA 00000:/')
+  })
+
+  it('should return correct result for AE 56210', () => {
+    expect(fn.travel(r, 'AE 56210')).toBe('AE 56210:Main Rd. Bern/3200')
+  })
+})
+
+describe('step', () => {
+  it('should return [5, 7] for step(2, 5, 7)', () => {
+    expect(fn.step(2, 5, 7)).toEqual([5, 7])
+  })
+
+  it('should return null for step(2, 5, 5)', () => {
+    expect(fn.step(2, 5, 5)).toBeNull()
+  })
+
+  it('should return [163, 167] for step(4, 130, 200)', () => {
+    expect(fn.step(4, 130, 200)).toEqual([163, 167])
+  })
+
+  it('should return [101, 107] for step(6, 100, 110)', () => {
+    expect(fn.step(6, 100, 110)).toEqual([101, 107])
+  })
+
+  it('should return null for step(2, 4900, 4919)', () => {
+    expect(fn.step(2, 4900, 4919)).toBeNull()
+  })
+})
+
 describe('Rainfall', () => {
   const sampleData = `
 London:Jan 48.0,Feb 38.9,Mar 39.9,Apr 42.2,May 47.3,Jun 52.1,Jul 59.5,Aug 57.2,Sep 55.4,Oct 62.0,Nov 59.0,Dec 52.9
