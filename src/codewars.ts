@@ -1,6 +1,61 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function maxBall(v0: number): number {
+  const speed = v0 * (1000 / 3600)
+  let t = 0
+  let h = -Infinity
+
+  const getHeight = (t: number, speed: number) => speed * t - 0.5 * 9.81 * t ** 2
+
+  const updateHeight = () => {
+    const nextHeight = getHeight((t + 1) * 0.1, speed)
+    if (nextHeight < h) return
+
+    t++
+    h = nextHeight
+
+    updateHeight()
+  }
+
+  updateHeight()
+
+  return t
+}
+
+export function computeDepth(n: number): number {
+  const numbers: Set<string> = new Set()
+  let multiple = 0
+
+  while (numbers.size < 10) {
+    multiple++
+
+    R.pipe(
+      R.toString,
+      R.split(''),
+      R.forEach((n: string) => numbers.add(n))
+    )(n * multiple)
+  }
+
+  return multiple
+}
+
+export function binaryToString(binary: string) {
+  const sliceString = (str: string) => {
+    const sliced = []
+    for (let i = 0; i < str.length; i += 8) {
+      sliced.push(str.slice(i, i + 8))
+    }
+    return sliced
+  }
+
+  return R.pipe(
+    sliceString,
+    R.map(R.pipe(x => parseInt(x, 2), String.fromCharCode)),
+    R.join('')
+  )(binary)
+}
+
 export function isValidCoordinates(coordinates: string): boolean {
   const regex = /^-?\d+(?:\.\d+)?, -?\d+(?:\.\d+)?$/
   if (!regex.test(coordinates)) return false

@@ -1,5 +1,72 @@
 import * as fn from './codewars'
 
+describe('Ball Upwards', () => {
+  it('當初速 v0 = 15 km/h 時，應回傳 4（代表 0.4 秒時的量測值最高）', () => {
+    expect(fn.maxBall(15)).toBe(4)
+  })
+
+  it('當初速 v0 = 25 km/h 時，應回傳 7（代表 0.7 秒時的量測值最高）', () => {
+    expect(fn.maxBall(25)).toBe(7)
+  })
+
+  it('回傳應為非負整數（測試型別與整數性）', () => {
+    const t = fn.maxBall(15)
+    expect(typeof t).toBe('number')
+    expect(Number.isInteger(t)).toBe(true)
+    expect(t).toBeGreaterThanOrEqual(0)
+  })
+})
+
+describe('Integer depth', () => {
+  it('應該回傳 9，當 n = 42', () => {
+    expect(fn.computeDepth(42)).toBe(9)
+  })
+
+  it('應該回傳 10，當 n = 1（需要 10 個倍數才能收集到所有數字）', () => {
+    expect(fn.computeDepth(1)).toBe(10)
+  })
+
+  it('應該回傳 1，當 n = 9876543210（第一個倍數已經包含所有數字）', () => {
+    expect(fn.computeDepth(9876543210)).toBe(1)
+  })
+
+  it('應該回傳 13，當 n = 12', () => {
+    expect(fn.computeDepth(12)).toBe(13)
+  })
+
+  it('應該回傳 10，當 n = 7', () => {
+    expect(fn.computeDepth(7)).toBe(10)
+  })
+
+  it('應該處理較大的數字，當 n = 12345（結果應為正整數）', () => {
+    expect(fn.computeDepth(12345)).toBeGreaterThan(0)
+  })
+})
+
+describe('Binary to Text (ASCII) Conversion', () => {
+  it('should decode a binary string to text', () => {
+    expect(fn.binaryToString('0100100001100101011011000110110001101111')).toBe('Hello')
+  })
+
+  it('should return an empty string for empty input', () => {
+    expect(fn.binaryToString('')).toBe('')
+  })
+
+  it('should decode a short binary string', () => {
+    expect(fn.binaryToString('0100000101000010')).toBe('AB')
+  })
+
+  it('should decode numbers and symbols', () => {
+    expect(fn.binaryToString('0011000100110010')).toBe('12')
+    expect(fn.binaryToString('0010000000100001')).toBe(' !')
+  })
+
+  it('should decode extended ASCII values', () => {
+    // 195 169 = é (UTF-8 two-byte sequence, but here testing raw byte mapping)
+    expect(fn.binaryToString('1100001110101001')).toBe('Ã©')
+  })
+})
+
 describe('Coordinates Validator', () => {
   // 題目提供的有效案例
   it.each([
