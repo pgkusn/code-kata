@@ -1,5 +1,48 @@
 import * as fn from './codewars'
 
+describe('Moves in squared strings (II)', () => {
+  describe('rot 函數測試', () => {
+    it('應該將字串旋轉 180 度', () => {
+      const s = 'abcd\nefgh\nijkl\nmnop'
+      expect(fn.rot(s)).toBe('ponm\nlkji\nhgfe\ndcba')
+    })
+
+    it('應該處理單行字串', () => {
+      const s = 'abcd'
+      expect(fn.rot(s)).toBe('dcba')
+    })
+  })
+
+  describe('selfieAndRot 函數測試', () => {
+    it('應該將原字串與旋轉後字串組合，並在中間加上對應數量的點', () => {
+      const s = 'abcd\nefgh\nijkl\nmnop'
+      const expected =
+        'abcd....\nefgh....\nijkl....\nmnop....\n....ponm\n....lkji\n....hgfe\n....dcba'
+      expect(fn.selfieAndRot(s)).toBe(expected)
+    })
+
+    it('應該處理單行字串並加上點與旋轉後的版本', () => {
+      const s = 'abcd'
+      const expected = 'abcd....\n....dcba'
+      expect(fn.selfieAndRot(s)).toBe(expected)
+    })
+  })
+
+  describe('oper 高階函數測試', () => {
+    it('應該對字串應用 rot 函數', () => {
+      const s = 'abcd\nefgh\nijkl\nmnop'
+      expect(fn.oper(fn.rot, s)).toBe('ponm\nlkji\nhgfe\ndcba')
+    })
+
+    it('應該對字串應用 selfieAndRot 函數', () => {
+      const s = 'abcd\nefgh\nijkl\nmnop'
+      const expected =
+        'abcd....\nefgh....\nijkl....\nmnop....\n....ponm\n....lkji\n....hgfe\n....dcba'
+      expect(fn.oper(fn.selfieAndRot, s)).toBe(expected)
+    })
+  })
+})
+
 describe('Ball Upwards', () => {
   it('當初速 v0 = 15 km/h 時，應回傳 4（代表 0.4 秒時的量測值最高）', () => {
     expect(fn.maxBall(15)).toBe(4)
