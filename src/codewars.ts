@@ -1,6 +1,14 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function getParticipants(handshakes: number): number {
+  let minPeople = 0
+  while ((minPeople * (minPeople - 1)) / 2 < handshakes) {
+    minPeople++
+  }
+  return minPeople
+}
+
 export function rot(s: string): string {
   return R.pipe(R.split('\n'), R.reverse, R.map(R.reverse), R.join('\n'))(s)
 }

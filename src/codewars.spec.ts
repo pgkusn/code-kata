@@ -1,5 +1,31 @@
 import * as fn from './codewars'
 
+describe('Handshake problem', () => {
+  it('should return 0 if no handshakes', () => {
+    expect(fn.getParticipants(0)).toBe(0)
+  })
+
+  it('should return 2 when there is 1 handshake', () => {
+    expect(fn.getParticipants(1)).toBe(2)
+  })
+
+  it('should return 3 when there are 3 handshakes', () => {
+    expect(fn.getParticipants(3)).toBe(3)
+  })
+
+  it('should return 4 when there are 5 handshakes', () => {
+    expect(fn.getParticipants(5)).toBe(4)
+  })
+
+  it('should return 4 when there are 6 handshakes', () => {
+    expect(fn.getParticipants(6)).toBe(4)
+  })
+
+  it('should return 5 when there are 7 handshakes', () => {
+    expect(fn.getParticipants(7)).toBe(5)
+  })
+})
+
 describe('Moves in squared strings (II)', () => {
   describe('rot 函數測試', () => {
     it('應該將字串旋轉 180 度', () => {
