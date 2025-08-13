@@ -1,6 +1,11 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function howMuch(m: number, n: number): string[][] {
+  // your code
+  return []
+}
+
 export function getParticipants(handshakes: number): number {
   let minPeople = 0
   while ((minPeople * (minPeople - 1)) / 2 < handshakes) {
