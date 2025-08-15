@@ -1,6 +1,18 @@
 import _ from 'lodash/fp'
 import * as R from 'ramda'
 
+export function hammingCode() {
+  function encode(text: string): string {
+    return 'bits'
+  }
+
+  function decode(bits: string): string {
+    return 'text'
+  }
+
+  return { encode, decode }
+}
+
 export function howMuch(m: number, n: number): string[][] {
   const result = []
 
