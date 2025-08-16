@@ -1,5 +1,27 @@
 import * as fn from './codewars'
 
+describe('Hamming Distance', () => {
+  it("字串 'I like turtles' 與 'I like turkeys' 應該回傳 3", () => {
+    expect(fn.hammingDistance('I like turtles', 'I like turkeys')).toBe(3)
+  })
+
+  it('完全相同的字串應該回傳 0', () => {
+    expect(fn.hammingDistance('Hello World', 'Hello World')).toBe(0)
+  })
+
+  it("字串 'espresso' 與 'Expresso' 應該回傳 2", () => {
+    expect(fn.hammingDistance('espresso', 'Expresso')).toBe(2)
+  })
+
+  it("字串 'abc' 與 'xyz' 每個字元都不同 → 回傳 3", () => {
+    expect(fn.hammingDistance('abc', 'xyz')).toBe(3)
+  })
+
+  it("字串 '12345' 與 '12335' 只有第四個字元不同 → 回傳 1", () => {
+    expect(fn.hammingDistance('12345', '12335')).toBe(1)
+  })
+})
+
 describe('Error correction #1 - Hamming Code', () => {
   const { encode, decode } = fn.hammingCode()
 
