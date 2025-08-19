@@ -1,6 +1,86 @@
 import _ from 'lodash/fp.js'
 import * as R from 'ramda'
 
+export function mostFrequentDays(year: number): string[] {
+  const weekday = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  const weekOrder = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
+  const isLeapYear = (year: number) => {
+    return year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)
+  }
+
+  const getMostFrequent = (weekday: string[]) => (year: number) => {
+    const day = new Date(`${year}-1-1`).getDay()
+    const firstDay = weekday[day]
+    const secondDay = weekday[(day + 1) % 7]
+    return isLeapYear(year) ? [firstDay, secondDay] : [firstDay]
+  }
+
+  const orderMostFrequent = (weekOrder: string[]) => (mostFrequent: string[]) => {
+    return R.filter((day: string) => mostFrequent.includes(day))(weekOrder)
+  }
+
+  return R.pipe(getMostFrequent(weekday), orderMostFrequent(weekOrder))(year)
+}
+
+export function stringOps() {
+  const transferArray = (ary: string[][]) => {
+    const transferredArray = Array.from({ length: ary.length }, () => Array(ary.length).fill(''))
+    for (let i = 0; i < ary.length; i++) {
+      for (let j = 0; j < ary.length; j++) {
+        transferredArray[j][i] = ary[i][j]
+      }
+    }
+    return transferredArray
+  }
+
+  const diag1Sym = (s: string): string => {
+    return R.pipe(
+      R.split('\n'),
+      R.map(R.split('')),
+      transferArray,
+      R.map(R.join('')),
+      R.join('\n')
+    )(s)
+  }
+
+  const rot90Clock = (s: string): string => {
+    return R.pipe(
+      R.split('\n'),
+      R.map(R.split('')),
+      transferArray,
+      R.map(R.pipe(R.reverse, R.join(''))),
+      R.join('\n')
+    )(s)
+  }
+
+  const selfieAndDiag1 = (s: string): string => {
+    const transferredArray = R.pipe(
+      R.split('\n'),
+      R.map(R.split('')),
+      transferArray,
+      R.map(R.join(''))
+    )(s)
+
+    const processArray = (transferred: string[]) => (original: string[]) => {
+      return original.map((item, index) => `${item}|${transferred[index]}`)
+    }
+
+    return R.pipe(R.split('\n'), processArray(transferredArray), R.join('\n'))(s)
+  }
+
+  const oper = (fct: (s: string) => string, s: string): string => {
+    return fct(s)
+  }
+
+  return {
+    rot90Clock,
+    diag1Sym,
+    selfieAndDiag1,
+    oper,
+  }
+}
+
 export function hammingDistance(a: string, b: string): number {
   const countDifferences = (compareStr: string) => (arr: string[]) => {
     return arr.reduce((prev, curr, index) => (curr !== compareStr[index] ? prev + 1 : prev), 0)

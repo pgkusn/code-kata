@@ -1,5 +1,53 @@
 import * as fn from './codewars'
 
+describe('Most Frequent Weekdays', () => {
+  it("應該回傳 ['Friday']，因為 2427 年是平年且 1 月 1 日是星期五", () => {
+    expect(fn.mostFrequentDays(2427)).toEqual(['Friday'])
+  })
+
+  it("應該回傳 ['Saturday']，因為 2185 年是平年且 1 月 1 日是星期六", () => {
+    expect(fn.mostFrequentDays(2185)).toEqual(['Saturday'])
+  })
+
+  it("應該回傳 ['Thursday', 'Friday']，因為 2860 年是閏年且 1 月 1 日是星期四", () => {
+    expect(fn.mostFrequentDays(2860)).toEqual(['Thursday', 'Friday'])
+  })
+
+  it("應該回傳 ['Monday']，因為 1900 年是平年且 1 月 1 日是星期一", () => {
+    expect(fn.mostFrequentDays(1900)).toEqual(['Monday'])
+  })
+
+  it("應該回傳 ['Saturday', 'Sunday']，因為 2000 年是閏年且 1 月 1 日是星期六", () => {
+    expect(fn.mostFrequentDays(2000)).toEqual(['Saturday', 'Sunday'])
+  })
+})
+
+describe('Moves in squared strings (III)', () => {
+  const ops = fn.stringOps()
+
+  const sample = 'abcd\nefgh\nijkl\nmnop'
+
+  it('應該能正確做主對角線對稱 (diag1Sym)', () => {
+    const result = ops.diag1Sym(sample)
+    expect(result).toBe('aeim\nbfjn\ncgko\ndhlp')
+  })
+
+  it('應該能正確做順時針旋轉90度 (rot90Clock)', () => {
+    const result = ops.rot90Clock(sample)
+    expect(result).toBe('miea\nnjfb\nokgc\nplhd')
+  })
+
+  it('應該能正確輸出 selfie 與主對角線 (selfieAndDiag1)', () => {
+    const result = ops.selfieAndDiag1(sample)
+    expect(result).toBe('abcd|aeim\n' + 'efgh|bfjn\n' + 'ijkl|cgko\n' + 'mnop|dhlp')
+  })
+
+  it('應該能透過 oper 套用指定的函式', () => {
+    const result = ops.oper(ops.rot90Clock, sample)
+    expect(result).toBe('miea\nnjfb\nokgc\nplhd')
+  })
+})
+
 describe('Hamming Distance', () => {
   it("字串 'I like turtles' 與 'I like turkeys' 應該回傳 3", () => {
     expect(fn.hammingDistance('I like turtles', 'I like turkeys')).toBe(3)
