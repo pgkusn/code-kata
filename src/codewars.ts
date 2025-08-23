@@ -1,6 +1,62 @@
 import _ from 'lodash/fp.js'
 import * as R from 'ramda'
 
+export function arrange(string: string): string {
+  const sortByLength = ([...array]: string[]) => {
+    for (let i = 0; i < array.length - 1; i++) {
+      const current = array[i]
+      const next = array[i + 1]
+
+      if (
+        (i % 2 === 0 && current.length > next.length) ||
+        (i % 2 !== 0 && current.length < next.length)
+      ) {
+        ;[array[i + 1], array[i]] = [array[i], array[i + 1]]
+      }
+    }
+
+    return array
+  }
+
+  const alternateCase = (array: string[]) => {
+    return array.map((x, i) => (i % 2 === 0 ? x.toLowerCase() : x.toUpperCase()))
+  }
+
+  return R.pipe(R.split(' '), sortByLength, alternateCase, R.join(' '))(string)
+}
+
+export function fortune(f0: number, p: number, c0: number, n: number, i: number): boolean {
+  let deposit = f0
+  let expenses = c0
+
+  for (let year = 1; year < n; year++) {
+    deposit = Math.trunc(deposit + deposit * (p / 100) - expenses)
+    if (deposit < 0) return false
+    expenses = Math.trunc(expenses + expenses * (i / 100))
+  }
+
+  return true
+}
+
+export function catalog(s: string, article: string): string {
+  const formatString = (target: string) => (str: string) => {
+    const regex = /<prod><name>(.+)<\/name><prx>(.+)<\/prx><qty>(.+)<\/qty><\/prod>/g
+
+    const [, productName = ''] = regex.exec(str) || []
+    if (!productName.includes(target)) return ''
+
+    return str.replace(regex, '$1 > prx: $$$2 qty: $3')
+  }
+
+  const result = R.pipe(
+    R.split('\n\n'),
+    R.map(formatString(article)),
+    R.filter(Boolean),
+    R.join('\n')
+  )(s)
+  return result ? result : 'Nothing'
+}
+
 export function posAverage(s: string): number {
   const subStrings = s.split(', ')
   const totalPos = subStrings[0].length

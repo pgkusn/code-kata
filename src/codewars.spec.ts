@@ -1,5 +1,96 @@
 import * as fn from './codewars'
 
+describe('up AND down', () => {
+  it("應該能處理範例輸入 'after be arrived two My so'", () => {
+    expect(fn.arrange('after be arrived two My so')).toBe('be ARRIVED two AFTER my SO')
+  })
+
+  it('當字串已符合規律時，不應改變順序', () => {
+    expect(fn.arrange('a BBB cc DDDD')).toBe('a BBB cc DDDD')
+  })
+
+  it('當有多個需要交換的地方時，應逐步調整到符合規律', () => {
+    expect(fn.arrange('abcd e fgh ij klm')).toBe('e ABCD ij FGH klm')
+  })
+
+  it('應正確處理只有一個單字的情況', () => {
+    expect(fn.arrange('hello')).toBe('hello')
+  })
+
+  it('應正確處理兩個單字的情況', () => {
+    expect(fn.arrange('long s')).toBe('s LONG')
+  })
+
+  it('應正確處理長度相等的單字', () => {
+    expect(fn.arrange('aa bb cc dd')).toBe('aa BB cc DD')
+  })
+})
+
+describe("Banker's Plan", () => {
+  it('應該回傳 true：經典案例（100000, 1, 2000, 15, 1）', () => {
+    expect(fn.fortune(100000, 1, 2000, 15, 1)).toBe(true)
+  })
+
+  it('應該回傳 true：雖然提款金額大，但還能撐到 10 年', () => {
+    expect(fn.fortune(100000, 1, 10000, 10, 1)).toBe(true)
+  })
+
+  it('應該回傳 false：在第 12 年破產（100000, 1, 9185, 12, 1）', () => {
+    expect(fn.fortune(100000, 1, 9185, 12, 1)).toBe(false)
+  })
+
+  it('應該回傳 true：沒有通膨的情況（100000, 1, 2000, 20, 0）', () => {
+    expect(fn.fortune(100000, 1, 2000, 20, 0)).toBe(true)
+  })
+
+  it('應該回傳 false：高通膨導致生活費急速上升（100000, 1, 2000, 20, 10）', () => {
+    expect(fn.fortune(100000, 1, 2000, 20, 10)).toBe(false)
+  })
+
+  it('應該回傳 true：高利率抵消通膨（100000, 10, 2000, 20, 5）', () => {
+    expect(fn.fortune(100000, 10, 2000, 20, 5)).toBe(true)
+  })
+
+  it('應該回傳 false：第一年就不夠提款（1000, 0, 2000, 5, 0）', () => {
+    expect(fn.fortune(1000, 0, 2000, 5, 0)).toBe(false)
+  })
+})
+
+describe('Catalog', () => {
+  const s = `<prod><name>drill</name><prx>99</prx><qty>5</qty></prod>
+
+<prod><name>hammer</name><prx>10</prx><qty>50</qty></prod>
+
+<prod><name>screwdriver</name><prx>5</prx><qty>51</qty></prod>
+
+<prod><name>table saw</name><prx>1099.99</prx><qty>5</qty></prod>
+
+<prod><name>saw</name><prx>9</prx><qty>10</qty></prod>`
+
+  it('應該能找到單一產品並正確格式化輸出', () => {
+    expect(fn.catalog(s, 'hammer')).toBe('hammer > prx: $10 qty: 50')
+  })
+
+  it('應該能找到多個符合的產品並正確換行輸出', () => {
+    expect(fn.catalog(s, 'saw')).toBe('table saw > prx: $1099.99 qty: 5\nsaw > prx: $9 qty: 10')
+  })
+
+  it("當找不到產品時應該回傳 'Nothing'", () => {
+    expect(fn.catalog(s, 'wrench')).toBe('Nothing')
+  })
+
+  it("應該支援查詢子字串（例如 'screw'）並返回正確結果", () => {
+    expect(fn.catalog(s, 'screw')).toBe('screwdriver > prx: $5 qty: 51')
+  })
+
+  it('應該保持與輸入 catalog 中出現順序一致', () => {
+    // 這裡檢查 'drill' 與 'hammer' 是否照原本順序輸出
+    expect(fn.catalog(s, 'r')).toBe(
+      'drill > prx: $99 qty: 5\nhammer > prx: $10 qty: 50\nscrewdriver > prx: $5 qty: 51'
+    )
+  })
+})
+
 describe('Positions Average', () => {
   it('應該能正確計算範例中 10 個子字串的平均百分比', () => {
     const s = '444996, 699990, 666690, 096904, 600644, 640646, 606469, 409694, 666094, 606490'
