@@ -1,6 +1,36 @@
 import _ from 'lodash/fp.js'
 import * as R from 'ramda'
 
+export function Mormons(startingNumber: number, reach: number, target: number): number {
+  if (startingNumber >= target) return 0
+
+  let result = 0
+  let currentTarget = startingNumber
+
+  const preach = () => {
+    result++
+    currentTarget += currentTarget * reach
+
+    if (currentTarget < target) preach()
+  }
+  preach()
+
+  return result
+}
+
+export function deadAntCount(ants: string | null): number {
+  if (!ants) return 0
+
+  const countDeadAnts = (ants: string) => {
+    const aCount = (ants.match(/a/g) || []).length
+    const nCount = (ants.match(/n/g) || []).length
+    const tCount = (ants.match(/t/g) || []).length
+    return Math.max(aCount, nCount, tCount)
+  }
+
+  return R.pipe(R.replace(/ant/g, ''), countDeadAnts)(ants)
+}
+
 export function isSumOfCubes(s: string): string {
   const findCubes = (n: string) => {
     const sum = R.pipe(

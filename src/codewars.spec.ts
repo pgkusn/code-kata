@@ -1,5 +1,41 @@
 import * as fn from './codewars'
 
+describe('The Book of Mormon', () => {
+  it('起始 10 人，目標 9 → 不需傳教', () => {
+    expect(fn.Mormons(10, 3, 9)).toBe(0)
+  })
+
+  it('起始 40 人，每人轉化 2 人，1 次傳教即可達到 120', () => {
+    expect(fn.Mormons(40, 2, 120)).toBe(1)
+  })
+
+  it('起始 20000 人，每人轉化 2 人，12 次傳教可達到 70 億', () => {
+    expect(fn.Mormons(20000, 2, 7000000000)).toBe(12)
+  })
+
+  it('起始 5 人，每人轉化 3 人，需 3 次傳教才能達到至少 200 人', () => {
+    expect(fn.Mormons(5, 3, 200)).toBe(3)
+  })
+})
+
+describe('Dead Ants', () => {
+  it('當字串中只有完整的螞蟻時，應回傳 0', () => {
+    expect(fn.deadAntCount('ant ant ant ant')).toBe(0)
+  })
+
+  it('當輸入為 null 時，應回傳 0', () => {
+    expect(fn.deadAntCount(null)).toBe(0)
+  })
+
+  it('當有不完整的螞蟻時，應正確計算死亡螞蟻數量', () => {
+    expect(fn.deadAntCount('ant anantt aantnt')).toBe(2)
+  })
+
+  it('當螞蟻被打散時，應計算出正確的死亡螞蟻數量', () => {
+    expect(fn.deadAntCount('ant ant .... a nt')).toBe(1)
+  })
+})
+
 describe('Hidden "Cubic" numbers', () => {
   it('範例一：包含 cubic 數字 0, 1, 153', () => {
     const input = 'aqdf&0#1xyz!22[153(777.777'
