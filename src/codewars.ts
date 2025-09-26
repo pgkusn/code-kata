@@ -1,6 +1,28 @@
 import * as R from 'ramda'
 import _ from 'lodash/fp.js'
 
+// 1. 找起點：起點是「只在所有航段的第一個元素出現，但從未出現在任何航段的第二個元素」的地點
+// 2. 依序串接：從起點出發，不斷尋找「下一個航段的起點」等於「目前的終點」
+export function findRoutes(routes: string[][]): string {
+  const isStarting = (target: string, routes: string[][]) => {
+    return routes.every(([, end]) => end !== target)
+  }
+
+  const findStarting = (routes: string[][]) => {
+    return routes.find(([start], index, array) => isStarting(start, array)) || []
+  }
+
+  const getRoutes = (routes: string[][]) => (starting: string[]) => {
+    return routes.reduce((prev, curr, index, array) => {
+      const [, nextEnd] = array.find(([start]) => start === prev.at(-1)) || []
+      if (nextEnd) prev.push(nextEnd)
+      return prev
+    }, starting)
+  }
+
+  return _.pipe(findStarting, getRoutes(routes), _.join(', '))(routes)
+}
+
 export function hist(s: string): string {
   const countChar = (str: string, char: string) => {
     return _.pipe(
