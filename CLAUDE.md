@@ -22,7 +22,7 @@ This is a **code kata practice repository** containing algorithmic challenges an
 
 - Uses **Vitest** as the testing framework with global test functions enabled
 - Tests use `describe()` and `it()` blocks following standard testing patterns
-- TypeScript is configured with strict mode and vitest globals support
+- TypeScript is configured with strict mode and vitest globals support, no manual import required
 - Test files import functions directly from their corresponding implementation files
 
 ## Key Conventions
